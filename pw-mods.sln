@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{66A03441-79C9-4744-AE42-EC7D2FD1B9DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hotkeys", "src\hotkeys\hotkeys.csproj", "{5F3A8BAF-FCDA-47C4-BC27-85BF1182E74C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution files", "Solution files", "{1DC0656E-DCE0-4185-BD1B-A7FBE2FA460B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+		repo.json = repo.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F3A8BAF-FCDA-47C4-BC27-85BF1182E74C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F3A8BAF-FCDA-47C4-BC27-85BF1182E74C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F3A8BAF-FCDA-47C4-BC27-85BF1182E74C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F3A8BAF-FCDA-47C4-BC27-85BF1182E74C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F3A8BAF-FCDA-47C4-BC27-85BF1182E74C} = {66A03441-79C9-4744-AE42-EC7D2FD1B9DE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8EF39488-D216-42D1-869C-61BC772B7E54}
+	EndGlobalSection
+EndGlobal
