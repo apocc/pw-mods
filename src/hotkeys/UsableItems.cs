@@ -31,7 +31,7 @@ namespace Apocc.Pw.Hotkeys
                 return;
 
             UsableSlot slot = usableSlots[slotIndex];
-            if (slot.Item.Ability == null)
+            if (!slot.HasItem || slot.Item.Ability == null)
                 return;
 
             Ability ability = slot.Item.Ability;

@@ -5,6 +5,7 @@ using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityModManagerNet;
+using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys
 {
@@ -25,7 +26,6 @@ namespace Apocc.Pw.Hotkeys
         private string _keyUsitSlot02 = KeyCodeNone;
         private string _keyUsitSlot03 = KeyCodeNone;
         private string _keyUsitSlot04 = KeyCodeNone;
-        private UnityModManager.ModEntry.ModLogger _log;
         internal const string Filename = "settings.xml";
 
         #endregion fields
@@ -103,17 +103,19 @@ namespace Apocc.Pw.Hotkeys
 
             if (propertyName == null)
             {
-                if (EnableVerboseLogging) _log.Warning("Settings.SetProperty => propertyName is null!");
+                if (EnableVerboseLogging) Log.Error("Settings.SetProperty => propertyName is null!", Globals.LogPrefix);
                 return;
             }
 
             if (!Enum.TryParse(prop, out KeyCode kc))
             {
-                if (EnableVerboseLogging) _log.Warning($"Settings.SetProperty => Could not parse key code '{prop}' for property {propertyName}!");
+                if (EnableVerboseLogging)
+                    Log.Error($"Settings.SetProperty => Could not parse key code '{prop}' for property {propertyName}!", Globals.LogPrefix);
+
                 return;
             }
 
-            if (EnableVerboseLogging) _log.Log($"Successfully parsed key code '{prop}' for property '{propertyName}'");
+            if (EnableVerboseLogging) Log.Log($"Successfully parsed key code '{prop}' for property '{propertyName}'", Globals.LogPrefix);
 
             switch (propertyName)
             {
@@ -132,51 +134,44 @@ namespace Apocc.Pw.Hotkeys
             }
         }
 
-        internal void SetLog(UnityModManager.ModEntry.ModLogger logger) => _log = logger;
-
         public static Settings Load(UnityModManager.ModEntry modEntry)
         {
-            Settings settings = null;
             try
             {
-                modEntry.Logger.Log("Trying to load settings");
+                Log.Log("Trying to load settings", Globals.LogPrefix);
 
                 var path = Path.Combine(modEntry.Path, Filename);
                 if (!File.Exists(path))
                 {
-                    modEntry.Logger.Log("No settings file found, loading default settings.");
-                    settings = new Settings();
+                    Log.Log("No settings file found, loading default settings.", Globals.LogPrefix);
+                    return new Settings();
                 }
                 else
                 {
                     using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
-                        settings = new XmlSerializer(typeof(Settings)).Deserialize(fs) as Settings;
+                        return new XmlSerializer(typeof(Settings)).Deserialize(fs) as Settings;
                 }
             }
             catch (Exception e)
             {
-                modEntry.Logger.Error("Could not parse settings object!");
+                Log.Error("Could not parse settings object!", Globals.LogPrefix);
                 Globals.LogException(e);
 
-                settings = new Settings();
+                return new Settings();
             }
-
-            settings.SetLog(modEntry.Logger);
-
-            return settings;
         }
 
         public void Save(UnityModManager.ModEntry modEntry)
         {
             if (EnableVerboseLogging)
-                _log.Log("Settings.Save: Trying to save settings");
+                Log.Log("Settings.Save: Trying to save settings", Globals.LogPrefix);
 
             var path = Path.Combine(modEntry.Path, Filename);
             using (var fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Read))
                 new XmlSerializer(typeof(Settings)).Serialize(fs, this);
 
             if (EnableVerboseLogging)
-                _log.Log("Settings.Save: Finished saving settings");
+                Log.Log("Settings.Save: Finished saving settings", Globals.LogPrefix);
         }
     }
 }

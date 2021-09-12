@@ -4,6 +4,7 @@ using Kingmaker.GameModes;
 using System;
 using System.Reflection;
 using UnityModManagerNet;
+using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys
 {
@@ -40,14 +41,13 @@ namespace Apocc.Pw.Hotkeys
                 }
                 catch (Exception e)
                 {
-                    Log.Error("Postfix: Couldn't exec Postfix");
+                    Log.Error("Postfix: Couldn't exec Postfix", Globals.LogPrefix);
                     Globals.LogException(e);
                 }
             }
         }
 
         public static bool enabled;
-        public static UnityModManager.ModEntry.ModLogger Log;
         public static Settings Settings;
 
 #if DEBUG
@@ -62,14 +62,12 @@ namespace Apocc.Pw.Hotkeys
 
         public static bool Load(UnityModManager.ModEntry modEntry)
         {
-            Log = modEntry.Logger;
-
             try
             {
+                Settings = Settings.Load(modEntry);
+
                 var h = new Harmony(modEntry.Info.Id);
                 h.PatchAll(Assembly.GetExecutingAssembly());
-
-                Settings = Settings.Load(modEntry);
 
                 modEntry.OnGUI = (UnityModManager.ModEntry me) => Gui.OnGUI(enabled, me, Settings);
                 modEntry.OnSaveGUI = OnSave;
@@ -82,7 +80,7 @@ namespace Apocc.Pw.Hotkeys
             }
             catch (Exception e)
             {
-                Log.Error("Main: Couldn't load mod");
+                Log.Error("Main: Couldn't load mod", Globals.LogPrefix);
                 Globals.LogException(e);
             }
 
@@ -97,7 +95,7 @@ namespace Apocc.Pw.Hotkeys
             }
             catch (Exception e)
             {
-                Log.Error($"OnSave: Couldn't save settings!");
+                Log.Error($"OnSave: Couldn't save settings!", Globals.LogPrefix);
                 Globals.LogException(e);
             }
         }
