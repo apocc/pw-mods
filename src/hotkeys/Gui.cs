@@ -10,10 +10,9 @@ namespace Apocc.Pw.Hotkeys
         private const int LabelWidth = 225;
         private const int TextFieldWidth = 125;
 
-        internal static void OnGUI(bool enabled, UnityModManager.ModEntry modEntry)
+        internal static void OnGUI(bool enabled, UnityModManager.ModEntry modEntry, Settings settings)
         {
             if (!enabled) return;
-            Settings settings = Settings.Instance;
 
             GUILayout.BeginVertical();
 

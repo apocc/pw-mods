@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Xml;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityModManagerNet;
@@ -9,13 +10,6 @@ namespace Apocc.Pw.Hotkeys
 {
     public sealed class Settings
     {
-        public static Settings Default = new Settings();
-        public static Settings Instance;
-
-        private Settings()
-        {
-        }
-
         #region fields
 
         private static readonly string KeyCodeNone = KeyCode.None.ToString();
@@ -140,20 +134,23 @@ namespace Apocc.Pw.Hotkeys
 
         internal void SetLog(UnityModManager.ModEntry.ModLogger logger) => _log = logger;
 
-        public static void Load(UnityModManager.ModEntry modEntry)
+        public static Settings Load(UnityModManager.ModEntry modEntry)
         {
+            Settings settings = null;
             try
             {
+                modEntry.Logger.Log("Trying to load settings");
+
                 var path = Path.Combine(modEntry.Path, Filename);
                 if (!File.Exists(path))
                 {
                     modEntry.Logger.Log("No settings file found, loading default settings.");
-                    Instance = new Settings();
+                    settings = new Settings();
                 }
                 else
                 {
                     using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
-                        Instance = new XmlSerializer(typeof(Settings)).Deserialize(fs) as Settings;
+                        settings = new XmlSerializer(typeof(Settings)).Deserialize(fs) as Settings;
                 }
             }
             catch (Exception e)
@@ -161,10 +158,12 @@ namespace Apocc.Pw.Hotkeys
                 modEntry.Logger.Error("Could not parse settings object!");
                 Globals.LogException(e);
 
-                Instance = new Settings();
+                settings = new Settings();
             }
 
-            Instance.SetLog(modEntry.Logger);
+            settings.SetLog(modEntry.Logger);
+
+            return settings;
         }
 
         public void Save(UnityModManager.ModEntry modEntry)

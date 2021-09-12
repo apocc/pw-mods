@@ -29,17 +29,18 @@ namespace Apocc.Pw.Hotkeys
                         && mode != GameModeType.FullScreenUi)
                         return;
 
-                    if (Settings.Instance.EnableTws)
-                        ToggleWeaponSet.Run();
+                    if (Settings.EnableTws)
+                        ToggleWeaponSet.Run(Settings);
 
-                    if (Settings.Instance.EnableTAiS)
-                        ToggleAiStealth.Run();
+                    if (Settings.EnableTAiS)
+                        ToggleAiStealth.Run(Settings);
 
-                    if (Settings.Instance.EnableUsit)
-                        UsableItems.Run();
+                    if (Settings.EnableUsit)
+                        UsableItems.Run(Settings);
                 }
                 catch (Exception e)
                 {
+                    Log.Error("Postfix: Couldn't exec Postfix");
                     Globals.LogException(e);
                 }
             }
@@ -47,13 +48,13 @@ namespace Apocc.Pw.Hotkeys
 
         public static bool enabled;
         public static UnityModManager.ModEntry.ModLogger Log;
+        public static Settings Settings;
 
 #if DEBUG
 
         private static bool Unload(UnityModManager.ModEntry modEntry)
         {
             new Harmony(modEntry.Info.Id).UnpatchAll();
-
             return true;
         }
 
@@ -65,12 +66,12 @@ namespace Apocc.Pw.Hotkeys
 
             try
             {
-                Settings.Load(modEntry);
-
                 var h = new Harmony(modEntry.Info.Id);
                 h.PatchAll(Assembly.GetExecutingAssembly());
 
-                modEntry.OnGUI = (UnityModManager.ModEntry me) => Gui.OnGUI(enabled, me);
+                Settings = Settings.Load(modEntry);
+
+                modEntry.OnGUI = (UnityModManager.ModEntry me) => Gui.OnGUI(enabled, me, Settings);
                 modEntry.OnSaveGUI = OnSave;
                 modEntry.OnToggle = OnToggle;
 #if DEBUG
@@ -81,6 +82,7 @@ namespace Apocc.Pw.Hotkeys
             }
             catch (Exception e)
             {
+                Log.Error("Main: Couldn't load mod");
                 Globals.LogException(e);
             }
 
@@ -91,11 +93,11 @@ namespace Apocc.Pw.Hotkeys
         {
             try
             {
-                Settings.Instance.Save(modEntry);
+                Settings.Save(modEntry);
             }
             catch (Exception e)
             {
-                Log.Error($"Could not save settings!");
+                Log.Error($"OnSave: Couldn't save settings!");
                 Globals.LogException(e);
             }
         }
