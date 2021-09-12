@@ -23,44 +23,30 @@ namespace Apocc.Pw.Hotkeys
 
                 try
                 {
-                    if (Game.Instance.CurrentMode != GameModeType.Default && Game.Instance.CurrentMode != GameModeType.Pause)
+                    GameModeType mode = Game.Instance.CurrentMode;
+                    if (mode != GameModeType.Default
+                        && mode != GameModeType.Pause
+                        && mode != GameModeType.FullScreenUi)
                         return;
 
-                    if (Settings.EnableTws)
-                        ToggleWeaponSet.Run(Settings);
+                    if (Settings.Instance.EnableTws)
+                        ToggleWeaponSet.Run();
 
-                    if (Settings.EnableTAiS)
-                        ToggleAiStealth.Run(Settings);
+                    if (Settings.Instance.EnableTAiS)
+                        ToggleAiStealth.Run();
+
+                    if (Settings.Instance.EnableUsit)
+                        UsableItems.Run();
                 }
                 catch (Exception e)
                 {
-                    LogException(e);
+                    Globals.LogException(e);
                 }
             }
         }
 
-        public static Settings Settings;
         public static bool enabled;
         public static UnityModManager.ModEntry.ModLogger Log;
-        public static string ModTitle = "Hotkeys for Weapon Sets, AI and Stealth";
-        public static string Sepatator = "---------------";
-
-        private static void LoadSettings(UnityModManager.ModEntry modEntry)
-        {
-            try
-            {
-                Settings = Settings.Load(modEntry);
-            }
-            catch (Exception e)
-            {
-                Log.Warning("Could not parse settings object!");
-                LogException(e);
-
-                Settings = new Settings();
-            }
-
-            Settings.SetLog(modEntry.Logger);
-        }
 
 #if DEBUG
 
@@ -79,12 +65,12 @@ namespace Apocc.Pw.Hotkeys
 
             try
             {
-                LoadSettings(modEntry);
+                Settings.Load(modEntry);
 
                 var h = new Harmony(modEntry.Info.Id);
                 h.PatchAll(Assembly.GetExecutingAssembly());
 
-                modEntry.OnGUI = (UnityModManager.ModEntry me) => Gui.OnGUI(enabled, me, Settings);
+                modEntry.OnGUI = (UnityModManager.ModEntry me) => Gui.OnGUI(enabled, me);
                 modEntry.OnSaveGUI = OnSave;
                 modEntry.OnToggle = OnToggle;
 #if DEBUG
@@ -95,24 +81,22 @@ namespace Apocc.Pw.Hotkeys
             }
             catch (Exception e)
             {
-                LogException(e);
+                Globals.LogException(e);
             }
 
             return false;
         }
 
-        public static void LogException(Exception e) => Log?.Error($"{Sepatator}{ModTitle}\n{e.Message}:\n{e.StackTrace}\n{Sepatator}");
-
         public static void OnSave(UnityModManager.ModEntry modEntry)
         {
             try
             {
-                Settings.Save(modEntry);
+                Settings.Instance.Save(modEntry);
             }
             catch (Exception e)
             {
                 Log.Error($"Could not save settings!");
-                LogException(e);
+                Globals.LogException(e);
             }
         }
 

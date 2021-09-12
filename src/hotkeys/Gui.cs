@@ -10,14 +10,17 @@ namespace Apocc.Pw.Hotkeys
         private const int LabelWidth = 225;
         private const int TextFieldWidth = 125;
 
-        internal static void OnGUI(bool enabled, UnityModManager.ModEntry modEntry, Settings settings)
+        internal static void OnGUI(bool enabled, UnityModManager.ModEntry modEntry)
         {
             if (!enabled) return;
+            Settings settings = Settings.Instance;
 
             GUILayout.BeginVertical();
 
             GUILayout.Label("<size=15><b>There is no validation. Make sure other installed mods don't use the same key!</b></size>");
             GUILayout.Space(20);
+
+            #region weapon sets
 
             GUILayout.BeginHorizontal();
             GUILayout.Label("<b>Enable Toggle Weapon Sets:</b>", GUILayout.Width(LabelWidth));
@@ -86,7 +89,11 @@ namespace Apocc.Pw.Hotkeys
             settings.EnableAllSelectedCharacters = GUILayout.Toggle(settings.EnableAllSelectedCharacters, "");
             GUILayout.EndHorizontal();
 
+            #endregion weapon sets
+
             GUILayout.Space(20);
+
+            #region tais
 
             GUILayout.BeginHorizontal();
             GUILayout.Label("<b>Enable Toggle AI and Stealth:</b>", GUILayout.Width(LabelWidth));
@@ -117,7 +124,88 @@ namespace Apocc.Pw.Hotkeys
 
             GUILayout.EndHorizontal();
 
+            #endregion tais
+
             GUILayout.Space(20);
+
+            #region usableItems
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("<b>Enable Usable Items hotkeys:</b>", GUILayout.Width(LabelWidth));
+            settings.EnableUsit = GUILayout.Toggle(settings.EnableUsit, "");
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(10);
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Key Slot 1:", GUILayout.Width(LabelWidth));
+            GUI.SetNextControlName("__apocc__usit__slot00");
+            settings.UsitSlot00 = GUILayout.TextField(settings.UsitSlot00, GUILayout.Width(TextFieldWidth));
+
+            GUILayout.Space(20);
+            if (GUILayout.Button(ClearButtonText, GUILayout.Width(ButtonWidth)))
+                settings.UsitSlot00 = KeyCode.None.ToString();
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Key Slot 2:", GUILayout.Width(LabelWidth));
+            GUI.SetNextControlName("__apocc__usit__slot01");
+            settings.UsitSlot01 = GUILayout.TextField(settings.UsitSlot01, GUILayout.Width(TextFieldWidth));
+
+            GUILayout.Space(20);
+            if (GUILayout.Button(ClearButtonText, GUILayout.Width(ButtonWidth)))
+                settings.UsitSlot01 = KeyCode.None.ToString();
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Key Slot 3:", GUILayout.Width(LabelWidth));
+            GUI.SetNextControlName("__apocc__usit__slot02");
+            settings.UsitSlot02 = GUILayout.TextField(settings.UsitSlot02, GUILayout.Width(TextFieldWidth));
+
+            GUILayout.Space(20);
+            if (GUILayout.Button(ClearButtonText, GUILayout.Width(ButtonWidth)))
+                settings.UsitSlot02 = KeyCode.None.ToString();
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Key Slot 4:", GUILayout.Width(LabelWidth));
+            GUI.SetNextControlName("__apocc__usit__slot03");
+            settings.UsitSlot03 = GUILayout.TextField(settings.UsitSlot03, GUILayout.Width(TextFieldWidth));
+
+            GUILayout.Space(20);
+            if (GUILayout.Button(ClearButtonText, GUILayout.Width(ButtonWidth)))
+                settings.UsitSlot03 = KeyCode.None.ToString();
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Key Slot 5:", GUILayout.Width(LabelWidth));
+            GUI.SetNextControlName("__apocc__usit__slot04");
+            settings.UsitSlot04 = GUILayout.TextField(settings.UsitSlot04, GUILayout.Width(TextFieldWidth));
+
+            GUILayout.Space(20);
+            if (GUILayout.Button(ClearButtonText, GUILayout.Width(ButtonWidth)))
+                settings.UsitSlot04 = KeyCode.None.ToString();
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("For all selected chararacters:", GUILayout.Width(LabelWidth));
+            settings.UsitEnableAllSelectedCharacters = GUILayout.Toggle(settings.UsitEnableAllSelectedCharacters, "");
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Use action bar placement:", GUILayout.Width(LabelWidth));
+            settings.UsitUseActionBarPlacement = GUILayout.Toggle(settings.UsitUseActionBarPlacement, "");
+            GUILayout.EndHorizontal();
+
+            #endregion usableItems
+
+            GUILayout.Space(20);
+
             GUILayout.BeginHorizontal();
             GUILayout.Label("<b>Enable verbose logging:</b>", GUILayout.Width(LabelWidth));
             settings.EnableVerboseLogging = GUILayout.Toggle(settings.EnableVerboseLogging, "");
@@ -147,6 +235,21 @@ namespace Apocc.Pw.Hotkeys
                         break;
                     case "__apocc__tais__stealth":
                         settings.TaisKeyStealth = Event.current.keyCode.ToString();
+                        break;
+                    case "__apocc__usit__slot00":
+                        settings.UsitSlot00 = Event.current.keyCode.ToString();
+                        break;
+                    case "__apocc__usit__slot01":
+                        settings.UsitSlot01 = Event.current.keyCode.ToString();
+                        break;
+                    case "__apocc__usit__slot02":
+                        settings.UsitSlot02 = Event.current.keyCode.ToString();
+                        break;
+                    case "__apocc__usit__slot03":
+                        settings.UsitSlot03 = Event.current.keyCode.ToString();
+                        break;
+                    case "__apocc__usit__slot04":
+                        settings.UsitSlot04 = Event.current.keyCode.ToString();
                         break;
                 }
             }

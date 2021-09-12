@@ -5,12 +5,12 @@ namespace Apocc.Pw.Hotkeys
 {
     public static class ToggleAiStealth
     {
-        public static void Run(Settings settings)
+        public static void Run()
         {
-            if (Input.GetKeyUp(settings.TaisKeyCodeStealth))
+            if (Input.GetKeyUp(Settings.Instance.TaisKeyCodeStealth))
                 new StealthSwitchButton().OnClick();
 
-            if (Input.GetKeyUp(settings.TaisKeyCodeAi))
+            if (Input.GetKeyUp(Settings.Instance.TaisKeyCodeAi))
                 new AiSwitchButton().OnClick();
         }
     }

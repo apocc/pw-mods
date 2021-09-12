@@ -5,11 +5,11 @@ namespace Apocc.Pw.Hotkeys
 {
     public static class ToggleWeaponSet
     {
-        private static void TryIncrement(bool allChars)
+        private static void TryIncrement()
         {
             SelectionManagerBase sm = Game.Instance.UI.SelectionManager;
 
-            if (allChars)
+            if (Settings.Instance.EnableAllSelectedCharacters)
             {
                 foreach (Kingmaker.EntitySystem.Entities.UnitEntityData unit in sm.SelectedUnits)
                 {
@@ -27,15 +27,16 @@ namespace Apocc.Pw.Hotkeys
             sm.SelectedUnits[0].Body.CurrentHandEquipmentSetIndex = nIdxs % 4;
         }
 
-        private static void TrySetIdx(int nIdx, bool allChars)
+        private static void TrySetIdx(int nIdx)
         {
             SelectionManagerBase sm = Game.Instance.UI.SelectionManager;
 
-            if (allChars)
+            if (Settings.Instance.EnableAllSelectedCharacters)
             {
                 foreach (Kingmaker.EntitySystem.Entities.UnitEntityData unit in sm.SelectedUnits)
+                {
                     unit.Body.CurrentHandEquipmentSetIndex = nIdx;
-
+                }
                 return;
             }
 
@@ -45,19 +46,19 @@ namespace Apocc.Pw.Hotkeys
             sm.SelectedUnits[0].Body.CurrentHandEquipmentSetIndex = nIdx;
         }
 
-        public static void Run(Settings settings)
+        public static void Run()
         {
-            if (Input.GetKeyUp(settings.TwsKeyCode00))
-                TrySetIdx(0, settings.EnableAllSelectedCharacters);
-            if (Input.GetKeyUp(settings.TwsKeyCode01))
-                TrySetIdx(1, settings.EnableAllSelectedCharacters);
-            if (Input.GetKeyUp(settings.TwsKeyCode02))
-                TrySetIdx(2, settings.EnableAllSelectedCharacters);
-            if (Input.GetKeyUp(settings.TwsKeyCode03))
-                TrySetIdx(3, settings.EnableAllSelectedCharacters);
+            if (Input.GetKeyUp(Settings.Instance.TwsKeyCode00))
+                TrySetIdx(0);
+            if (Input.GetKeyUp(Settings.Instance.TwsKeyCode01))
+                TrySetIdx(1);
+            if (Input.GetKeyUp(Settings.Instance.TwsKeyCode02))
+                TrySetIdx(2);
+            if (Input.GetKeyUp(Settings.Instance.TwsKeyCode03))
+                TrySetIdx(3);
 
-            if (Input.GetKeyUp(settings.TwsKeyCodeToggle))
-                TryIncrement(settings.EnableAllSelectedCharacters);
+            if (Input.GetKeyUp(Settings.Instance.TwsKeyCodeToggle))
+                TryIncrement();
         }
     }
 }

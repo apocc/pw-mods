@@ -9,8 +9,16 @@ namespace Apocc.Pw.Hotkeys
 {
     public sealed class Settings
     {
-        private static readonly string KeyCodeNone = KeyCode.None.ToString();
+        public static Settings Default = new Settings();
+        public static Settings Instance;
 
+        private Settings()
+        {
+        }
+
+        #region fields
+
+        private static readonly string KeyCodeNone = KeyCode.None.ToString();
         private string _keyAi = KeyCodeNone;
         private string _keySet00 = KeyCodeNone;
         private string _keySet01 = KeyCodeNone;
@@ -18,25 +26,57 @@ namespace Apocc.Pw.Hotkeys
         private string _keySet03 = KeyCodeNone;
         private string _keySetToggle = KeyCodeNone;
         private string _keyStealth = KeyCodeNone;
+        private string _keyUsitSlot00 = KeyCodeNone;
+        private string _keyUsitSlot01 = KeyCodeNone;
+        private string _keyUsitSlot02 = KeyCodeNone;
+        private string _keyUsitSlot03 = KeyCodeNone;
+        private string _keyUsitSlot04 = KeyCodeNone;
         private UnityModManager.ModEntry.ModLogger _log;
         internal const string Filename = "settings.xml";
-        public bool EnableAllSelectedCharacters { get; set; }
+
+        #endregion fields
+
+        #region properties
+
+        #region enable
+
         [XmlAttribute("enableTAiS")]
         public bool EnableTAiS { get; set; } = true;
         [XmlAttribute("enableTws")]
         public bool EnableTws { get; set; } = true;
+        [XmlAttribute("enableUsit")]
+        public bool EnableUsit { get; set; } = true;
         [XmlAttribute("verbose")]
         public bool EnableVerboseLogging { get; set; }
+
+        #endregion enable
+
+        #region serializable
+
+        public bool EnableAllSelectedCharacters { get; set; }
         public string TaisKeyAi { get => _keyAi; set => SetProperty(ref _keyAi, value); }
-        [XmlIgnore]
-        public KeyCode TaisKeyCodeAi { get; set; }
-        [XmlIgnore]
-        public KeyCode TaisKeyCodeStealth { get; set; }
         public string TaisKeyStealth { get => _keyStealth; set => SetProperty(ref _keyStealth, value); }
         public string TwsKey00 { get => _keySet00; set => SetProperty(ref _keySet00, value); }
         public string TwsKey01 { get => _keySet01; set => SetProperty(ref _keySet01, value); }
         public string TwsKey02 { get => _keySet02; set => SetProperty(ref _keySet02, value); }
         public string TwsKey03 { get => _keySet03; set => SetProperty(ref _keySet03, value); }
+        public string TwsToggle { get => _keySetToggle; set => SetProperty(ref _keySetToggle, value); }
+        public bool UsitEnableAllSelectedCharacters { get; set; }
+        public string UsitSlot00 { get => _keyUsitSlot00; set => SetProperty(ref _keyUsitSlot00, value); }
+        public string UsitSlot01 { get => _keyUsitSlot01; set => SetProperty(ref _keyUsitSlot01, value); }
+        public string UsitSlot02 { get => _keyUsitSlot02; set => SetProperty(ref _keyUsitSlot02, value); }
+        public string UsitSlot03 { get => _keyUsitSlot03; set => SetProperty(ref _keyUsitSlot03, value); }
+        public string UsitSlot04 { get => _keyUsitSlot04; set => SetProperty(ref _keyUsitSlot04, value); }
+        public bool UsitUseActionBarPlacement { get; set; }
+
+        #endregion serializable
+
+        #region internal
+
+        [XmlIgnore]
+        public KeyCode TaisKeyCodeAi { get; set; }
+        [XmlIgnore]
+        public KeyCode TaisKeyCodeStealth { get; set; }
         [XmlIgnore]
         public KeyCode TwsKeyCode00 { get; set; }
         [XmlIgnore]
@@ -47,7 +87,20 @@ namespace Apocc.Pw.Hotkeys
         public KeyCode TwsKeyCode03 { get; set; }
         [XmlIgnore]
         public KeyCode TwsKeyCodeToggle { get; set; }
-        public string TwsToggle { get => _keySetToggle; set => SetProperty(ref _keySetToggle, value); }
+        [XmlIgnore]
+        public KeyCode UsitKeyCodeSlot00 { get; set; }
+        [XmlIgnore]
+        public KeyCode UsitKeyCodeSlot01 { get; set; }
+        [XmlIgnore]
+        public KeyCode UsitKeyCodeSlot02 { get; set; }
+        [XmlIgnore]
+        public KeyCode UsitKeyCodeSlot03 { get; set; }
+        [XmlIgnore]
+        public KeyCode UsitKeyCodeSlot04 { get; set; }
+
+        #endregion internal
+
+        #endregion properties
 
         private void SetProperty(ref string prop, string value, [CallerMemberName] string propertyName = null)
         {
@@ -77,22 +130,41 @@ namespace Apocc.Pw.Hotkeys
                 case "TwsToggle": TwsKeyCodeToggle = kc; break;
                 case "TaisKeyAi": TaisKeyCodeAi = kc; break;
                 case "TaisKeyStealth": TaisKeyCodeStealth = kc; break;
+                case "UsitSlot00": UsitKeyCodeSlot00 = kc; break;
+                case "UsitSlot01": UsitKeyCodeSlot01 = kc; break;
+                case "UsitSlot02": UsitKeyCodeSlot02 = kc; break;
+                case "UsitSlot03": UsitKeyCodeSlot03 = kc; break;
+                case "UsitSlot04": UsitKeyCodeSlot04 = kc; break;
             }
         }
 
         internal void SetLog(UnityModManager.ModEntry.ModLogger logger) => _log = logger;
 
-        public static Settings Load(UnityModManager.ModEntry modEntry)
+        public static void Load(UnityModManager.ModEntry modEntry)
         {
-            var path = Path.Combine(modEntry.Path, Filename);
-            if (!File.Exists(path))
+            try
             {
-                modEntry.Logger.Log("No settings file found, loading default settings.");
-                return new Settings();
+                var path = Path.Combine(modEntry.Path, Filename);
+                if (!File.Exists(path))
+                {
+                    modEntry.Logger.Log("No settings file found, loading default settings.");
+                    Instance = new Settings();
+                }
+                else
+                {
+                    using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+                        Instance = new XmlSerializer(typeof(Settings)).Deserialize(fs) as Settings;
+                }
+            }
+            catch (Exception e)
+            {
+                modEntry.Logger.Error("Could not parse settings object!");
+                Globals.LogException(e);
+
+                Instance = new Settings();
             }
 
-            using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
-                return new XmlSerializer(typeof(Settings)).Deserialize(fs) as Settings;
+            Instance.SetLog(modEntry.Logger);
         }
 
         public void Save(UnityModManager.ModEntry modEntry)
