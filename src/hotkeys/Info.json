@@ -7,5 +7,5 @@
   "AssemblyName": "Apocc.Pw.Hotkeys.dll",
   "EntryMethod": "Apocc.Pw.Hotkeys.Main.Load",
   "HomePage": "https://www.nexusmods.com/pathfinderwrathoftherighteous/mods/68",
-  "Repository": "https://github.com/apocc/pw-mods/blob/master/repo.json"
+  "Repository": "https://raw.githubusercontent.com/apocc/pw-mods/master/repo.json"
 }
