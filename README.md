@@ -6,6 +6,6 @@
 Unity and game assemblies have to be referenced manually. See [Unity Mod Manager Wiki](https://github.com/newman55/unity-mod-manager/wiki) for instructions to set up a mod project.
 
 ## Mods
-### Hotkeys for Weapon Sets, AI and Stealth ([on Nexus](https://www.nexusmods.com/pathfinderwrathoftherighteous/mods/68))
+### Additional Hotkeys ([on Nexus](https://www.nexusmods.com/pathfinderwrathoftherighteous/mods/68))
 
-Adds the option to assign hotkeys to weapon sets, the AI button and the Stealth button.
+The mod adds the option to assign a hotkey for each Weapon Set, the AI and Stealth button and for Usable Items on the action bar.
