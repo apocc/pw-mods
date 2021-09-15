@@ -50,6 +50,8 @@ namespace Apocc.Pw.Hotkeys
         public bool EnableAllSelectedCharacters { get; set; }
         public string TaisKeyAi { get => _keyAi; set => SetProperty(ref _keyAi, value); }
         public string TaisKeyStealth { get => _keyStealth; set => SetProperty(ref _keyStealth, value); }
+        public bool TwsEnableInInventory { get; set; }
+        public bool TwsForceChangeForAllWhenInInventory { get; set; }
         public string TwsKey00 { get => _keySet00; set => SetProperty(ref _keySet00, value); }
         public string TwsKey01 { get => _keySet01; set => SetProperty(ref _keySet01, value); }
         public string TwsKey02 { get => _keySet02; set => SetProperty(ref _keySet02, value); }

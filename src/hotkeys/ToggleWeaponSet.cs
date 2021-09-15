@@ -1,64 +1,79 @@
 ﻿using Kingmaker;
+using Kingmaker.EntitySystem.Entities;
+using Kingmaker.GameModes;
+using Kingmaker.PubSubSystem;
+using Kingmaker.UI.Common;
+using Kingmaker.UI.MVVM._VM.ServiceWindows.Inventory;
 using UnityEngine;
+using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys
 {
     public static class ToggleWeaponSet
     {
-        private static void TryIncrement(Settings s)
+        private static int CalcNewIndex(UnitEntityData unit, int index)
+            => index == -1 ? (unit.Body.CurrentHandEquipmentSetIndex + 1) % 4 : index;
+
+        private static void IncrementSetIndex(Settings s, int index = -1)
         {
+            GameModeType mode = Game.Instance.CurrentMode;
             SelectionManagerBase sm = Game.Instance.UI.SelectionManager;
 
-            if (s.EnableAllSelectedCharacters)
-            {
-                foreach (Kingmaker.EntitySystem.Entities.UnitEntityData unit in sm.SelectedUnits)
-                {
-                    var nIdx = unit.Body.CurrentHandEquipmentSetIndex + 1;
-                    unit.Body.CurrentHandEquipmentSetIndex = nIdx % 4;
-                }
+            var isInventory = mode == GameModeType.FullScreenUi;
+            var forceForAll = s.TwsEnableInInventory && s.TwsForceChangeForAllWhenInInventory;
 
+            if (isInventory && !s.TwsEnableInInventory)
                 return;
+
+            string updatedUnitId = null;
+            if (isInventory && s.TwsEnableInInventory)
+                updatedUnitId = UpdateInventory(s, index);
+
+            if (s.EnableAllSelectedCharacters && (!isInventory || isInventory && forceForAll))
+            {
+                foreach (UnitEntityData unit in sm.SelectedUnits)
+                {
+                    if (updatedUnitId == unit.UniqueId) continue;
+
+                    unit.Body.CurrentHandEquipmentSetIndex = CalcNewIndex(unit, index);
+                }
             }
 
-            if (sm.SelectedUnits.Count != 1)
-                return;
+            if (!s.EnableAllSelectedCharacters && sm.SelectedUnits.Count == 1)
+            {
+                UnitEntityData unit = sm.SelectedUnits[0];
 
-            var nIdxs = sm.SelectedUnits[0].Body.CurrentHandEquipmentSetIndex + 1;
-            sm.SelectedUnits[0].Body.CurrentHandEquipmentSetIndex = nIdxs % 4;
+                if (updatedUnitId != unit.UniqueId)
+                    unit.Body.CurrentHandEquipmentSetIndex = CalcNewIndex(unit, index);
+            }
         }
 
-        private static void TrySetIdx(int nIdx, Settings s)
+        private static string UpdateInventory(Settings s, int index = -1)
         {
-            SelectionManagerBase sm = Game.Instance.UI.SelectionManager;
+            UnitEntityData current = UIUtility.GetCurrentCharacter();
 
-            if (s.EnableAllSelectedCharacters)
-            {
-                foreach (Kingmaker.EntitySystem.Entities.UnitEntityData unit in sm.SelectedUnits)
-                {
-                    unit.Body.CurrentHandEquipmentSetIndex = nIdx;
-                }
-                return;
-            }
+            if (s.EnableVerboseLogging)
+                Log.Log($"Raising inventory changed event for {current.CharacterName}", Globals.LogPrefix);
 
-            if (sm.SelectedUnits.Count != 1)
-                return;
+            current.Body.CurrentHandEquipmentSetIndex = CalcNewIndex(current, index);
+            EventBus.RaiseEvent<IInventoryHandler>((h) => h.Refresh());
 
-            sm.SelectedUnits[0].Body.CurrentHandEquipmentSetIndex = nIdx;
+            return current.UniqueId;
         }
 
         public static void Run(Settings s)
         {
             if (Input.GetKeyUp(s.TwsKeyCode00))
-                TrySetIdx(0, s);
+                IncrementSetIndex(s, 0);
             if (Input.GetKeyUp(s.TwsKeyCode01))
-                TrySetIdx(1, s);
+                IncrementSetIndex(s, 1);
             if (Input.GetKeyUp(s.TwsKeyCode02))
-                TrySetIdx(2, s);
+                IncrementSetIndex(s, 2);
             if (Input.GetKeyUp(s.TwsKeyCode03))
-                TrySetIdx(3, s);
+                IncrementSetIndex(s, 3);
 
             if (Input.GetKeyUp(s.TwsKeyCodeToggle))
-                TryIncrement(s);
+                IncrementSetIndex(s);
         }
     }
 }

@@ -88,6 +88,16 @@ namespace Apocc.Pw.Hotkeys
             settings.EnableAllSelectedCharacters = GUILayout.Toggle(settings.EnableAllSelectedCharacters, "");
             GUILayout.EndHorizontal();
 
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Enable in inventory:", GUILayout.Width(LabelWidth));
+            settings.TwsEnableInInventory = GUILayout.Toggle(settings.TwsEnableInInventory, "");
+            GUILayout.EndHorizontal();
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Force weapon set change for all selected characters even when in inventory:", GUILayout.Width(LabelWidth));
+            settings.TwsForceChangeForAllWhenInInventory = GUILayout.Toggle(settings.TwsForceChangeForAllWhenInInventory, "");
+            GUILayout.EndHorizontal();
+
             #endregion weapon sets
 
             GUILayout.Space(20);
