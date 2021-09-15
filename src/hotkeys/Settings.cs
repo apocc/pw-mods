@@ -163,6 +163,8 @@ namespace Apocc.Pw.Hotkeys
             }
         }
 
+        public T GetPropertyValue<T>(string propertyName) => (T)GetType().GetProperty(propertyName)?.GetValue(this, null);
+
         public void Save(UnityModManager.ModEntry modEntry)
         {
             if (EnableVerboseLogging)
@@ -175,5 +177,7 @@ namespace Apocc.Pw.Hotkeys
             if (EnableVerboseLogging)
                 Log.Log("Settings.Save: Finished saving settings", Globals.LogPrefix);
         }
+
+        public void SetPropertyValue(string propertyName, object value) => GetType().GetProperty(propertyName)?.SetValue(this, value);
     }
 }
