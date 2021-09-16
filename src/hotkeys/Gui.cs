@@ -1,5 +1,6 @@
 ﻿using Apocc.Pw.Hotkeys.Data;
 using Apocc.Pw.Hotkeys.Data.AiStealth;
+using Apocc.Pw.Hotkeys.Data.CharacterSelect;
 using Apocc.Pw.Hotkeys.Data.UsableItems;
 using Apocc.Pw.Hotkeys.Data.WeaponSets;
 using UnityEngine;
@@ -32,6 +33,10 @@ namespace Apocc.Pw.Hotkeys
 
             GUILayout.Space(20);
 
+            GuiBuilder.BuildControls(GuiCharacterSelect.Options);
+
+            GUILayout.Space(20);
+
             GUILayout.BeginHorizontal();
             GUILayout.Label("<b>Enable verbose logging:</b>", GUILayout.Width(Globals.LabelWidth));
             settings.EnableVerboseLogging = GUILayout.Toggle(settings.EnableVerboseLogging, "");
@@ -45,6 +50,7 @@ namespace Apocc.Pw.Hotkeys
                 GuiBuilder.UpdateControl(GuiWeaponSets.Options, controlName, value);
                 GuiBuilder.UpdateControl(GuiAiStealth.Options, controlName, value);
                 GuiBuilder.UpdateControl(GuiUsableItems.Options, controlName, value);
+                GuiBuilder.UpdateControl(GuiCharacterSelect.Options, controlName, value);
             }
 
             GUILayout.EndVertical();

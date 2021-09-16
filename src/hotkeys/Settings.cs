@@ -15,6 +15,8 @@ namespace Apocc.Pw.Hotkeys
 
         private static readonly string KeyCodeNone = KeyCode.None.ToString();
         private string _keyAi = KeyCodeNone;
+        private string _keyCsNext = KeyCodeNone;
+        private string _keyCsPrev = KeyCodeNone;
         private string _keySet00 = KeyCodeNone;
         private string _keySet01 = KeyCodeNone;
         private string _keySet02 = KeyCodeNone;
@@ -34,6 +36,8 @@ namespace Apocc.Pw.Hotkeys
 
         #region enable
 
+        [XmlAttribute("enableCharSel")]
+        public bool EnableCharSel { get; set; } = true;
         [XmlAttribute("enableTAiS")]
         public bool EnableTAiS { get; set; } = true;
         [XmlAttribute("enableTws")]
@@ -47,6 +51,8 @@ namespace Apocc.Pw.Hotkeys
 
         #region serializable
 
+        public string CsNext { get => _keyCsNext; set => SetProperty(ref _keyCsNext, value); }
+        public string CsPrev { get => _keyCsPrev; set => SetProperty(ref _keyCsPrev, value); }
         public bool EnableAllSelectedCharacters { get; set; }
         public string TaisKeyAi { get => _keyAi; set => SetProperty(ref _keyAi, value); }
         public string TaisKeyStealth { get => _keyStealth; set => SetProperty(ref _keyStealth, value); }
@@ -69,6 +75,10 @@ namespace Apocc.Pw.Hotkeys
 
         #region internal
 
+        [XmlIgnore]
+        public KeyCode CsKeyCodeNext { get; set; }
+        [XmlIgnore]
+        public KeyCode CsKeyCodePrev { get; set; }
         [XmlIgnore]
         public KeyCode TaisKeyCodeAi { get; set; }
         [XmlIgnore]
@@ -133,6 +143,8 @@ namespace Apocc.Pw.Hotkeys
                 case "UsitSlot02": UsitKeyCodeSlot02 = kc; break;
                 case "UsitSlot03": UsitKeyCodeSlot03 = kc; break;
                 case "UsitSlot04": UsitKeyCodeSlot04 = kc; break;
+                case "CsNext": CsKeyCodeNext = kc; break;
+                case "CsPrev": CsKeyCodePrev = kc; break;
             }
         }
 

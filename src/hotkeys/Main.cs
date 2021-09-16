@@ -38,6 +38,9 @@ namespace Apocc.Pw.Hotkeys
 
                     if (Settings.EnableUsit)
                         Data.UsableItems.Runner.Run();
+
+                    if (Settings.EnableCharSel)
+                        Data.CharacterSelect.Runner.Run();
                 }
                 catch (Exception e)
                 {
