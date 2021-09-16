@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Data\AiStealth\GuiAiStealth.cs" />
     <Compile Include="Data\AiStealth\Runner.cs" />
+    <Compile Include="Data\CharacterSelect\GuiCharacterSelect.cs" />
     <Compile Include="Data\CharacterSelect\Runner.cs" />
     <Compile Include="Data\UsableItems\GuiUsableItems.cs" />
     <Compile Include="Data\UsableItems\Runner.cs" />
