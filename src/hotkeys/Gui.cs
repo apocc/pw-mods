@@ -9,24 +9,26 @@ namespace Apocc.Pw.Hotkeys
 {
     internal static class Gui
     {
-        internal static void OnGUI(bool enabled, UnityModManager.ModEntry modEntry, Settings settings)
+        internal static void OnGUI(bool enabled, UnityModManager.ModEntry modEntry)
         {
             if (!enabled) return;
+
+            Settings settings = Main.Settings;
 
             GUILayout.BeginVertical();
 
             GUILayout.Label("<size=15><b>There is no validation. Make sure other installed mods don't use the same key!</b></size>");
             GUILayout.Space(20);
 
-            GuiBuilder.BuildControls(GuiWeaponSets.Options, settings);
+            GuiBuilder.BuildControls(GuiWeaponSets.Options);
 
             GUILayout.Space(20);
 
-            GuiBuilder.BuildControls(GuiAiStealth.Options, settings);
+            GuiBuilder.BuildControls(GuiAiStealth.Options);
 
             GUILayout.Space(20);
 
-            GuiBuilder.BuildControls(GuiUsableItems.Options, settings);
+            GuiBuilder.BuildControls(GuiUsableItems.Options);
 
             GUILayout.Space(20);
 
@@ -40,9 +42,9 @@ namespace Apocc.Pw.Hotkeys
                 var controlName = GUI.GetNameOfFocusedControl();
                 var value = Event.current.keyCode.ToString();
 
-                GuiBuilder.UpdateControl(GuiWeaponSets.Options, controlName, value, settings);
-                GuiBuilder.UpdateControl(GuiAiStealth.Options, controlName, value, settings);
-                GuiBuilder.UpdateControl(GuiUsableItems.Options, controlName, value, settings);
+                GuiBuilder.UpdateControl(GuiWeaponSets.Options, controlName, value);
+                GuiBuilder.UpdateControl(GuiAiStealth.Options, controlName, value);
+                GuiBuilder.UpdateControl(GuiUsableItems.Options, controlName, value);
             }
 
             GUILayout.EndVertical();

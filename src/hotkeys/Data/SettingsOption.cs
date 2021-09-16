@@ -14,7 +14,6 @@
             Label = label;
             Property = property;
             Type = type;
-
             Id = id;
         }
     }

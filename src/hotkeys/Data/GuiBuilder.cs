@@ -6,8 +6,10 @@ namespace Apocc.Pw.Hotkeys.Data
 {
     internal static class GuiBuilder
     {
-        internal static void BuildControl(SettingsOption option, Settings settings)
+        internal static void BuildControl(SettingsOption option)
         {
+            Settings settings = Main.Settings;
+
             GUILayout.BeginHorizontal();
 
             GUILayout.Label(option.Label, GUILayout.Width(Globals.LabelWidth));
@@ -37,17 +39,17 @@ namespace Apocc.Pw.Hotkeys.Data
             GUILayout.EndHorizontal();
         }
 
-        internal static void BuildControls(List<SettingsOption> options, Settings settings)
+        internal static void BuildControls(List<SettingsOption> options)
         {
             foreach (SettingsOption option in options)
-                BuildControl(option, settings);
+                BuildControl(option);
         }
 
-        internal static void UpdateControl(List<SettingsOption> options, string controlName, object value, Settings settings)
+        internal static void UpdateControl(List<SettingsOption> options, string controlName, object value)
         {
             SettingsOption option = options.FirstOrDefault(o => o.Type == SettingsOptionType.Text && o.Id == controlName);
             if (option != null)
-                settings.SetPropertyValue(option.Property, value);
+                Main.Settings.SetPropertyValue(option.Property, value);
         }
     }
 }

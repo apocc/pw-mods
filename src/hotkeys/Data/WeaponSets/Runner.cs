@@ -14,22 +14,22 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
         private static int CalcNewIndex(UnitEntityData unit, int index)
            => index == -1 ? (unit.Body.CurrentHandEquipmentSetIndex + 1) % 4 : index;
 
-        private static void IncrementSetIndex(Settings s, int index = -1)
+        private static void IncrementSetIndex(int index = -1)
         {
             GameModeType mode = Game.Instance.CurrentMode;
             SelectionManagerBase sm = Game.Instance.UI.SelectionManager;
 
             var isInventory = mode == GameModeType.FullScreenUi;
-            var forceForAll = s.TwsEnableInInventory && s.TwsForceChangeForAllWhenInInventory;
+            var forceForAll = Main.Settings.TwsEnableInInventory && Main.Settings.TwsForceChangeForAllWhenInInventory;
 
-            if (isInventory && !s.TwsEnableInInventory)
+            if (isInventory && !Main.Settings.TwsEnableInInventory)
                 return;
 
             string updatedUnitId = null;
-            if (isInventory && s.TwsEnableInInventory)
-                updatedUnitId = UpdateInventory(s, index);
+            if (isInventory && Main.Settings.TwsEnableInInventory)
+                updatedUnitId = UpdateInventory(index);
 
-            if (s.EnableAllSelectedCharacters && (!isInventory || isInventory && forceForAll))
+            if (Main.Settings.EnableAllSelectedCharacters && (!isInventory || isInventory && forceForAll))
             {
                 foreach (UnitEntityData unit in sm.SelectedUnits)
                 {
@@ -39,7 +39,7 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
                 }
             }
 
-            if (!s.EnableAllSelectedCharacters && sm.SelectedUnits.Count == 1)
+            if (!Main.Settings.EnableAllSelectedCharacters && sm.SelectedUnits.Count == 1)
             {
                 UnitEntityData unit = sm.SelectedUnits[0];
 
@@ -48,11 +48,11 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
             }
         }
 
-        private static string UpdateInventory(Settings s, int index = -1)
+        private static string UpdateInventory(int index = -1)
         {
             UnitEntityData current = UIUtility.GetCurrentCharacter();
 
-            if (s.EnableVerboseLogging)
+            if (Main.Settings.EnableVerboseLogging)
                 Log.Log($"Raising inventory changed event for {current.CharacterName}", Globals.LogPrefix);
 
             current.Body.CurrentHandEquipmentSetIndex = CalcNewIndex(current, index);
@@ -61,19 +61,19 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
             return current.UniqueId;
         }
 
-        internal static void Run(Settings s)
+        internal static void Run()
         {
-            if (Input.GetKeyUp(s.TwsKeyCode00))
-                IncrementSetIndex(s, 0);
-            if (Input.GetKeyUp(s.TwsKeyCode01))
-                IncrementSetIndex(s, 1);
-            if (Input.GetKeyUp(s.TwsKeyCode02))
-                IncrementSetIndex(s, 2);
-            if (Input.GetKeyUp(s.TwsKeyCode03))
-                IncrementSetIndex(s, 3);
+            if (Input.GetKeyUp(Main.Settings.TwsKeyCode00))
+                IncrementSetIndex(0);
+            if (Input.GetKeyUp(Main.Settings.TwsKeyCode01))
+                IncrementSetIndex(1);
+            if (Input.GetKeyUp(Main.Settings.TwsKeyCode02))
+                IncrementSetIndex(2);
+            if (Input.GetKeyUp(Main.Settings.TwsKeyCode03))
+                IncrementSetIndex(3);
 
-            if (Input.GetKeyUp(s.TwsKeyCodeToggle))
-                IncrementSetIndex(s);
+            if (Input.GetKeyUp(Main.Settings.TwsKeyCodeToggle))
+                IncrementSetIndex();
         }
     }
 }

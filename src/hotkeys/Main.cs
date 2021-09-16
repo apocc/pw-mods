@@ -31,13 +31,13 @@ namespace Apocc.Pw.Hotkeys
                         return;
 
                     if (Settings.EnableTws)
-                        Data.WeaponSets.Runner.Run(Settings);
+                        Data.WeaponSets.Runner.Run();
 
                     if (Settings.EnableTAiS)
-                        Data.AiStealth.Runner.Run(Settings);
+                        Data.AiStealth.Runner.Run();
 
                     if (Settings.EnableUsit)
-                        Data.UsableItems.Runner.Run(Settings);
+                        Data.UsableItems.Runner.Run();
                 }
                 catch (Exception e)
                 {
@@ -69,7 +69,7 @@ namespace Apocc.Pw.Hotkeys
                 var h = new Harmony(modEntry.Info.Id);
                 h.PatchAll(Assembly.GetExecutingAssembly());
 
-                modEntry.OnGUI = (UnityModManager.ModEntry me) => Gui.OnGUI(enabled, me, Settings);
+                modEntry.OnGUI = (UnityModManager.ModEntry me) => Gui.OnGUI(enabled, me);
                 modEntry.OnSaveGUI = OnSave;
                 modEntry.OnToggle = OnToggle;
 #if DEBUG

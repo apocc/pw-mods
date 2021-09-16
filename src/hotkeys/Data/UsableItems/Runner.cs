@@ -13,17 +13,17 @@ namespace Apocc.Pw.Hotkeys.Data.UsableItems
 {
     internal static class Runner
     {
-        private static void TryActivate(int slotIndex, UnitEntityData unit, Settings s)
+        private static void TryActivate(int slotIndex, UnitEntityData unit)
         {
             UnitBody body = unit.Body;
 
-            if (s.EnableVerboseLogging)
+            if (Main.Settings.EnableVerboseLogging)
             {
                 Log.Log("Character: " + unit.CharacterName, Globals.LogPrefix);
                 Log.Log($"Slots: {string.Join(", ", body.QuickSlots.Select(qs => qs.HasItem))}", Globals.LogPrefix);
             }
 
-            UsableSlot[] usableSlots = s.UsitUseActionBarPlacement
+            UsableSlot[] usableSlots = Main.Settings.UsitUseActionBarPlacement
                 ? body.QuickSlots.Where(qs => qs.HasItem).ToArray()
                 : body.QuickSlots;
 
@@ -36,37 +36,37 @@ namespace Apocc.Pw.Hotkeys.Data.UsableItems
 
             Ability ability = slot.Item.Ability;
 
-            if (s.EnableVerboseLogging)
+            if (Main.Settings.EnableVerboseLogging)
                 Log.Log($"Ability: {ability.Blueprint.Name}", Globals.LogPrefix);
 
             if (ability.Data.TargetAnchor != AbilityTargetAnchor.Owner)
             {
-                if (s.EnableVerboseLogging)
+                if (Main.Settings.EnableVerboseLogging)
                     Log.Log("!Owner", Globals.LogPrefix);
 
                 Game.Instance.SelectedAbilityHandler.SetAbility(ability.Data);
             }
             else
             {
-                if (s.EnableVerboseLogging)
+                if (Main.Settings.EnableVerboseLogging)
                     Log.Log("Owner", Globals.LogPrefix);
 
                 unit.Commands.Run(new UnitUseAbility(ability.Data, unit));
             }
         }
 
-        private static void UseQuickSlot(int index, Settings s)
+        private static void UseQuickSlot(int index)
         {
-            if (s.EnableVerboseLogging)
-                Log.Log($"Use slot: {index} for all: {s.UsitEnableAllSelectedCharacters}", Globals.LogPrefix);
+            if (Main.Settings.EnableVerboseLogging)
+                Log.Log($"Use slot: {index} for all: {Main.Settings.UsitEnableAllSelectedCharacters}", Globals.LogPrefix);
 
             SelectionManagerBase sm = Game.Instance.UI.SelectionManager;
 
-            if (s.UsitEnableAllSelectedCharacters)
+            if (Main.Settings.UsitEnableAllSelectedCharacters)
             {
                 foreach (UnitEntityData unitEntityData in sm.SelectedUnits)
                 {
-                    TryActivate(index, unitEntityData, s);
+                    TryActivate(index, unitEntityData);
                 }
 
                 return;
@@ -75,21 +75,21 @@ namespace Apocc.Pw.Hotkeys.Data.UsableItems
             if (sm.SelectedUnits.Count != 1)
                 return;
 
-            TryActivate(index, sm.SelectedUnits[0], s);
+            TryActivate(index, sm.SelectedUnits[0]);
         }
 
-        public static void Run(Settings s)
+        public static void Run()
         {
-            if (Input.GetKeyUp(s.UsitKeyCodeSlot00))
-                UseQuickSlot(0, s);
-            if (Input.GetKeyUp(s.UsitKeyCodeSlot01))
-                UseQuickSlot(1, s);
-            if (Input.GetKeyUp(s.UsitKeyCodeSlot02))
-                UseQuickSlot(2, s);
-            if (Input.GetKeyUp(s.UsitKeyCodeSlot03))
-                UseQuickSlot(3, s);
-            if (Input.GetKeyUp(s.UsitKeyCodeSlot04))
-                UseQuickSlot(4, s);
+            if (Input.GetKeyUp(Main.Settings.UsitKeyCodeSlot00))
+                UseQuickSlot(0);
+            if (Input.GetKeyUp(Main.Settings.UsitKeyCodeSlot01))
+                UseQuickSlot(1);
+            if (Input.GetKeyUp(Main.Settings.UsitKeyCodeSlot02))
+                UseQuickSlot(2);
+            if (Input.GetKeyUp(Main.Settings.UsitKeyCodeSlot03))
+                UseQuickSlot(3);
+            if (Input.GetKeyUp(Main.Settings.UsitKeyCodeSlot04))
+                UseQuickSlot(4);
         }
     }
 }
