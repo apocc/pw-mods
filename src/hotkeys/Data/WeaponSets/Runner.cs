@@ -7,12 +7,12 @@ using Kingmaker.UI.MVVM._VM.ServiceWindows.Inventory;
 using UnityEngine;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
-namespace Apocc.Pw.Hotkeys
+namespace Apocc.Pw.Hotkeys.Data.WeaponSets
 {
-    public static class ToggleWeaponSet
+    internal static class Runner
     {
         private static int CalcNewIndex(UnitEntityData unit, int index)
-            => index == -1 ? (unit.Body.CurrentHandEquipmentSetIndex + 1) % 4 : index;
+           => index == -1 ? (unit.Body.CurrentHandEquipmentSetIndex + 1) % 4 : index;
 
         private static void IncrementSetIndex(Settings s, int index = -1)
         {
@@ -61,7 +61,7 @@ namespace Apocc.Pw.Hotkeys
             return current.UniqueId;
         }
 
-        public static void Run(Settings s)
+        internal static void Run(Settings s)
         {
             if (Input.GetKeyUp(s.TwsKeyCode00))
                 IncrementSetIndex(s, 0);

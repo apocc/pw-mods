@@ -9,9 +9,9 @@ using System.Linq;
 using UnityEngine;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
-namespace Apocc.Pw.Hotkeys
+namespace Apocc.Pw.Hotkeys.Data.UsableItems
 {
-    public static class UsableItems
+    internal static class Runner
     {
         private static void TryActivate(int slotIndex, UnitEntityData unit, Settings s)
         {

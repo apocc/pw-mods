@@ -1,11 +1,11 @@
 ﻿using Kingmaker.UI.ActionBar;
 using UnityEngine;
 
-namespace Apocc.Pw.Hotkeys
+namespace Apocc.Pw.Hotkeys.Data.AiStealth
 {
-    public static class ToggleAiStealth
+    internal static class Runner
     {
-        public static void Run(Settings s)
+        internal static void Run(Settings s)
         {
             if (Input.GetKeyUp(s.TaisKeyCodeStealth))
                 new StealthSwitchButton().OnClick();

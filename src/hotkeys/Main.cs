@@ -31,13 +31,13 @@ namespace Apocc.Pw.Hotkeys
                         return;
 
                     if (Settings.EnableTws)
-                        ToggleWeaponSet.Run(Settings);
+                        Data.WeaponSets.Runner.Run(Settings);
 
                     if (Settings.EnableTAiS)
-                        ToggleAiStealth.Run(Settings);
+                        Data.AiStealth.Runner.Run(Settings);
 
                     if (Settings.EnableUsit)
-                        UsableItems.Run(Settings);
+                        Data.UsableItems.Runner.Run(Settings);
                 }
                 catch (Exception e)
                 {
