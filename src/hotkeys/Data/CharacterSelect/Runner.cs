@@ -1,12 +1,12 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
+using System.Collections.Generic;
+using System.Linq;
 using Kingmaker;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.GameModes;
 using Kingmaker.UI.Common;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
@@ -18,27 +18,39 @@ namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
 
         private static void ChangeCharacter(bool next = true)
         {
-            var inInventory = Game.Instance.CurrentMode == GameModeType.FullScreenUi;
-            Player.CharactersList list = inInventory ? Player.CharactersList.AllDetachedUnits : Player.CharactersList.ActiveUnits;
-            List<UnitEntityData> party = inInventory
-                ? Game.Instance.Player.PartyCharacters.Select(reference => reference.Value).ToList()
-                : Game.Instance.Player.Party;
+            var isInFullScreenUi = Game.Instance.CurrentMode == GameModeType.FullScreenUi;
+            List<UnitEntityData> party = isInFullScreenUi
+                ? UIUtility.GetGroup(Game.Instance.LoadedAreaState.Settings.CapitalPartyMode.Value)
+                : Game.Instance.Player.PartyAndPets;
+
+            if (isInFullScreenUi)
+                party.AddRange(Game.Instance.Player.PartyAndPets.Where(u => u.IsPet));
+
+#if DEBUG
+            var parties = new Dictionary<string, IEnumerable<UnitEntityData>>
+            {
+                { "group capital", UIUtility.GetGroup(Game.Instance.LoadedAreaState.Settings.CapitalPartyMode.Value) },
+                { "group capital and pets", UIUtility.GetGroup(Game.Instance.LoadedAreaState.Settings.CapitalPartyMode.Value, true) },
+                { "party", Game.Instance.Player.Party },
+                { "party and pets", Game.Instance.Player.PartyAndPets },
+                { "party and pets detached", Game.Instance.Player.PartyAndPetsDetached },
+                { "party characters", Game.Instance.Player.PartyCharacters.Select(u => u.Value).ToList() },
+                { "remote companions", Game.Instance.Player.RemoteCompanions },
+                { "active companions", Game.Instance.Player.ActiveCompanions },
+                { "all characters", Game.Instance.Player.AllCharacters }
+            };
+
+            foreach (var p in parties)
+                UIUtility.SendWarning($"{ p.Key}: { string.Join(",", p.Value.Select(c => c.CharacterName))}");
+#endif
 
             if (Main.Settings.EnableVerboseLogging)
             {
-                //Log.Log($"Party: {string.Join(",", Game.Instance.Player.Party.Select(c => c.CharacterName))}", Globals.LogPrefix);
-                //Log.Log($"Party + pets: {string.Join(",", Game.Instance.Player.PartyAndPets.Select(c => c.CharacterName))}", Globals.LogPrefix);
-                //Log.Log($"Party + pets detached: {string.Join(",", Game.Instance.Player.PartyAndPetsDetached.Select(c => c.CharacterName))}", Globals.LogPrefix);
-                //Log.Log($"Party chars: {string.Join(",", Game.Instance.Player.PartyCharacters.Select(c => c.Value.CharacterName))}", Globals.LogPrefix);
-                //Log.Log($"Party remote: {string.Join(",", Game.Instance.Player.RemoteCompanions.Select(c => c.CharacterName))}", Globals.LogPrefix);
-                //Log.Log($"Party active: {string.Join(",", Game.Instance.Player.ActiveCompanions.Select(c => c.CharacterName))}", Globals.LogPrefix);
-                //Log.Log($"Party all: {string.Join(",", Game.Instance.Player.AllCharacters.Select(c => c.CharacterName))}", Globals.LogPrefix);
-
-                Log.Log($"ChangeCharacter: in inventory: {inInventory}, next: {next}", Globals.LogPrefix);
+                Log.Log($"ChangeCharacter: in inventory: {isInFullScreenUi}, next: {next}", Globals.LogPrefix);
                 Log.Log($"ChangeCharacter: party: {string.Join(",", party.Select(c => c.CharacterName))}", Globals.LogPrefix);
             }
 
-            if (inInventory)
+            if (isInFullScreenUi)
             {
                 UpdateIndex(next, party);
             }
