@@ -8,10 +8,13 @@ namespace Apocc.Pw.Hotkeys
 {
     public static class Globals
     {
-        public const int ButtonWidth = 75;
-        public const string ClearButtonText = "Clear";
+        public const int ButtonWidth = 100;
+        public const int DescWidth = 350;
+        public const string I18NLocation = "I18N";
+        public const string DefaultCulture = "en-gb";
         public const int LabelWidth = 225;
         public const int TextFieldWidth = 125;
+        public const int ControlSpace = 20;
 
         public static string LogPrefix = "[ApoccHotkeys] ";
         public static string ModTitle = "Additional Hotkeys";

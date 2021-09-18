@@ -7,11 +7,18 @@ namespace Apocc.Pw.Hotkeys.Data.AiStealth
 {
     internal sealed class GuiAiStealth
     {
-        internal static readonly List<SettingsOption> Options = new List<SettingsOption>
+        internal static List<SettingsOption> Options = Options ?? Update();
+
+        internal static List<SettingsOption> Update()
         {
-            new SettingsOption("<b>Enable Toggle AI and Stealth:</b>", "EnableTAiS", SettingsOptionType.CheckBox),
-            new SettingsOption("Key to toggle AI:", "TaisKeyAi", SettingsOptionType.Text, "__apocc__tais__ai"),
-            new SettingsOption("Key to toggle Stealth:", "TaisKeyStealth", SettingsOptionType.Text, "__apocc__tais__stealth"),
-        };
+            Options = new List<SettingsOption>
+            {
+                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelTaisEnable}</b>", "EnableTAiS", SettingsOptionType.CheckBox),
+                new SettingsOption(Main.Settings.GetCultureData().LabelTaisKeyAi, "TaisKeyAi", SettingsOptionType.Text, "__apocc__tais__ai"),
+                new SettingsOption(Main.Settings.GetCultureData().LabelTaisKeyStealth, "TaisKeyStealth", SettingsOptionType.Text, "__apocc__tais__stealth"),
+            };
+
+            return Options;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
+using System.Collections.Generic;
 using Apocc.Pw.Hotkeys.Data;
 using Apocc.Pw.Hotkeys.Data.AiStealth;
 using Apocc.Pw.Hotkeys.Data.CharacterSelect;
@@ -21,27 +22,24 @@ namespace Apocc.Pw.Hotkeys
 
             GUILayout.BeginVertical();
 
-            GUILayout.Label("<size=15><b>There is no validation. Make sure other installed mods don't use the same key!</b></size>");
-            GUILayout.Space(20);
+            if (!Main.IsInGame)
+            {
+                GUILayout.Label($"<color=#e6e600><size=15><b>{settings.GetCultureData().LabelGenNotInGame}</b></size></color>");
+                GUILayout.Space(Globals.ControlSpace);
+            }
 
-            GuiBuilder.BuildControls(GuiWeaponSets.Options);
+            GUILayout.Label($"<size=15><b>{settings.GetCultureData().LabelGenNoValidation}</b></size>");
+            GUILayout.Space(Globals.ControlSpace);
 
-            GUILayout.Space(20);
-
-            GuiBuilder.BuildControls(GuiAiStealth.Options);
-
-            GUILayout.Space(20);
-
-            GuiBuilder.BuildControls(GuiUsableItems.Options);
-
-            GUILayout.Space(20);
-
-            GuiBuilder.BuildControls(GuiCharacterSelect.Options);
-
-            GUILayout.Space(20);
+            var allOptions = new object[] { GuiWeaponSets.Options, GuiAiStealth.Options, GuiUsableItems.Options, GuiCharacterSelect.Options };
+            foreach (List<SettingsOption> optionsList in allOptions)
+            {
+                GuiBuilder.BuildControls(optionsList);
+                GUILayout.Space(Globals.ControlSpace);
+            }
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label("<b>Enable verbose logging:</b>", GUILayout.Width(Globals.LabelWidth));
+            GUILayout.Label($"<b>{settings.GetCultureData().LabelGenVerboseLogging}</b>", GUILayout.Width(Globals.LabelWidth));
             settings.EnableVerboseLogging = GUILayout.Toggle(settings.EnableVerboseLogging, "");
             GUILayout.EndHorizontal();
 
@@ -50,13 +48,24 @@ namespace Apocc.Pw.Hotkeys
                 var controlName = GUI.GetNameOfFocusedControl();
                 var value = Event.current.keyCode.ToString();
 
-                GuiBuilder.UpdateControl(GuiWeaponSets.Options, controlName, value);
-                GuiBuilder.UpdateControl(GuiAiStealth.Options, controlName, value);
-                GuiBuilder.UpdateControl(GuiUsableItems.Options, controlName, value);
-                GuiBuilder.UpdateControl(GuiCharacterSelect.Options, controlName, value);
+                foreach (List<SettingsOption> optionsList in allOptions)
+                {
+                    if (GuiBuilder.UpdateControl(optionsList, controlName, value))
+                        break;
+                }
             }
 
             GUILayout.EndVertical();
+        }
+
+        internal static void OnShowGUI(bool enabled, UnityModManager.ModEntry modEntry)
+        {
+            Main.Settings.UpdateCulture(modEntry);
+
+            GuiUsableItems.Update();
+            GuiCharacterSelect.Update();
+            GuiAiStealth.Update();
+            GuiWeaponSets.Update();
         }
     }
 }

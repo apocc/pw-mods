@@ -25,18 +25,25 @@ namespace Apocc.Pw.Hotkeys.Data
                     var valueText = GUILayout.TextField(settings.GetPropertyValue<string>(option.Property), GUILayout.Width(Globals.TextFieldWidth));
                     settings.SetPropertyValue(option.Property, valueText);
 
-                    GUILayout.Space(20);
+                    GUILayout.Space(Globals.ControlSpace);
 
-                    if (GUILayout.Button(Globals.ClearButtonText, GUILayout.Width(Globals.ButtonWidth)))
+                    if (GUILayout.Button(settings.GetCultureData().LabelGuiButtonClear, GUILayout.Width(Globals.ButtonWidth)))
                         settings.SetPropertyValue(option.Property, KeyCode.None.ToString());
 
                     break;
                 case SettingsOptionType.CheckBox:
-                    var valueCheck = GUILayout.Toggle(settings.GetPropertyValue<bool>(option.Property), "");
+                    var valueCheck = GUILayout.Toggle(settings.GetPropertyValue<bool>(option.Property), "",
+                        GUILayout.Width(Globals.ButtonWidth + Globals.TextFieldWidth + 20));
                     settings.SetPropertyValue(option.Property, valueCheck);
                     break;
                 default:
                     break;
+            }
+
+            if (option.Description != null)
+            {
+                GUILayout.Space(Globals.ControlSpace);
+                GUILayout.Label(option.Description);
             }
 
             GUILayout.EndHorizontal();
@@ -48,11 +55,15 @@ namespace Apocc.Pw.Hotkeys.Data
                 BuildControl(option);
         }
 
-        internal static void UpdateControl(List<SettingsOption> options, string controlName, object value)
+        internal static bool UpdateControl(List<SettingsOption> options, string controlName, object value)
         {
             SettingsOption option = options.FirstOrDefault(o => o.Type == SettingsOptionType.Text && o.Id == controlName);
-            if (option != null)
-                Main.Settings.SetPropertyValue(option.Property, value);
+            if (option == null)
+                return false;
+
+            Main.Settings.SetPropertyValue(option.Property, value);
+
+            return true;
         }
     }
 }

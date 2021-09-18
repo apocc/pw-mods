@@ -1,12 +1,12 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
-using HarmonyLib;
-using Kingmaker;
-using Kingmaker.GameModes;
 using System;
 using System.Linq;
 using System.Reflection;
+using HarmonyLib;
+using Kingmaker;
+using Kingmaker.GameModes;
 using UnityModManagerNet;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
@@ -28,12 +28,8 @@ namespace Apocc.Pw.Hotkeys
 
                 try
                 {
-                    if (!IsInGame) {
-                        if (Settings.EnableVerboseLogging)
-                            Log.Log("Not in game, hotkeys are disabled", Globals.LogPrefix);
-
+                    if (!IsInGame)
                         return;
-                    }
 
                     GameModeType mode = Game.Instance.CurrentMode;
                     if (mode != GameModeType.Default
@@ -62,8 +58,8 @@ namespace Apocc.Pw.Hotkeys
         }
 
         public static bool enabled;
-        public static Settings Settings;
         public static bool IsInGame = Game.Instance?.Player?.Party?.Any() ?? false;
+        public static Settings Settings;
 
 #if DEBUG
 
@@ -84,13 +80,13 @@ namespace Apocc.Pw.Hotkeys
                 var h = new Harmony(modEntry.Info.Id);
                 h.PatchAll(Assembly.GetExecutingAssembly());
 
+                modEntry.OnShowGUI = (UnityModManager.ModEntry me) => Gui.OnShowGUI(enabled, me);
                 modEntry.OnGUI = (UnityModManager.ModEntry me) => Gui.OnGUI(enabled, me);
                 modEntry.OnSaveGUI = OnSave;
                 modEntry.OnToggle = OnToggle;
 #if DEBUG
                 modEntry.OnUnload = Unload;
 #endif
-
                 return true;
             }
             catch (Exception e)

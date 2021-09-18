@@ -2,10 +2,15 @@
 // Licensed under MIT License.
 
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Serialization;
+using Apocc.Pw.Hotkeys.I18N;
+using Kingmaker.Localization;
+using Kingmaker.Localization.Shared;
 using UnityEngine;
 using UnityModManagerNet;
 using Log = UnityModManagerNet.UnityModManager.Logger;
@@ -17,6 +22,9 @@ namespace Apocc.Pw.Hotkeys
         #region fields
 
         private static readonly string KeyCodeNone = KeyCode.None.ToString();
+        private string _culture;
+        private SettingsCultureData _currentCultureData;
+        private SettingsCultureData _defaultCultureData;
         private string _keyAi = KeyCodeNone;
         private string _keyCsNext = KeyCodeNone;
         private string _keyCsPrev = KeyCodeNone;
@@ -37,7 +45,7 @@ namespace Apocc.Pw.Hotkeys
 
         #region properties
 
-        #region enable
+        #region attributes
 
         [XmlAttribute("enableCharSel")]
         public bool EnableCharSel { get; set; } = true;
@@ -50,7 +58,7 @@ namespace Apocc.Pw.Hotkeys
         [XmlAttribute("verbose")]
         public bool EnableVerboseLogging { get; set; }
 
-        #endregion enable
+        #endregion attributes
 
         #region serializable
 
@@ -78,6 +86,8 @@ namespace Apocc.Pw.Hotkeys
 
         #region internal
 
+        [XmlIgnore]
+        public List<string> AvailableCultures { get; set; }
         [XmlIgnore]
         public KeyCode CsKeyCodeNext { get; set; }
         [XmlIgnore]
@@ -110,6 +120,28 @@ namespace Apocc.Pw.Hotkeys
         #endregion internal
 
         #endregion properties
+
+        private static List<string> LoadAvailableCultures(UnityModManager.ModEntry modEntry)
+        {
+            var cultures = new List<string> { Globals.DefaultCulture };
+
+            try
+            {
+                var path = Path.Combine(modEntry.Path, Globals.I18NLocation);
+                if (!Directory.Exists(path))
+                    Log.Log("No internationalisation folder found: " + path, Globals.LogPrefix);
+                else
+                    cultures.AddRange(Directory.EnumerateFiles(path).Select(p => Path.GetFileNameWithoutExtension(p).ToLowerInvariant()));
+            }
+            catch (Exception e)
+            {
+                Log.Error("Could not load available cultures!", Globals.LogPrefix);
+                Globals.LogException(e);
+            }
+
+            Log.Log("Available cultures: " + string.Join(",", cultures), Globals.LogPrefix);
+            return cultures;
+        }
 
         private void SetProperty(ref string prop, string value, [CallerMemberName] string propertyName = null)
         {
@@ -153,6 +185,8 @@ namespace Apocc.Pw.Hotkeys
 
         public static Settings Load(UnityModManager.ModEntry modEntry)
         {
+            Settings settings = null;
+
             try
             {
                 Log.Log("Trying to load settings", Globals.LogPrefix);
@@ -161,12 +195,12 @@ namespace Apocc.Pw.Hotkeys
                 if (!File.Exists(path))
                 {
                     Log.Log("No settings file found, loading default settings.", Globals.LogPrefix);
-                    return new Settings();
+                    settings = new Settings();
                 }
                 else
                 {
                     using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
-                        return new XmlSerializer(typeof(Settings)).Deserialize(fs) as Settings;
+                        settings = new XmlSerializer(typeof(Settings)).Deserialize(fs) as Settings;
                 }
             }
             catch (Exception e)
@@ -174,9 +208,17 @@ namespace Apocc.Pw.Hotkeys
                 Log.Error("Could not parse settings object!", Globals.LogPrefix);
                 Globals.LogException(e);
 
-                return new Settings();
+                settings = new Settings();
             }
+
+            Log.Log("Loading additional settings data", Globals.LogPrefix); ;
+            settings.AvailableCultures = LoadAvailableCultures(modEntry);
+            settings._defaultCultureData = SettingsCultureData.Default;
+
+            return settings;
         }
+
+        public SettingsCultureData GetCultureData() => _currentCultureData ?? _defaultCultureData;
 
         public T GetPropertyValue<T>(string propertyName) => (T)GetType().GetProperty(propertyName)?.GetValue(this, null);
 
@@ -194,5 +236,38 @@ namespace Apocc.Pw.Hotkeys
         }
 
         public void SetPropertyValue(string propertyName, object value) => GetType().GetProperty(propertyName)?.SetValue(this, value);
+
+        public void UpdateCulture(UnityModManager.ModEntry modEntry)
+        {
+            try
+            {
+                if (_currentCultureData != null) return;
+
+                Log.Log("Processing game culture information", Globals.LogPrefix);
+
+                var ingameCulture = LocaleExtensions.GetCulture(LocalizationManager.CurrentLocale).Name.ToLowerInvariant();
+                Log.Log("Ingame culture: " + ingameCulture, Globals.LogPrefix);
+
+                _culture = AvailableCultures.FirstOrDefault(ac => ac == ingameCulture) ?? Globals.DefaultCulture;
+                if (_culture == Globals.DefaultCulture)
+                {
+                    _currentCultureData = SettingsCultureData.Default;
+                    return;
+                }
+
+                var path = Path.Combine(modEntry.Path, Globals.I18NLocation);
+                var filepath = $"{path}\\{_culture}.xml";
+                using (var fs = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.Read))
+                    _currentCultureData = new XmlSerializer(typeof(SettingsCultureData)).Deserialize(fs) as SettingsCultureData;
+            }
+            catch (Exception e)
+            {
+                Log.Error("Could not update culture, falling back to default!", Globals.LogPrefix);
+                Globals.LogException(e);
+
+                _currentCultureData = SettingsCultureData.Default;
+                _culture = Globals.DefaultCulture;
+            }
+        }
     }
 }
