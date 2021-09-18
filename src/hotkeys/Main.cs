@@ -2,6 +2,7 @@
 using Kingmaker;
 using Kingmaker.GameModes;
 using System;
+using System.Linq;
 using System.Reflection;
 using UnityModManagerNet;
 using Log = UnityModManagerNet.UnityModManager.Logger;
@@ -24,6 +25,13 @@ namespace Apocc.Pw.Hotkeys
 
                 try
                 {
+                    if (!IsInGame) {
+                        if (Settings.EnableVerboseLogging)
+                            Log.Log("Not in game, hotkeys are disabled", Globals.LogPrefix);
+
+                        return;
+                    }
+
                     GameModeType mode = Game.Instance.CurrentMode;
                     if (mode != GameModeType.Default
                         && mode != GameModeType.Pause
@@ -52,6 +60,7 @@ namespace Apocc.Pw.Hotkeys
 
         public static bool enabled;
         public static Settings Settings;
+        public static bool IsInGame = Game.Instance?.Player?.Party?.Any() ?? false;
 
 #if DEBUG
 
