@@ -1,4 +1,7 @@
-﻿using Kingmaker;
+﻿// Copyright (c) apocc.
+// Licensed under MIT License.
+
+using Kingmaker;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Items;
 using Kingmaker.Items.Slots;

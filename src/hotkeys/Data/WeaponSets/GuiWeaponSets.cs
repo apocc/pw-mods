@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿// Copyright (c) apocc.
+// Licensed under MIT License.
+
+using System.Collections.Generic;
 
 namespace Apocc.Pw.Hotkeys.Data.WeaponSets
 {

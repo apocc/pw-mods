@@ -1,4 +1,7 @@
-﻿using System.Reflection;
+﻿// Copyright (c) apocc.
+// Licensed under MIT License.
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 

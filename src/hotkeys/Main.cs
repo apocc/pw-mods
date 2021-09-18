@@ -1,4 +1,7 @@
-﻿using HarmonyLib;
+﻿// Copyright (c) apocc.
+// Licensed under MIT License.
+
+using HarmonyLib;
 using Kingmaker;
 using Kingmaker.GameModes;
 using System;

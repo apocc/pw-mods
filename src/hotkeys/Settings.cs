@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) apocc.
+// Licensed under MIT License.
+
+using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Xml;

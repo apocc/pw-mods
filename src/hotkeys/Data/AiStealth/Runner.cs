@@ -1,4 +1,7 @@
-﻿using Kingmaker.UI.ActionBar;
+﻿// Copyright (c) apocc.
+// Licensed under MIT License.
+
+using Kingmaker.UI.ActionBar;
 using UnityEngine;
 
 namespace Apocc.Pw.Hotkeys.Data.AiStealth

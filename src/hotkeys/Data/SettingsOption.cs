@@ -1,4 +1,7 @@
-﻿namespace Apocc.Pw.Hotkeys.Data
+﻿// Copyright (c) apocc.
+// Licensed under MIT License.
+
+namespace Apocc.Pw.Hotkeys.Data
 {
     public enum SettingsOptionType { Text, CheckBox }
 

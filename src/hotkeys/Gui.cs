@@ -1,4 +1,7 @@
-﻿using Apocc.Pw.Hotkeys.Data;
+﻿// Copyright (c) apocc.
+// Licensed under MIT License.
+
+using Apocc.Pw.Hotkeys.Data;
 using Apocc.Pw.Hotkeys.Data.AiStealth;
 using Apocc.Pw.Hotkeys.Data.CharacterSelect;
 using Apocc.Pw.Hotkeys.Data.UsableItems;

@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) apocc.
+// Licensed under MIT License.
+
+using System;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys
