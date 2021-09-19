@@ -28,6 +28,7 @@
   <LabelTwsKey03>Taste für Waffenset 4</LabelTwsKey03>
   <DescTwsCircle>All Waffensets durchblättern</DescTwsCircle>
   <DescUsitUseActonBarPlacement>Die Anordnung der Elemente der benutzbaren Gegenstände im Inventar entspricht nicht der in der Schnellleiste. Elemente in der Schnellleiste werden immer linksbündig eingerückt. Falls diese Einstellung aktiviert ist, wird die Anordnung der Schnellleiste verwendet, sonst die des Inventars.</DescUsitUseActonBarPlacement>
+  <DescUsitMain>&lt;color=#e6e600&gt;Bekanntes Problem: Ein Gegenstand den ein Charakter nicht benutzen kann, bspw. eine Spruchrolle, kann aktiviert werden, aber der eigentliche Effekt wird nicht angewendet und der Gegenstand wird nicht verbraucht&lt;/color&gt;</DescUsitMain>
   <DescTwsEnableForAll>Falls aktiviert, werden die Waffensetwechsel auf alle ausgewählten Charaktere angewendet</DescTwsEnableForAll>
   <DescTwsEnableForceChangeInFullScreen>Falls aktiviert werden die Waffensetwechsel auf alle ausgewählten Charaktere angewendet, auch wenn man sich im Menü befindet. &lt;b&gt;Der im Menü ausgewählte Charakter ist nicht unbedingt der 'auf dem Feld' ausgewählte Charakter)&lt;/b&gt; </DescTwsEnableForceChangeInFullScreen>
   <DescTwsEnableFullScreen>Falls aktiviert, werden die Waffensetwechsel auf den im Menü ausgewälten Charakter angewendet</DescTwsEnableFullScreen>

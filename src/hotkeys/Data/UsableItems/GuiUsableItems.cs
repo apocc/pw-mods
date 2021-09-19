@@ -13,7 +13,8 @@ namespace Apocc.Pw.Hotkeys.Data.UsableItems
         {
             Options = new List<SettingsOption>
             {
-                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelUsitEnable}</b>", "EnableUsit", SettingsOptionType.CheckBox),
+                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelUsitEnable}</b>", "EnableUsit", SettingsOptionType.CheckBox, null,
+                    Main.Settings.GetCultureData().DescUsitMain),
                 new SettingsOption(Main.Settings.GetCultureData().LabelUsitKey00, "UsitSlot00", SettingsOptionType.Text, "__apocc__usit__slot00"),
                 new SettingsOption(Main.Settings.GetCultureData().LabelUsitKey01, "UsitSlot01", SettingsOptionType.Text, "__apocc__usit__slot01"),
                 new SettingsOption(Main.Settings.GetCultureData().LabelUsitKey02, "UsitSlot02", SettingsOptionType.Text, "__apocc__usit__slot02"),

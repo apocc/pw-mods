@@ -38,6 +38,7 @@ namespace Apocc.Pw.Hotkeys.Data
             DescUsitUseActonBarPlacement = "Items displayed in the Usable Items bar are always left aligned regardless of their position on the inventory panel. With this option enabled the placement of the action bar is used, otherwise that of the inventory.",
             DescTwsEnableForAll = "When enabled, weapon set hotkey functions will be applied to all selected characters",
             DescTwsEnableForceChangeInFullScreen = "When enabled, weapon set hotkey functions are still applied to all selected characters even when the full screen ui is active. <b>(The selected character in the full screen ui does not represent the selection 'on the field')</b>",
+            DescUsitMain= "<color=#e6e600>Known issue: Selected items a character cannot use, i.e. spells, etc., are activatable via hotkey but the items ability is not executed and the item is not consumed.</color>",
             DescTwsEnableFullScreen = "When enabled, weapon set hotkey functions are still applied when the full screen ui, i.e. inventory, spellbook, etc., is active",
 
             LabelGuiButtonClear = "Clear"
@@ -81,6 +82,7 @@ namespace Apocc.Pw.Hotkeys.Data
         public string DescTwsEnableForAll { get; set; }
         public string DescTwsEnableForceChangeInFullScreen { get; set; }
         public string DescTwsEnableFullScreen { get; set; }
+        public string DescUsitMain { get; set; }
         public string DescUsitUseActonBarPlacement { get; set; }
 
         #endregion desc
