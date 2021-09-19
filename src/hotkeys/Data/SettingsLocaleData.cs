@@ -22,7 +22,7 @@ namespace Apocc.Pw.Hotkeys.Data
             LabelUsitKey02 = "Key Slot 3",
             LabelUsitKey03 = "Key Slot 4",
             LabelUsitKey04 = "Key Slot 5",
-            LabelUsitUseActonBarPlacement = "Use action bar placement",
+            LabelUsitUseActonBarPlacement = "Use quick slot placement",
             LabelTwsCycle = "Key weapon cycle",
             LabelTwsEnable = "Enable Toggle Weapon Sets",
             LabelTwsEnableForAll = "For all selected chararacters",
