@@ -127,5 +127,7 @@
     <Message Text="Publishing files" Importance="high" />
     <Copy SourceFiles="$(TargetPath);$(TargetDir)Info.json" DestinationFolder="$(TargetDir)publish\hotkeysSetAiStealth" />
     <Copy SourceFiles="@(_CopyLocalisation)" DestinationFolder="$(TargetDir)publish\hotkeysSetAiStealth\Localisation" />
+    <MakeDir Directories="$(SolutionDir)publish"/>
+    <ZipDirectory Overwrite="true" SourceDirectory="$(TargetDir)publish" DestinationFile="$(SolutionDir)publish\$(ProjectName).zip" />
   </Target>
 </Project>

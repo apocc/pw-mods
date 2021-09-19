@@ -362,5 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Mod libs
+# Mod libs and published files
 [Ll]ibs/
+[Pp]ublish/
