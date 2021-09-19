@@ -1,9 +1,7 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
-using System.Xml.Serialization;
-
-namespace Apocc.Pw.Hotkeys.I18N
+namespace Apocc.Pw.Hotkeys.Localisation
 {
     public sealed class SettingsCultureData
     {

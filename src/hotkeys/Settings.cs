@@ -8,7 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Serialization;
-using Apocc.Pw.Hotkeys.I18N;
+using Apocc.Pw.Hotkeys.Localisation;
 using Kingmaker.Localization;
 using Kingmaker.Localization.Shared;
 using UnityEngine;
@@ -127,7 +127,7 @@ namespace Apocc.Pw.Hotkeys
 
             try
             {
-                var path = Path.Combine(modEntry.Path, Globals.I18NLocation);
+                var path = Path.Combine(modEntry.Path, Globals.LocalisationLocation);
                 if (!Directory.Exists(path))
                     Log.Log("No internationalisation folder found: " + path, Globals.LogPrefix);
                 else
@@ -255,7 +255,7 @@ namespace Apocc.Pw.Hotkeys
                     return;
                 }
 
-                var path = Path.Combine(modEntry.Path, Globals.I18NLocation);
+                var path = Path.Combine(modEntry.Path, Globals.LocalisationLocation);
                 var filepath = $"{path}\\{_culture}.xml";
                 using (var fs = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.Read))
                     _currentCultureData = new XmlSerializer(typeof(SettingsCultureData)).Deserialize(fs) as SettingsCultureData;
