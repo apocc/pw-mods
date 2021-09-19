@@ -10,7 +10,7 @@ namespace Apocc.Pw.Hotkeys
     {
         public const int ButtonWidth = 100;
         public const int DescWidth = 350;
-        public const string LocalisationLocation = "Localisation";
+        public const string LocalisationFolder = "Localisation";
         public const string DefaultCulture = "en-gb";
         public const int LabelWidth = 225;
         public const int TextFieldWidth = 125;

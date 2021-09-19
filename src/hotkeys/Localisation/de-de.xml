@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<SettingsCultureData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<SettingsLocaleData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <LabelGenNotInGame>Nicht im Spiel, Hotkeys sind deaktiviert</LabelGenNotInGame>
   <LabelGenNoValidation>Es existiert keine Validierung, bitte sicherstellen, dass andere Mods nicht die gleichen Tasten verwenden</LabelGenNoValidation>
   <LabelGenVerboseLogging>Aktiviere Erweitertes Logging</LabelGenVerboseLogging>
@@ -32,4 +32,4 @@
   <DescTwsEnableForceChangeInFullScreen>Falls aktiviert werden die Waffensetwechsel auf alle ausgewählten Charaktere angewendet, auch wenn man sich im Menü befindet. &lt;b&gt;Der im Menü ausgewählte Charakter ist nicht unbedingt der 'auf dem Feld' ausgewählte Charakter)&lt;/b&gt; </DescTwsEnableForceChangeInFullScreen>
   <DescTwsEnableFullScreen>Falls aktiviert, werden die Waffensetwechsel auf den im Menü ausgewälten Charakter angewendet</DescTwsEnableFullScreen>
   <LabelGuiButtonClear>Zurücksetzen</LabelGuiButtonClear>
-</SettingsCultureData>
+</SettingsLocaleData>

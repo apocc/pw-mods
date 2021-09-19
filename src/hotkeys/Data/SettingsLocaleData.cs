@@ -1,11 +1,11 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
-namespace Apocc.Pw.Hotkeys.Localisation
+namespace Apocc.Pw.Hotkeys.Data
 {
-    public sealed class SettingsCultureData
+    public sealed class SettingsLocaleData
     {
-        public static SettingsCultureData Default = new SettingsCultureData
+        public static SettingsLocaleData Default = new SettingsLocaleData
         {
             LabelGenNotInGame = "Not in game, hotkeys are disabled",
             LabelGenNoValidation = "There is no validation. Make sure other installed mods don't use the same key",

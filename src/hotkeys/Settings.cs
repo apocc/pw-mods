@@ -8,7 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Serialization;
-using Apocc.Pw.Hotkeys.Localisation;
+using Apocc.Pw.Hotkeys.Data;
 using Kingmaker.Localization;
 using Kingmaker.Localization.Shared;
 using UnityEngine;
@@ -23,8 +23,8 @@ namespace Apocc.Pw.Hotkeys
 
         private static readonly string KeyCodeNone = KeyCode.None.ToString();
         private string _culture;
-        private SettingsCultureData _currentCultureData;
-        private SettingsCultureData _defaultCultureData;
+        private SettingsLocaleData _currentCultureData;
+        private SettingsLocaleData _defaultCultureData;
         private string _keyAi = KeyCodeNone;
         private string _keyCsNext = KeyCodeNone;
         private string _keyCsPrev = KeyCodeNone;
@@ -127,7 +127,7 @@ namespace Apocc.Pw.Hotkeys
 
             try
             {
-                var path = Path.Combine(modEntry.Path, Globals.LocalisationLocation);
+                var path = Path.Combine(modEntry.Path, Globals.LocalisationFolder);
                 if (!Directory.Exists(path))
                     Log.Log("No internationalisation folder found: " + path, Globals.LogPrefix);
                 else
@@ -213,12 +213,12 @@ namespace Apocc.Pw.Hotkeys
 
             Log.Log("Loading additional settings data", Globals.LogPrefix); ;
             settings.AvailableCultures = LoadAvailableCultures(modEntry);
-            settings._defaultCultureData = SettingsCultureData.Default;
+            settings._defaultCultureData = SettingsLocaleData.Default;
 
             return settings;
         }
 
-        public SettingsCultureData GetCultureData() => _currentCultureData ?? _defaultCultureData;
+        public SettingsLocaleData GetCultureData() => _currentCultureData ?? _defaultCultureData;
 
         public T GetPropertyValue<T>(string propertyName) => (T)GetType().GetProperty(propertyName)?.GetValue(this, null);
 
@@ -251,21 +251,21 @@ namespace Apocc.Pw.Hotkeys
                 _culture = AvailableCultures.FirstOrDefault(ac => ac == ingameCulture) ?? Globals.DefaultCulture;
                 if (_culture == Globals.DefaultCulture)
                 {
-                    _currentCultureData = SettingsCultureData.Default;
+                    _currentCultureData = SettingsLocaleData.Default;
                     return;
                 }
 
-                var path = Path.Combine(modEntry.Path, Globals.LocalisationLocation);
+                var path = Path.Combine(modEntry.Path, Globals.LocalisationFolder);
                 var filepath = $"{path}\\{_culture}.xml";
                 using (var fs = new FileStream(filepath, FileMode.Open, FileAccess.Read, FileShare.Read))
-                    _currentCultureData = new XmlSerializer(typeof(SettingsCultureData)).Deserialize(fs) as SettingsCultureData;
+                    _currentCultureData = new XmlSerializer(typeof(SettingsLocaleData)).Deserialize(fs) as SettingsLocaleData;
             }
             catch (Exception e)
             {
                 Log.Error("Could not update culture, falling back to default!", Globals.LogPrefix);
                 Globals.LogException(e);
 
-                _currentCultureData = SettingsCultureData.Default;
+                _currentCultureData = SettingsLocaleData.Default;
                 _culture = Globals.DefaultCulture;
             }
         }

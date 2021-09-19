@@ -89,7 +89,7 @@
     <Compile Include="Gui.cs" />
     <Compile Include="Data\SettingsOption.cs" />
     <Compile Include="Data\GuiBuilder.cs" />
-    <Compile Include="Localisation\SettingsCultureData.cs" />
+    <Compile Include="Data\SettingsLocaleData.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
@@ -110,14 +110,8 @@
   </ItemGroup>
   <Target Name="AfterBuild">
     <Message Text="Start copying mod files" Importance="high" />
-    <Copy
-        SourceFiles="$(TargetPath);$(TargetDir)Info.json"
-        DestinationFolder="$(WrathPath)\Mods\hotkeysSetAiStealth"
-        />
-    <Copy
-        SourceFiles="@(_CopyLocalisation)"
-        DestinationFolder="$(WrathPath)\Mods\hotkeysSetAiStealth\Localisation"
-        />
-    <Message Text="Finish copying mod files" Importance="high"  />
+    <Copy SourceFiles="$(TargetPath);$(TargetDir)Info.json" DestinationFolder="$(WrathPath)\Mods\hotkeysSetAiStealth" />
+    <Copy SourceFiles="@(_CopyLocalisation)" DestinationFolder="$(WrathPath)\Mods\hotkeysSetAiStealth\Localisation" />
+    <Message Text="Finish copying mod files" Importance="high" />
   </Target>
 </Project>
