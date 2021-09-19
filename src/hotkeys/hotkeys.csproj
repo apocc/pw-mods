@@ -117,13 +117,13 @@
   <ItemGroup>
     <_CopyLocalisation Include="$(TargetDir)Localisation\*.xml" />
   </ItemGroup>
-  <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Debug'">
+  <Target Name="CopyToModsFolder" AfterTargets="AfterBuild" Condition="'$(Configuration)' == 'Debug'">
     <Message Text="Start copying mod files" Importance="high" />
     <Copy SourceFiles="$(TargetPath);$(TargetDir)Info.json" DestinationFolder="$(WrathPath)\Mods\hotkeysSetAiStealth" />
     <Copy SourceFiles="@(_CopyLocalisation)" DestinationFolder="$(WrathPath)\Mods\hotkeysSetAiStealth\Localisation" />
     <Message Text="Finish copying mod files" Importance="high" />
   </Target>
-  <Target Name="AfterBuild" Condition="'$(Configuration)' == 'Publish'">
+  <Target Name="PublishData" AfterTargets="AfterBuild" Condition="'$(Configuration)' == 'Publish'">
     <Message Text="Publishing files" Importance="high" />
     <Copy SourceFiles="$(TargetPath);$(TargetDir)Info.json" DestinationFolder="$(TargetDir)publish\hotkeysSetAiStealth" />
     <Copy SourceFiles="@(_CopyLocalisation)" DestinationFolder="$(TargetDir)publish\hotkeysSetAiStealth\Localisation" />

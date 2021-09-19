@@ -2,7 +2,6 @@
 // Licensed under MIT License.
 
 using System;
-using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using Kingmaker;
@@ -28,9 +27,6 @@ namespace Apocc.Pw.Hotkeys
 
                 try
                 {
-                    if (!IsInGame)
-                        return;
-
                     GameModeType mode = Game.Instance.CurrentMode;
                     if (mode != GameModeType.Default
                         && mode != GameModeType.Pause
@@ -58,7 +54,6 @@ namespace Apocc.Pw.Hotkeys
         }
 
         public static bool enabled;
-        public static bool IsInGame = Game.Instance?.Player?.Party?.Any() ?? false;
         public static Settings Settings;
 
 #if DEBUG

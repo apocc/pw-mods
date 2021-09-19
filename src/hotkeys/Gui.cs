@@ -22,12 +22,6 @@ namespace Apocc.Pw.Hotkeys
 
             GUILayout.BeginVertical();
 
-            if (!Main.IsInGame)
-            {
-                GUILayout.Label($"<color=#e6e600><size=15><b>{settings.GetCultureData().LabelGenNotInGame}</b></size></color>");
-                GUILayout.Space(Globals.ControlSpace);
-            }
-
             GUILayout.Label($"<size=15><b>{settings.GetCultureData().LabelGenNoValidation}</b></size>");
             GUILayout.Space(Globals.ControlSpace);
 
