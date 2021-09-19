@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Kingmaker;
 using Kingmaker.EntitySystem.Entities;
-using Kingmaker.GameModes;
 using Kingmaker.UI.Common;
 using UnityEngine;
 using Log = UnityModManagerNet.UnityModManager.Logger;
@@ -18,14 +17,6 @@ namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
 
         private static void ChangeCharacter(bool next = true)
         {
-            var isInFullScreenUi = Game.Instance.CurrentMode == GameModeType.FullScreenUi;
-            List<UnitEntityData> party = isInFullScreenUi
-                ? UIUtility.GetGroup(Game.Instance.LoadedAreaState.Settings.CapitalPartyMode.Value)
-                : Game.Instance.Player.PartyAndPets;
-
-            if (isInFullScreenUi)
-                party.AddRange(Game.Instance.Player.PartyAndPets.Where(u => u.IsPet));
-
 #if DEBUG
             var parties = new Dictionary<string, IEnumerable<UnitEntityData>>
             {
@@ -43,6 +34,8 @@ namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
             foreach (var p in parties)
                 UIUtility.SendWarning($"{ p.Key}: { string.Join(",", p.Value.Select(c => c.CharacterName))}");
 #endif
+            var isInFullScreenUi = Utilities.IsFullScreenUiWithCharSelect();
+            var party = Utilities.GetParty();
 
             if (Main.Settings.EnableVerboseLogging)
             {

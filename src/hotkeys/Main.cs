@@ -2,10 +2,14 @@
 // Licensed under MIT License.
 
 using System;
+using System.Collections.Generic;
 using System.Reflection;
+using Apocc.Pw.Hotkeys.Data;
 using HarmonyLib;
 using Kingmaker;
 using Kingmaker.GameModes;
+using Kingmaker.PubSubSystem;
+using Kingmaker.UI.FullScreenUITypes;
 using UnityModManagerNet;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
@@ -25,6 +29,14 @@ namespace Apocc.Pw.Hotkeys
                 if (!enabled)
                     return;
 
+                if (Reporter == null)
+                {
+                    Log.Log("Init FullScreenUiTypeReporter", Globals.LogPrefix);
+
+                    Reporter = new FullScreenUiTypeReporter();
+                    DisposableReporter = EventBus.Subscribe(Reporter);
+                }
+
                 try
                 {
                     GameModeType mode = Game.Instance.CurrentMode;
@@ -33,16 +45,17 @@ namespace Apocc.Pw.Hotkeys
                         && mode != GameModeType.FullScreenUi)
                         return;
 
-                    if (Settings.EnableTws)
+                    if (Settings.EnableTws && TypesForTws.Contains(Reporter.CurrentFullScreenUIType))
                         Data.WeaponSets.Runner.Run();
 
-                    if (Settings.EnableTAiS)
+                    if (mode != GameModeType.FullScreenUi && Settings.EnableTAiS)
                         Data.AiStealth.Runner.Run();
 
-                    if (Settings.EnableUsit)
+                    if (Settings.EnableUsit && TypesForUsit.Contains(Reporter.CurrentFullScreenUIType))
                         Data.UsableItems.Runner.Run();
 
-                    if (Settings.EnableCharSel)
+                    if (Settings.EnableCharSel &&
+                        Utilities.TypesCharacterSelectionVisible.Contains(Reporter.CurrentFullScreenUIType))
                         Data.CharacterSelect.Runner.Run();
                 }
                 catch (Exception e)
@@ -53,13 +66,30 @@ namespace Apocc.Pw.Hotkeys
             }
         }
 
+        internal static IDisposable DisposableReporter;
+
+        internal static FullScreenUiTypeReporter Reporter;
+
+        internal static List<FullScreenUIType> TypesForTws = new List<FullScreenUIType>
+        {
+            FullScreenUIType.Unknown,
+            FullScreenUIType.Inventory,
+        };
+
+        internal static List<FullScreenUIType> TypesForUsit = new List<FullScreenUIType>
+        {
+            FullScreenUIType.Unknown,
+            FullScreenUIType.Inventory,
+        };
+
         public static bool enabled;
         public static Settings Settings;
-
 #if DEBUG
 
         private static bool Unload(UnityModManager.ModEntry modEntry)
         {
+            DisposableReporter?.Dispose();
+
             new Harmony(modEntry.Info.Id).UnpatchAll();
             return true;
         }

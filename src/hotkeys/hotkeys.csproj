@@ -90,6 +90,7 @@
     <Compile Include="Data\AiStealth\Runner.cs" />
     <Compile Include="Data\CharacterSelect\GuiCharacterSelect.cs" />
     <Compile Include="Data\CharacterSelect\Runner.cs" />
+    <Compile Include="Data\FullScreenUiTypeReporter.cs" />
     <Compile Include="Data\UsableItems\GuiUsableItems.cs" />
     <Compile Include="Data\UsableItems\Runner.cs" />
     <Compile Include="Data\WeaponSets\GuiWeaponSets.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.json">
@@ -127,7 +129,7 @@
     <Message Text="Publishing files" Importance="high" />
     <Copy SourceFiles="$(TargetPath);$(TargetDir)Info.json" DestinationFolder="$(TargetDir)publish\hotkeysSetAiStealth" />
     <Copy SourceFiles="@(_CopyLocalisation)" DestinationFolder="$(TargetDir)publish\hotkeysSetAiStealth\Localisation" />
-    <MakeDir Directories="$(SolutionDir)publish"/>
+    <MakeDir Directories="$(SolutionDir)publish" />
     <ZipDirectory Overwrite="true" SourceDirectory="$(TargetDir)publish" DestinationFile="$(SolutionDir)publish\$(ProjectName).zip" />
   </Target>
 </Project>
