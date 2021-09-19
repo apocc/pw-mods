@@ -129,7 +129,7 @@ namespace Apocc.Pw.Hotkeys
             {
                 var path = Path.Combine(modEntry.Path, Globals.LocalisationFolder);
                 if (!Directory.Exists(path))
-                    Log.Log("No internationalisation folder found: " + path, Globals.LogPrefix);
+                    Log.Log("No localisation folder found", Globals.LogPrefix);
                 else
                     cultures.AddRange(Directory.EnumerateFiles(path).Select(p => Path.GetFileNameWithoutExtension(p).ToLowerInvariant()));
             }

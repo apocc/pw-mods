@@ -8,4 +8,4 @@ Unity and game assemblies have to be referenced manually. See [Unity Mod Manager
 ## Mods
 ### Additional Hotkeys ([on Nexus](https://www.nexusmods.com/pathfinderwrathoftherighteous/mods/68))
 
-The mod adds the option to assign a hotkey for each Weapon Set, the AI and Stealth button and for Usable Items on the action bar.
+The mod adds the option to assign a hotkey for each Weapon Set, the AI and Stealth button and for Quick Slot items on the action bar. Additionally you can assign hotkeys to select the next and/or previous character.

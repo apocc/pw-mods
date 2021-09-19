@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0"?>
 <SettingsLocaleData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <LabelGenNotInGame>Nicht im Spiel, Hotkeys sind deaktiviert</LabelGenNotInGame>
   <LabelGenNoValidation>Es existiert keine Validierung, bitte sicherstellen, dass andere Mods nicht die gleichen Tasten verwenden</LabelGenNoValidation>
   <LabelGenVerboseLogging>Aktiviere Erweitertes Logging</LabelGenVerboseLogging>
   <LabelTaisEnable>Aktiviere KI und Schleichen</LabelTaisEnable>
@@ -9,7 +8,7 @@
   <LabelCsEnable>Aktiviere Charakterauswahl</LabelCsEnable>
   <LabelCsNext>Taste für nächsten Charakter</LabelCsNext>
   <LabelCsPrev>Taste für vorherigen Charakter</LabelCsPrev>
-  <LabelUsitEnable>Aktiviere Hotkeys für Benutzbare Gegenstände</LabelUsitEnable>
+  <LabelUsitEnable>Aktiviere Hotkeys für die Schnellleiste</LabelUsitEnable>
   <LabelUsitEnableForAll>Für alle ausgewählten Charaktere</LabelUsitEnableForAll>
   <LabelUsitKey00>Taste für Slot 1</LabelUsitKey00>
   <LabelUsitKey01>Taste für Slot 2</LabelUsitKey01>
@@ -20,17 +19,17 @@
   <LabelTwsCycle>Taste zum blättern</LabelTwsCycle>
   <LabelTwsEnable>Aktiviere Waffensets</LabelTwsEnable>
   <LabelTwsEnableForAll>Für alle ausgewählten Charaktere</LabelTwsEnableForAll>
-  <LabelTwsEnableForceChangeInFullScreen>Erzwinge einen Waffensetwechsel für alle ausgewählten Charaktere, auch wenn das Menü offen ist</LabelTwsEnableForceChangeInFullScreen>
+  <LabelTwsEnableForceChangeInFullScreen>Erzwinge einen Waffensetwechsel für alle ausgewählten Charaktere wenn das Menü offen ist</LabelTwsEnableForceChangeInFullScreen>
   <LabelTwsEnableFullScreen>Aktiviere im Menü</LabelTwsEnableFullScreen>
   <LabelTwsKey00>Taste für Waffenset 1</LabelTwsKey00>
   <LabelTwsKey01>Taste für Waffenset 2</LabelTwsKey01>
   <LabelTwsKey02>Taste für Waffenset 3</LabelTwsKey02>
   <LabelTwsKey03>Taste für Waffenset 4</LabelTwsKey03>
   <DescTwsCircle>All Waffensets durchblättern</DescTwsCircle>
-  <DescUsitUseActonBarPlacement>Die Anordnung der Elemente der benutzbaren Gegenstände im Inventar entspricht nicht der in der Schnellleiste. Elemente in der Schnellleiste werden immer linksbündig eingerückt. Falls diese Einstellung aktiviert ist, wird die Anordnung der Schnellleiste verwendet, sonst die des Inventars.</DescUsitUseActonBarPlacement>
-  <DescUsitMain>&lt;color=#e6e600&gt;Bekanntes Problem: Ein Gegenstand den ein Charakter nicht benutzen kann, bspw. eine Spruchrolle, kann aktiviert werden, aber der eigentliche Effekt wird nicht angewendet und der Gegenstand wird nicht verbraucht&lt;/color&gt;</DescUsitMain>
+  <DescUsitUseActonBarPlacement>Die Anordnung der Elemente im Inventar entspricht nicht der in der Schnellleiste. Elemente in der Schnellleiste werden immer linksbündig eingerückt. Falls diese Einstellung aktiviert ist, wird die Anordnung der Schnellleiste verwendet, sonst die des Inventars.</DescUsitUseActonBarPlacement>
+  <DescUsitMain>&lt;color=#e6e600&gt;Bekanntes Problem: Ein Gegenstand, den ein Charakter &lt;b&gt;NICHT&lt;/b&gt; benutzen kann, bspw. eine Spruchrolle, kann aktiviert werden, aber der eigentliche Effekt wird nicht angewendet und der Gegenstand wird nicht verbraucht&lt;/color&gt;</DescUsitMain>
   <DescTwsEnableForAll>Falls aktiviert, werden die Waffensetwechsel auf alle ausgewählten Charaktere angewendet</DescTwsEnableForAll>
-  <DescTwsEnableForceChangeInFullScreen>Falls aktiviert werden die Waffensetwechsel auf alle ausgewählten Charaktere angewendet, auch wenn man sich im Menü befindet. &lt;b&gt;Der im Menü ausgewählte Charakter ist nicht unbedingt der 'auf dem Feld' ausgewählte Charakter)&lt;/b&gt; </DescTwsEnableForceChangeInFullScreen>
+  <DescTwsEnableForceChangeInFullScreen>Falls aktiviert werden die Waffensetwechsel auf alle ausgewählten Charaktere angewendet wenn man sich im Menü befindet. &lt;b&gt;Der im Menü ausgewählte Charakter ist nicht unbedingt der 'auf dem Feld' ausgewählte Charakter)&lt;/b&gt; </DescTwsEnableForceChangeInFullScreen>
   <DescTwsEnableFullScreen>Falls aktiviert, werden die Waffensetwechsel auf den im Menü ausgewälten Charakter angewendet</DescTwsEnableFullScreen>
   <LabelGuiButtonClear>Zurücksetzen</LabelGuiButtonClear>
 </SettingsLocaleData>
