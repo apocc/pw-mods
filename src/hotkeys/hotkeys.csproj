@@ -105,4 +105,19 @@
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <_CopyLocalisation Include="$(TargetDir)Localisation\*.xml" />
+  </ItemGroup>
+  <Target Name="AfterBuild">
+    <Message Text="Start copying mod files" Importance="high" />
+    <Copy
+        SourceFiles="$(TargetPath);$(TargetDir)Info.json"
+        DestinationFolder="$(WrathPath)\Mods\hotkeysSetAiStealth"
+        />
+    <Copy
+        SourceFiles="@(_CopyLocalisation)"
+        DestinationFolder="$(WrathPath)\Mods\hotkeysSetAiStealth\Localisation"
+        />
+    <Message Text="Finish copying mod files" Importance="high"  />
+  </Target>
 </Project>
