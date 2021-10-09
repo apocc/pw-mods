@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using Apocc.Pw.Hotkeys.Data;
+using Apocc.Pw.Hotkeys.Data.ActionBar;
 using Apocc.Pw.Hotkeys.Data.AiStealth;
 using Apocc.Pw.Hotkeys.Data.CharacterSelect;
 using Apocc.Pw.Hotkeys.Data.Formation;
@@ -26,7 +27,10 @@ namespace Apocc.Pw.Hotkeys
             GUILayout.Label($"<size=15><b>{settings.GetCultureData().LabelGenNoValidation}</b></size>");
             GUILayout.Space(Globals.ControlSpace);
 
-            var allOptions = new object[] { GuiWeaponSets.Options, GuiAiStealth.Options, GuiUsableItems.Options, GuiCharacterSelect.Options, GuiFormation.Options };
+            var allOptions = new object[] {
+                GuiWeaponSets.Options, GuiAiStealth.Options, GuiUsableItems.Options,
+                GuiCharacterSelect.Options, GuiFormation.Options, GuiActionBar.Options
+            };
             foreach (List<SettingsOption> optionsList in allOptions)
             {
                 GuiBuilder.BuildControls(optionsList);
@@ -62,6 +66,7 @@ namespace Apocc.Pw.Hotkeys
             GuiAiStealth.Update();
             GuiWeaponSets.Update();
             GuiFormation.Update();
+            GuiActionBar.Update();
         }
     }
 }

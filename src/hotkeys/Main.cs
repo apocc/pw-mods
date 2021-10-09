@@ -61,6 +61,10 @@ namespace Apocc.Pw.Hotkeys
                     if (Settings.EnableForm &&
                         TypesForForm.Contains(Reporter.CurrentFullScreenUIType))
                         Data.Formation.Runner.Run();
+
+                    if (Settings.EnableActionBar &&
+                        TypesForActionBar.Contains(Reporter.CurrentFullScreenUIType))
+                        Data.ActionBar.Runner.Run();
                 }
                 catch (Exception e)
                 {
@@ -72,6 +76,11 @@ namespace Apocc.Pw.Hotkeys
 
         internal static IDisposable DisposableReporter;
         internal static FullScreenUiTypeReporter Reporter;
+
+        internal static List<FullScreenUIType> TypesForActionBar = new List<FullScreenUIType>
+        {
+            FullScreenUIType.Unknown,
+        };
 
         internal static List<FullScreenUIType> TypesForForm = new List<FullScreenUIType>
         {

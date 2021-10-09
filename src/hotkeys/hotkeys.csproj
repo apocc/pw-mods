@@ -90,6 +90,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ActionBar\GuiActionBar.cs" />
+    <Compile Include="Data\ActionBar\Runner.cs" />
     <Compile Include="Data\AiStealth\GuiAiStealth.cs" />
     <Compile Include="Data\AiStealth\Runner.cs" />
     <Compile Include="Data\CharacterSelect\GuiCharacterSelect.cs" />

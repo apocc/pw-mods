@@ -25,6 +25,9 @@ namespace Apocc.Pw.Hotkeys
         private string _culture;
         private SettingsLocaleData _currentCultureData;
         private SettingsLocaleData _defaultCultureData;
+        private string _keyActionBarToggleAbility = KeyCodeNone;
+        private string _keyActionBarToggleQuick = KeyCodeNone;
+        private string _keyActionBarToggleSpells = KeyCodeNone;
         private string _keyAi = KeyCodeNone;
         private string _keyCsNext = KeyCodeNone;
         private string _keyCsPrev = KeyCodeNone;
@@ -54,6 +57,8 @@ namespace Apocc.Pw.Hotkeys
 
         #region attributes
 
+        [XmlAttribute("enableActionBar")]
+        public bool EnableActionBar { get; set; } = true;
         [XmlAttribute("enableCharSel")]
         public bool EnableCharSel { get; set; } = true;
         [XmlAttribute("enableForm")]
@@ -71,6 +76,9 @@ namespace Apocc.Pw.Hotkeys
 
         #region serializable
 
+        public string ActionBarToggleAbility { get => _keyActionBarToggleAbility; set => SetProperty(ref _keyActionBarToggleAbility, value); }
+        public string ActionBarToggleQuick { get => _keyActionBarToggleQuick; set => SetProperty(ref _keyActionBarToggleQuick, value); }
+        public string ActionBarToggleSpells { get => _keyActionBarToggleSpells; set => SetProperty(ref _keyActionBarToggleSpells, value); }
         public string CsNext { get => _keyCsNext; set => SetProperty(ref _keyCsNext, value); }
         public string CsPrev { get => _keyCsPrev; set => SetProperty(ref _keyCsPrev, value); }
         public bool EnableAllSelectedCharacters { get; set; }
@@ -102,6 +110,12 @@ namespace Apocc.Pw.Hotkeys
 
         #region internal
 
+        [XmlIgnore]
+        public KeyCode ActionBarKeyCodeToggleAbility { get; set; }
+        [XmlIgnore]
+        public KeyCode ActionBarKeyCodeToggleQuick { get; set; }
+        [XmlIgnore]
+        public KeyCode ActionBarKeyCodeToggleSpells { get; set; }
         [XmlIgnore]
         public List<string> AvailableCultures { get; set; }
         [XmlIgnore]
@@ -196,6 +210,9 @@ namespace Apocc.Pw.Hotkeys
 
             switch (propertyName)
             {
+                case "ActionBarToggleAbility": ActionBarKeyCodeToggleAbility = kc; break;
+                case "ActionBarToggleSpells": ActionBarKeyCodeToggleSpells = kc; break;
+                case "ActionBarToggleQuick": ActionBarKeyCodeToggleQuick = kc; break;
                 case "FormKey00": FormKeyCode00 = kc; break;
                 case "FormKey01": FormKeyCode01 = kc; break;
                 case "FormKey02": FormKeyCode02 = kc; break;

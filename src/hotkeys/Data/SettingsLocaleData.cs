@@ -40,7 +40,10 @@ namespace Apocc.Pw.Hotkeys.Data
             LabelTwsKey01 = "Key for weapon set 2",
             LabelTwsKey02 = "Key for weapon set 3",
             LabelTwsKey03 = "Key for weapon set 4",
-
+            LabelActionBarEnable = "Enable action bar hotkeys",
+            LabelActionBarToggleAbility = "Toggle ability panel",
+            LabelActionBarToggleQuick = "Toggle quick slot panel",
+            LabelActionBarToggleSpells = "Toggle spells panel",
             DescTwsCircle = "Circle through all weapon sets",
             DescUsitUseActonBarPlacement = "Items displayed in the Quick Slot bar are always left aligned regardless of their position on the inventory panel. With this option enabled the placement of the Quick Slot bar is used, otherwise that of the inventory.",
             DescTwsEnableForAll = "When enabled, weapon set hotkey functions will be applied to all selected characters",
@@ -53,6 +56,10 @@ namespace Apocc.Pw.Hotkeys.Data
 
         #region label
 
+        public string LabelActionBarEnable { get; set; }
+        public string LabelActionBarToggleAbility { get; set; }
+        public string LabelActionBarToggleQuick { get; set; }
+        public string LabelActionBarToggleSpells { get; set; }
         public string LabelCsEnable { get; set; }
         public string LabelCsNext { get; set; }
         public string LabelCsPrev { get; set; }
@@ -66,7 +73,6 @@ namespace Apocc.Pw.Hotkeys.Data
         public string LabelFormKeyCircle { get; internal set; }
         public string LabelGenNoValidation { get; set; }
         public string LabelGenVerboseLogging { get; set; }
-
         public string LabelGuiButtonClear { get; set; }
         public string LabelTaisEnable { get; set; }
         public string LabelTaisKeyAi { get; set; }
