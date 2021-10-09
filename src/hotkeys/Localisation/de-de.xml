@@ -10,6 +10,14 @@
   <LabelCsPrev>Taste für vorherigen Charakter</LabelCsPrev>
   <LabelUsitEnable>Aktiviere Hotkeys für die Schnellleiste</LabelUsitEnable>
   <LabelUsitEnableForAll>Für alle ausgewählten Charaktere</LabelUsitEnableForAll>
+  <LabelFormEnable>Aktiviere Formationen</LabelFormEnable>
+  <LabelFormKey00>Formation: auto</LabelFormKey00>
+  <LabelFormKey01>Formation: Dreieck</LabelFormKey01>
+  <LabelFormKey02>Formation: Stern</LabelFormKey02>
+  <LabelFormKey03>Formation: Wellen</LabelFormKey03>
+  <LabelFormKey04>Formation: Kreis</LabelFormKey04>
+  <LabelFormKey05>Formation: Hammer</LabelFormKey05>
+  <LabelFormKeyCircle>Alle Formationen durchblättern</LabelFormKeyCircle>
   <LabelUsitKey00>Taste für Slot 1</LabelUsitKey00>
   <LabelUsitKey01>Taste für Slot 2</LabelUsitKey01>
   <LabelUsitKey02>Taste für Slot 3</LabelUsitKey02>
