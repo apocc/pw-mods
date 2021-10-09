@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Apocc.Pw.Hotkeys.Data;
 using Apocc.Pw.Hotkeys.Data.AiStealth;
 using Apocc.Pw.Hotkeys.Data.CharacterSelect;
+using Apocc.Pw.Hotkeys.Data.Formation;
 using Apocc.Pw.Hotkeys.Data.UsableItems;
 using Apocc.Pw.Hotkeys.Data.WeaponSets;
 using UnityEngine;
@@ -25,7 +26,7 @@ namespace Apocc.Pw.Hotkeys
             GUILayout.Label($"<size=15><b>{settings.GetCultureData().LabelGenNoValidation}</b></size>");
             GUILayout.Space(Globals.ControlSpace);
 
-            var allOptions = new object[] { GuiWeaponSets.Options, GuiAiStealth.Options, GuiUsableItems.Options, GuiCharacterSelect.Options };
+            var allOptions = new object[] { GuiWeaponSets.Options, GuiAiStealth.Options, GuiUsableItems.Options, GuiCharacterSelect.Options, GuiFormation.Options };
             foreach (List<SettingsOption> optionsList in allOptions)
             {
                 GuiBuilder.BuildControls(optionsList);
@@ -60,6 +61,7 @@ namespace Apocc.Pw.Hotkeys
             GuiCharacterSelect.Update();
             GuiAiStealth.Update();
             GuiWeaponSets.Update();
+            GuiFormation.Update();
         }
     }
 }

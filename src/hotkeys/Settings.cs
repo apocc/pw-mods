@@ -28,6 +28,13 @@ namespace Apocc.Pw.Hotkeys
         private string _keyAi = KeyCodeNone;
         private string _keyCsNext = KeyCodeNone;
         private string _keyCsPrev = KeyCodeNone;
+        private string _keyForm00 = KeyCodeNone;
+        private string _keyForm01 = KeyCodeNone;
+        private string _keyForm02 = KeyCodeNone;
+        private string _keyForm03 = KeyCodeNone;
+        private string _keyForm04 = KeyCodeNone;
+        private string _keyForm05 = KeyCodeNone;
+        private string _keyFormCircle = KeyCodeNone;
         private string _keySet00 = KeyCodeNone;
         private string _keySet01 = KeyCodeNone;
         private string _keySet02 = KeyCodeNone;
@@ -49,6 +56,8 @@ namespace Apocc.Pw.Hotkeys
 
         [XmlAttribute("enableCharSel")]
         public bool EnableCharSel { get; set; } = true;
+        [XmlAttribute("enableForm")]
+        public bool EnableForm { get; set; } = true;
         [XmlAttribute("enableTAiS")]
         public bool EnableTAiS { get; set; } = true;
         [XmlAttribute("enableTws")]
@@ -65,6 +74,13 @@ namespace Apocc.Pw.Hotkeys
         public string CsNext { get => _keyCsNext; set => SetProperty(ref _keyCsNext, value); }
         public string CsPrev { get => _keyCsPrev; set => SetProperty(ref _keyCsPrev, value); }
         public bool EnableAllSelectedCharacters { get; set; }
+        public string FormKey00 { get => _keyForm00; set => SetProperty(ref _keyForm00, value); }
+        public string FormKey01 { get => _keyForm01; set => SetProperty(ref _keyForm01, value); }
+        public string FormKey02 { get => _keyForm02; set => SetProperty(ref _keyForm02, value); }
+        public string FormKey03 { get => _keyForm03; set => SetProperty(ref _keyForm03, value); }
+        public string FormKey04 { get => _keyForm04; set => SetProperty(ref _keyForm04, value); }
+        public string FormKey05 { get => _keyForm05; set => SetProperty(ref _keyForm05, value); }
+        public string FormKeyCircle { get => _keyFormCircle; set => SetProperty(ref _keyFormCircle, value); }
         public string TaisKeyAi { get => _keyAi; set => SetProperty(ref _keyAi, value); }
         public string TaisKeyStealth { get => _keyStealth; set => SetProperty(ref _keyStealth, value); }
         public bool TwsEnableInInventory { get; set; }
@@ -92,6 +108,20 @@ namespace Apocc.Pw.Hotkeys
         public KeyCode CsKeyCodeNext { get; set; }
         [XmlIgnore]
         public KeyCode CsKeyCodePrev { get; set; }
+        [XmlIgnore]
+        public KeyCode FormKeyCode00 { get; set; }
+        [XmlIgnore]
+        public KeyCode FormKeyCode01 { get; set; }
+        [XmlIgnore]
+        public KeyCode FormKeyCode02 { get; set; }
+        [XmlIgnore]
+        public KeyCode FormKeyCode03 { get; set; }
+        [XmlIgnore]
+        public KeyCode FormKeyCode04 { get; set; }
+        [XmlIgnore]
+        public KeyCode FormKeyCode05 { get; set; }
+        [XmlIgnore]
+        public KeyCode FormKeyCodeCircle { get; set; }
         [XmlIgnore]
         public KeyCode TaisKeyCodeAi { get; set; }
         [XmlIgnore]
@@ -166,6 +196,13 @@ namespace Apocc.Pw.Hotkeys
 
             switch (propertyName)
             {
+                case "FormKey00": FormKeyCode00 = kc; break;
+                case "FormKey01": FormKeyCode01 = kc; break;
+                case "FormKey02": FormKeyCode02 = kc; break;
+                case "FormKey03": FormKeyCode03 = kc; break;
+                case "FormKey04": FormKeyCode04 = kc; break;
+                case "FormKey05": FormKeyCode05 = kc; break;
+                case "FormKeyCircle": FormKeyCodeCircle = kc; break;
                 case "TwsKey00": TwsKeyCode00 = kc; break;
                 case "TwsKey01": TwsKeyCode01 = kc; break;
                 case "TwsKey02": TwsKeyCode02 = kc; break;

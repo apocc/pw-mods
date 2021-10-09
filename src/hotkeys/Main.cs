@@ -57,6 +57,10 @@ namespace Apocc.Pw.Hotkeys
                     if (Settings.EnableCharSel &&
                         Utilities.TypesCharacterSelectionVisible.Contains(Reporter.CurrentFullScreenUIType))
                         Data.CharacterSelect.Runner.Run();
+
+                    if (Settings.EnableForm &&
+                        TypesForForm.Contains(Reporter.CurrentFullScreenUIType))
+                        Data.Formation.Runner.Run();
                 }
                 catch (Exception e)
                 {
@@ -67,8 +71,12 @@ namespace Apocc.Pw.Hotkeys
         }
 
         internal static IDisposable DisposableReporter;
-
         internal static FullScreenUiTypeReporter Reporter;
+
+        internal static List<FullScreenUIType> TypesForForm = new List<FullScreenUIType>
+        {
+            FullScreenUIType.Unknown,
+        };
 
         internal static List<FullScreenUIType> TypesForTws = new List<FullScreenUIType>
         {

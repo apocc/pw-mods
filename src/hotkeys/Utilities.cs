@@ -8,10 +8,12 @@ using Kingmaker.EntitySystem.Entities;
 using Kingmaker.GameModes;
 using Kingmaker.UI.Common;
 using Kingmaker.UI.FullScreenUITypes;
+using UnityEngine;
+using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys
 {
-    internal static class Utilities
+    public static class Utilities
     {
         internal static List<FullScreenUIType> TypesCharacterSelectionVisible = new List<FullScreenUIType>
         {
@@ -38,5 +40,36 @@ namespace Apocc.Pw.Hotkeys
         internal static bool IsFullScreenUiWithCharSelect() =>
                     Game.Instance.CurrentMode == GameModeType.FullScreenUi &&
             TypesCharacterSelectionVisible.Contains(Main.Reporter.CurrentFullScreenUIType);
+
+#if DEBUG
+
+        public static List<string> GetObjectPaths()
+        {
+            var res = new List<string>();
+            var objects = Resources.FindObjectsOfTypeAll<GameObject>();
+
+            Log.Log($"GetChildGameObjectPaths: sub components: {objects.Length}");
+            foreach (var obj in objects)
+            {
+                var path = $"/{obj.name}";
+                var parent = obj.transform.parent;
+                while (parent != null)
+                {
+                    path = $"/{parent.gameObject.name}{path}";
+                    parent = parent.parent;
+                }
+
+                res.Add(path);
+            }
+
+            return res;
+        }
+
+#endif
+
+        public static string ToStr(this IEnumerable<string> @this, string separator)
+        {
+            return string.Join(separator, @this);
+        }
     }
 }
