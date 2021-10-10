@@ -64,13 +64,13 @@ namespace Apocc.Pw.Hotkeys.Data
         public string LabelCsNext { get; set; }
         public string LabelCsPrev { get; set; }
         public string LabelFormEnable { get; set; }
-        public string LabelFormKey00 { get; internal set; }
-        public string LabelFormKey01 { get; internal set; }
-        public string LabelFormKey02 { get; internal set; }
-        public string LabelFormKey03 { get; internal set; }
-        public string LabelFormKey04 { get; internal set; }
-        public string LabelFormKey05 { get; internal set; }
-        public string LabelFormKeyCircle { get; internal set; }
+        public string LabelFormKey00 { get; set; }
+        public string LabelFormKey01 { get; set; }
+        public string LabelFormKey02 { get; set; }
+        public string LabelFormKey03 { get; set; }
+        public string LabelFormKey04 { get; set; }
+        public string LabelFormKey05 { get; set; }
+        public string LabelFormKeyCircle { get; set; }
         public string LabelGenNoValidation { get; set; }
         public string LabelGenVerboseLogging { get; set; }
         public string LabelGuiButtonClear { get; set; }
