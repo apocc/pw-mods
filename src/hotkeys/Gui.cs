@@ -2,6 +2,7 @@
 // Licensed under MIT License.
 
 using System.Collections.Generic;
+using Apocc.Pw.Hotkeys.Data;
 using Apocc.Pw.Hotkeys.Data.ActionBar;
 using Apocc.Pw.Hotkeys.Data.AiStealth;
 using Apocc.Pw.Hotkeys.Data.CharacterSelect;
@@ -41,6 +42,8 @@ namespace Apocc.Pw.Hotkeys
 
             GUILayout.Label($"<size=15><b><color=#e6e600>{settings.GetCultureData().UpdateWarning1x2x}</color></b></size>");
             GUILayout.Label($"<size=15><b>{settings.GetCultureData().LabelGenNoValidation}</b></size>");
+
+            settings.EnableVerboseLogging = GuiBuilder.BuildToggle(settings.EnableVerboseLogging, cd.LabelGenVerboseLogging, null, true);
 
             GUILayout.Space(Globals.ControlSpace);
 
