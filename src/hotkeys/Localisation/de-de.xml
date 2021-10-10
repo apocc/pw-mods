@@ -40,4 +40,15 @@
   <DescTwsEnableForceChangeInFullScreen>Falls aktiviert werden die Waffensetwechsel auf alle ausgewählten Charaktere angewendet wenn man sich im Menü befindet. &lt;b&gt;Der im Menü ausgewählte Charakter ist nicht unbedingt der 'auf dem Feld' ausgewählte Charakter)&lt;/b&gt; </DescTwsEnableForceChangeInFullScreen>
   <DescTwsEnableFullScreen>Falls aktiviert, werden die Waffensetwechsel auf den im Menü ausgewälten Charakter angewendet</DescTwsEnableFullScreen>
   <LabelGuiButtonClear>Zurücksetzen</LabelGuiButtonClear>
+  <LabelActionBarEnable>Aktiviere Aktionsleiste</LabelActionBarEnable>
+  <LabelActionBarToggleAbility>Attribute</LabelActionBarToggleAbility>
+  <LabelActionBarToggleQuick>Schnellleiste</LabelActionBarToggleQuick>
+  <LabelActionBarToggleSpells>Zauberbuch</LabelActionBarToggleSpells>
+  <UpdateWarning1x2x>!!! Alle Hotkeys müssen neu definiert werden beim Update von Version 1.* auf Version 2.* !!!</UpdateWarning1x2x>
+  <GroupAc>Aktionsleiste </GroupAc>
+  <GroupTais>KI und Schleichen</GroupTais>
+  <GroupCs>Charakterauswahl</GroupCs>
+  <GroupForm>Formationen</GroupForm>
+  <GroupQs>Schnelleiste</GroupQs>
+  <GroupWs>Waffensets</GroupWs>
 </SettingsLocaleData>
