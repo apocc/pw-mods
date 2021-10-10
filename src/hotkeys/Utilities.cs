@@ -23,6 +23,28 @@ namespace Apocc.Pw.Hotkeys
             FullScreenUIType.CharacterScreen
         };
 
+        internal static List<FullScreenUIType> TypesForActionBar = new List<FullScreenUIType>
+        {
+            FullScreenUIType.Unknown,
+        };
+
+        internal static List<FullScreenUIType> TypesForForm = new List<FullScreenUIType>
+        {
+            FullScreenUIType.Unknown,
+        };
+
+        internal static List<FullScreenUIType> TypesForTws = new List<FullScreenUIType>
+        {
+            FullScreenUIType.Unknown,
+            FullScreenUIType.Inventory,
+        };
+
+        internal static List<FullScreenUIType> TypesForUsit = new List<FullScreenUIType>
+        {
+            FullScreenUIType.Unknown,
+            FullScreenUIType.Inventory,
+        };
+
         internal static List<UnitEntityData> GetParty()
         {
             var isInFullScreenUiChars = IsFullScreenUiWithCharSelect();

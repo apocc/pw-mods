@@ -2,14 +2,12 @@
 // Licensed under MIT License.
 
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 using Apocc.Pw.Hotkeys.Data;
 using HarmonyLib;
 using Kingmaker;
 using Kingmaker.GameModes;
 using Kingmaker.PubSubSystem;
-using Kingmaker.UI.FullScreenUITypes;
 using UnityModManagerNet;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
@@ -45,13 +43,13 @@ namespace Apocc.Pw.Hotkeys
                         && mode != GameModeType.FullScreenUi)
                         return;
 
-                    if (Settings.EnableTws && TypesForTws.Contains(Reporter.CurrentFullScreenUIType))
+                    if (Settings.EnableTws && Utilities.TypesForTws.Contains(Reporter.CurrentFullScreenUIType))
                         Data.WeaponSets.Runner.Run();
 
                     if (mode != GameModeType.FullScreenUi && Settings.EnableTAiS)
                         Data.AiStealth.Runner.Run();
 
-                    if (Settings.EnableUsit && TypesForUsit.Contains(Reporter.CurrentFullScreenUIType))
+                    if (Settings.EnableUsit && Utilities.TypesForUsit.Contains(Reporter.CurrentFullScreenUIType))
                         Data.UsableItems.Runner.Run();
 
                     if (Settings.EnableCharSel &&
@@ -59,11 +57,11 @@ namespace Apocc.Pw.Hotkeys
                         Data.CharacterSelect.Runner.Run();
 
                     if (Settings.EnableForm &&
-                        TypesForForm.Contains(Reporter.CurrentFullScreenUIType))
+                        Utilities.TypesForForm.Contains(Reporter.CurrentFullScreenUIType))
                         Data.Formation.Runner.Run();
 
                     if (Settings.EnableActionBar &&
-                        TypesForActionBar.Contains(Reporter.CurrentFullScreenUIType))
+                        Utilities.TypesForActionBar.Contains(Reporter.CurrentFullScreenUIType))
                         Data.ActionBar.Runner.Run();
                 }
                 catch (Exception e)
@@ -76,28 +74,6 @@ namespace Apocc.Pw.Hotkeys
 
         internal static IDisposable DisposableReporter;
         internal static FullScreenUiTypeReporter Reporter;
-
-        internal static List<FullScreenUIType> TypesForActionBar = new List<FullScreenUIType>
-        {
-            FullScreenUIType.Unknown,
-        };
-
-        internal static List<FullScreenUIType> TypesForForm = new List<FullScreenUIType>
-        {
-            FullScreenUIType.Unknown,
-        };
-
-        internal static List<FullScreenUIType> TypesForTws = new List<FullScreenUIType>
-        {
-            FullScreenUIType.Unknown,
-            FullScreenUIType.Inventory,
-        };
-
-        internal static List<FullScreenUIType> TypesForUsit = new List<FullScreenUIType>
-        {
-            FullScreenUIType.Unknown,
-            FullScreenUIType.Inventory,
-        };
 
         public static bool enabled;
         public static Settings Settings;
