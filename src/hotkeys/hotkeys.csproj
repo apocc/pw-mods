@@ -105,7 +105,6 @@
     <Compile Include="Data\WeaponSets\Runner.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Gui.cs" />
-    <Compile Include="Data\SettingsOption.cs" />
     <Compile Include="Data\GuiBuilder.cs" />
     <Compile Include="Data\SettingsLocaleData.cs" />
     <Compile Include="Main.cs" />
