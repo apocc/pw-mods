@@ -9,7 +9,6 @@ using Kingmaker.Items.Slots;
 using Kingmaker.UnitLogic.Abilities;
 using Kingmaker.UnitLogic.Abilities.Blueprints;
 using Kingmaker.UnitLogic.Commands;
-using UnityEngine;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys.Data.UsableItems
@@ -83,15 +82,15 @@ namespace Apocc.Pw.Hotkeys.Data.UsableItems
 
         public static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.UsitSlot00))
+            if (Main.Settings.UsitSlot00.Up())
                 UseQuickSlot(0);
-            if (Input.GetKeyUp(Main.Settings.UsitSlot01))
+            if (Main.Settings.UsitSlot01.Up())
                 UseQuickSlot(1);
-            if (Input.GetKeyUp(Main.Settings.UsitSlot02))
+            if (Main.Settings.UsitSlot02.Up())
                 UseQuickSlot(2);
-            if (Input.GetKeyUp(Main.Settings.UsitSlot03))
+            if (Main.Settings.UsitSlot03.Up())
                 UseQuickSlot(3);
-            if (Input.GetKeyUp(Main.Settings.UsitSlot04))
+            if (Main.Settings.UsitSlot04.Up())
                 UseQuickSlot(4);
         }
     }

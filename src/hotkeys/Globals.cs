@@ -15,6 +15,7 @@ namespace Apocc.Pw.Hotkeys
         public const int LabelWidth = 225;
         public const int TextFieldWidth = 125;
         public const int ControlSpace = 20;
+        public const int GroupSpace = 5;
 
         public static string LogPrefix = "[ApoccHotkeys] ";
         public static string ModTitle = "Additional Hotkeys";

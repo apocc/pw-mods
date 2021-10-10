@@ -6,7 +6,6 @@ using System.Linq;
 using Kingmaker;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UI.Common;
-using UnityEngine;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
@@ -87,10 +86,10 @@ namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
 
         internal static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.CsNext))
+            if (Main.Settings.CsNext.Up())
                 ChangeCharacter();
 
-            if (Input.GetKeyUp(Main.Settings.CsPrev))
+            if (Main.Settings.CsPrev.Up())
                 ChangeCharacter(false);
         }
     }

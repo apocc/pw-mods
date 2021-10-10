@@ -5,7 +5,6 @@ using Kingmaker;
 using Kingmaker.Blueprints.Root;
 using Kingmaker.UI.MVVM._PCView.Formation;
 using Owlcat.Runtime.UI.Controls.Button;
-using UnityEngine;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys.Data.Formation
@@ -71,20 +70,20 @@ namespace Apocc.Pw.Hotkeys.Data.Formation
 
         internal static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.FormKey00))
+            if (Main.Settings.FormKey00.Up())
                 SetNewFormationIndex(0);
-            if (Input.GetKeyUp(Main.Settings.FormKey01))
+            if (Main.Settings.FormKey01.Up())
                 SetNewFormationIndex(1);
-            if (Input.GetKeyUp(Main.Settings.FormKey02))
+            if (Main.Settings.FormKey02.Up())
                 SetNewFormationIndex(2);
-            if (Input.GetKeyUp(Main.Settings.FormKey03))
+            if (Main.Settings.FormKey03.Up())
                 SetNewFormationIndex(3);
-            if (Input.GetKeyUp(Main.Settings.FormKey04))
+            if (Main.Settings.FormKey04.Up())
                 SetNewFormationIndex(4);
-            if (Input.GetKeyUp(Main.Settings.FormKey05))
+            if (Main.Settings.FormKey05.Up())
                 SetNewFormationIndex(5);
 
-            if (Input.GetKeyUp(Main.Settings.FormKeyCircle))
+            if (Main.Settings.FormKeyCircle.Up())
                 SetNewFormationIndex();
         }
     }

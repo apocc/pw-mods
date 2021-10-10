@@ -1,35 +1,37 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
-using System.Collections.Generic;
+using UnityEngine;
 
 namespace Apocc.Pw.Hotkeys.Data.WeaponSets
 {
     public sealed class GuiWeaponSets
     {
-        internal static List<SettingsOption> Options = Options ?? Update();
-
-        internal static List<SettingsOption> Update()
+        internal static void Draw()
         {
-            Options = new List<SettingsOption>
-            {
-                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelTwsEnable}</b>", nameof(Settings.EnableTws), SettingsOptionType.CheckBox),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey00, nameof(Settings.TwsKey00), SettingsOptionType.Text, "__apocc__tws__set00"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey01, nameof(Settings.TwsKey01), SettingsOptionType.Text, "__apocc__tws__set02"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey02, nameof(Settings.TwsKey02), SettingsOptionType.Text, "__apocc__tws__set03"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey03, nameof(Settings.TwsKey03), SettingsOptionType.Text, "__apocc__tws__set04"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsCycle, nameof(Settings.TwsToggle), SettingsOptionType.Text, "__apocc__tws__toggle",
-                    Main.Settings.GetCultureData().DescTwsCircle),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsEnableForAll, nameof(Settings.TwsEnableAllSelectedCharacters),
-                    SettingsOptionType.CheckBox, Main.Settings.GetCultureData().DescTwsEnableForAll),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsEnableFullScreen, nameof(Settings.TwsEnableInInventory),
-                    SettingsOptionType.CheckBox, null, Main.Settings.GetCultureData().DescTwsEnableFullScreen),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsEnableForceChangeInFullScreen,
-                    nameof(Settings.TwsForceChangeForAllWhenInInventory), SettingsOptionType.CheckBox, null,
-                    Main.Settings.GetCultureData().DescTwsEnableForceChangeInFullScreen),
-            };
+            var settings = Main.Settings;
+            var cd = settings.GetCultureData();
 
-            return Options;
+            GUILayout.Space(Globals.GroupSpace);
+
+            settings.EnableTws =
+               GuiBuilder.BuildToggle(settings.EnableTws, cd.LabelTwsEnable, null, true);
+
+            GuiBuilder.BuildBinding(settings.TwsKey00, cd.LabelTwsKey00);
+            GuiBuilder.BuildBinding(settings.TwsKey01, cd.LabelTwsKey01);
+            GuiBuilder.BuildBinding(settings.TwsKey02, cd.LabelTwsKey02);
+            GuiBuilder.BuildBinding(settings.TwsKey03, cd.LabelTwsKey03);
+            GuiBuilder.BuildBinding(settings.TwsToggle, cd.LabelTwsCycle);
+
+            settings.TwsEnableAllSelectedCharacters =
+                GuiBuilder.BuildToggle(settings.TwsEnableAllSelectedCharacters, cd.LabelTwsEnableForAll, cd.DescTwsEnableForAll);
+            settings.TwsEnableInInventory =
+                GuiBuilder.BuildToggle(settings.TwsEnableInInventory, cd.LabelTwsEnableFullScreen, cd.DescTwsEnableFullScreen);
+            settings.TwsForceChangeForAllWhenInInventory =
+                GuiBuilder.BuildToggle(settings.TwsForceChangeForAllWhenInInventory,
+                cd.LabelTwsEnableForceChangeInFullScreen, cd.DescTwsEnableForceChangeInFullScreen);
+
+            GUILayout.Space(Globals.GroupSpace);
         }
     }
 }

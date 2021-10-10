@@ -1,29 +1,27 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
-using System.Collections.Generic;
+using UnityEngine;
 
 namespace Apocc.Pw.Hotkeys.Data.ActionBar
 {
     internal sealed class GuiActionBar
     {
-        internal static List<SettingsOption> Options = Options ?? Update();
-
-        internal static List<SettingsOption> Update()
+        internal static void Draw()
         {
-            Options = new List<SettingsOption>
-            {
-                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelActionBarEnable}</b>",
-                    nameof(Settings.EnableActionBar), SettingsOptionType.CheckBox),
-                new SettingsOption(Main.Settings.GetCultureData().LabelActionBarToggleAbility,
-                    nameof(Settings.ActionBarToggleAbility), SettingsOptionType.Text, "__apocc__actionBar__toggleAbility"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelActionBarToggleSpells,
-                    nameof(Settings.ActionBarToggleSpells), SettingsOptionType.Text, "__apocc__actionBar__toggleSpells"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelActionBarToggleQuick,
-                    nameof(Settings.ActionBarToggleQuick), SettingsOptionType.Text, "__apocc__actionBar__toggleQuick"),
-            };
+            var settings = Main.Settings;
+            var cd = settings.GetCultureData();
 
-            return Options;
+            GUILayout.Space(Globals.GroupSpace);
+
+            settings.EnableActionBar =
+               GuiBuilder.BuildToggle(settings.EnableActionBar, cd.LabelActionBarEnable, null, true);
+
+            GuiBuilder.BuildBinding(settings.ActionBarToggleSpells, cd.LabelActionBarToggleSpells);
+            GuiBuilder.BuildBinding(settings.ActionBarToggleAbility, cd.LabelActionBarToggleAbility);
+            GuiBuilder.BuildBinding(settings.ActionBarToggleQuick, cd.LabelActionBarToggleQuick);
+
+            GUILayout.Space(Globals.GroupSpace);
         }
     }
 }

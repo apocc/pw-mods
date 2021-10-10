@@ -2,7 +2,6 @@
 // Licensed under MIT License.
 
 using Kingmaker.UI.ActionBar;
-using UnityEngine;
 
 namespace Apocc.Pw.Hotkeys.Data.AiStealth
 {
@@ -10,10 +9,10 @@ namespace Apocc.Pw.Hotkeys.Data.AiStealth
     {
         internal static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.TaisKeyStealth))
+            if (Main.Settings.TaisStealth.Up())
                 new StealthSwitchButton().OnClick();
 
-            if (Input.GetKeyUp(Main.Settings.TaisKeyAi))
+            if (Main.Settings.TaisAi.Up())
                 new AiSwitchButton().OnClick();
         }
     }

@@ -7,7 +7,6 @@ using Kingmaker.GameModes;
 using Kingmaker.PubSubSystem;
 using Kingmaker.UI.Common;
 using Kingmaker.UI.MVVM._VM.ServiceWindows.Inventory;
-using UnityEngine;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys.Data.WeaponSets
@@ -66,16 +65,16 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
 
         internal static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.TwsKey00))
+            if (Main.Settings.TwsKey00.Up())
                 IncrementSetIndex(0);
-            if (Input.GetKeyUp(Main.Settings.TwsKey01))
+            if (Main.Settings.TwsKey01.Up())
                 IncrementSetIndex(1);
-            if (Input.GetKeyUp(Main.Settings.TwsKey02))
+            if (Main.Settings.TwsKey02.Up())
                 IncrementSetIndex(2);
-            if (Input.GetKeyUp(Main.Settings.TwsKey03))
+            if (Main.Settings.TwsKey03.Up())
                 IncrementSetIndex(3);
 
-            if (Input.GetKeyUp(Main.Settings.TwsToggle))
+            if (Main.Settings.TwsToggle.Up())
                 IncrementSetIndex();
         }
     }

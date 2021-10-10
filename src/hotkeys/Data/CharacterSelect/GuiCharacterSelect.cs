@@ -1,27 +1,26 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
-using System.Collections.Generic;
+using UnityEngine;
 
 namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
 {
     internal sealed class GuiCharacterSelect
     {
-        internal static List<SettingsOption> Options = Options ?? Update();
-
-        internal static List<SettingsOption> Update()
+        internal static void Draw()
         {
-            Options = new List<SettingsOption>
-            {
-                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelCsEnable}</b>",
-                    nameof(Settings.EnableCharSel), SettingsOptionType.CheckBox),
-                new SettingsOption(Main.Settings.GetCultureData().LabelCsNext,
-                    nameof(Settings.CsNext), SettingsOptionType.Text, "__apocc__cs__next"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelCsPrev,
-                    nameof(Settings.CsPrev), SettingsOptionType.Text, "__apocc__cs__prev"),
-            };
+            var settings = Main.Settings;
+            var cd = settings.GetCultureData();
 
-            return Options;
+            GUILayout.Space(Globals.GroupSpace);
+
+            settings.EnableCharSel =
+               GuiBuilder.BuildToggle(settings.EnableCharSel, cd.LabelCsEnable, null, true);
+
+            GuiBuilder.BuildBinding(settings.CsPrev, cd.LabelCsPrev);
+            GuiBuilder.BuildBinding(settings.CsNext, cd.LabelCsNext);
+
+            GUILayout.Space(Globals.GroupSpace);
         }
     }
 }

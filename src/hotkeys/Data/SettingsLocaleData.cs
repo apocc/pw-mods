@@ -51,8 +51,29 @@ namespace Apocc.Pw.Hotkeys.Data
             DescUsitMain = "<color=#e6e600>Known issue: Selected items a character <b>CANNOT</b> use, i.e. spells, etc., are activatable via hotkey but the items ability is not executed and the item is not consumed</color>",
             DescTwsEnableFullScreen = "When enabled, weapon set hotkey functions will be applied when the full screen ui, i.e. inventory, spellbook, etc., is active",
 
-            LabelGuiButtonClear = "Clear"
+            LabelGuiButtonClear = "Clear",
+            UpdateWarning1x2x = "!!! All bindings need to be redone when updating from version 1.* to version 2.* !!!",
+
+            GroupAc = "Action Bar",
+            GroupTais = "AI and Stealth",
+            GroupCs = "Character selection",
+            GroupForm = "Formations",
+            GroupQs = "Quick slots",
+            GroupWs = "Weapon sets"
         };
+
+        public string UpdateWarning1x2x { get; set; }
+
+        #region group
+
+        public string GroupAc { get; set; }
+        public string GroupCs { get; set; }
+        public string GroupForm { get; set; }
+        public string GroupQs { get; set; }
+        public string GroupTais { get; set; }
+        public string GroupWs { get; set; }
+
+        #endregion group
 
         #region label
 

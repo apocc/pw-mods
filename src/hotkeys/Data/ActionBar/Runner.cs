@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using HarmonyLib;
 using Kingmaker;
 using Kingmaker.UI.MVVM._PCView.ActionBar;
-using UnityEngine;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys.Data.ActionBar
@@ -72,15 +71,15 @@ namespace Apocc.Pw.Hotkeys.Data.ActionBar
 
         internal static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.ActionBarToggleAbility))
+            if (Main.Settings.ActionBarToggleAbility.Up())
             {
                 ToggleActionBarSubmenu(SubmenuType.Ability);
             }
-            if (Input.GetKeyUp(Main.Settings.ActionBarToggleSpells))
+            if (Main.Settings.ActionBarToggleSpells.Up())
             {
                 ToggleActionBarSubmenu(SubmenuType.Spells);
             }
-            if (Input.GetKeyUp(Main.Settings.ActionBarToggleQuick))
+            if (Main.Settings.ActionBarToggleQuick.Up())
             {
                 ToggleActionBarSubmenu(SubmenuType.Quick);
             }
