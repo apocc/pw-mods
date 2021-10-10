@@ -70,7 +70,7 @@ namespace Apocc.Pw.Hotkeys
             var res = new List<string>();
             var objects = Resources.FindObjectsOfTypeAll<GameObject>();
 
-            Log.Log($"GetChildGameObjectPaths: sub components: {objects.Length}");
+            Log.Log($"GetGameObjectPaths: {objects.Length}");
             foreach (var obj in objects)
             {
                 var path = $"/{obj.name}";
