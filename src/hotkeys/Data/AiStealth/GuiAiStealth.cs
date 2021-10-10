@@ -13,9 +13,12 @@ namespace Apocc.Pw.Hotkeys.Data.AiStealth
         {
             Options = new List<SettingsOption>
             {
-                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelTaisEnable}</b>", "EnableTAiS", SettingsOptionType.CheckBox),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTaisKeyAi, "TaisKeyAi", SettingsOptionType.Text, "__apocc__tais__ai"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTaisKeyStealth, "TaisKeyStealth", SettingsOptionType.Text, "__apocc__tais__stealth"),
+                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelTaisEnable}</b>",
+                    nameof(Settings.EnableTAiS), SettingsOptionType.CheckBox),
+                new SettingsOption(Main.Settings.GetCultureData().LabelTaisKeyAi,
+                    nameof(Settings.TaisKeyAi), SettingsOptionType.Text, "__apocc__tais__ai"),
+                new SettingsOption(Main.Settings.GetCultureData().LabelTaisKeyStealth,
+                    nameof(Settings.TaisKeyStealth), SettingsOptionType.Text, "__apocc__tais__stealth"),
             };
 
             return Options;

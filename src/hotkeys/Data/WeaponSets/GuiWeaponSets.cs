@@ -13,19 +13,19 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
         {
             Options = new List<SettingsOption>
             {
-                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelTwsEnable}</b>", "EnableTws", SettingsOptionType.CheckBox),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey00, "TwsKey00", SettingsOptionType.Text, "__apocc__tws__set00"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey01, "TwsKey01", SettingsOptionType.Text, "__apocc__tws__set02"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey02, "TwsKey02", SettingsOptionType.Text, "__apocc__tws__set03"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey03, "TwsKey03", SettingsOptionType.Text, "__apocc__tws__set04"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsCycle, "TwsToggle", SettingsOptionType.Text, "__apocc__tws__toggle",
+                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelTwsEnable}</b>", nameof(Settings.EnableTws), SettingsOptionType.CheckBox),
+                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey00, nameof(Settings.TwsKey00), SettingsOptionType.Text, "__apocc__tws__set00"),
+                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey01, nameof(Settings.TwsKey01), SettingsOptionType.Text, "__apocc__tws__set02"),
+                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey02, nameof(Settings.TwsKey02), SettingsOptionType.Text, "__apocc__tws__set03"),
+                new SettingsOption(Main.Settings.GetCultureData().LabelTwsKey03, nameof(Settings.TwsKey03), SettingsOptionType.Text, "__apocc__tws__set04"),
+                new SettingsOption(Main.Settings.GetCultureData().LabelTwsCycle, nameof(Settings.TwsToggle), SettingsOptionType.Text, "__apocc__tws__toggle",
                     Main.Settings.GetCultureData().DescTwsCircle),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsEnableForAll, "EnableAllSelectedCharacters", SettingsOptionType.CheckBox,
+                new SettingsOption(Main.Settings.GetCultureData().LabelTwsEnableForAll, nameof(Settings.EnableAllSelectedCharacters), SettingsOptionType.CheckBox,
                     Main.Settings.GetCultureData().DescTwsEnableForAll),
-                new SettingsOption(Main.Settings.GetCultureData().LabelTwsEnableFullScreen, "TwsEnableInInventory", SettingsOptionType.CheckBox, null,
-                    Main.Settings.GetCultureData().DescTwsEnableFullScreen),
+                new SettingsOption(Main.Settings.GetCultureData().LabelTwsEnableFullScreen, nameof(Settings.TwsEnableInInventory),
+                    SettingsOptionType.CheckBox, null, Main.Settings.GetCultureData().DescTwsEnableFullScreen),
                 new SettingsOption(Main.Settings.GetCultureData().LabelTwsEnableForceChangeInFullScreen,
-                    "TwsForceChangeForAllWhenInInventory", SettingsOptionType.CheckBox, null,
+                    nameof(Settings.TwsForceChangeForAllWhenInInventory), SettingsOptionType.CheckBox, null,
                     Main.Settings.GetCultureData().DescTwsEnableForceChangeInFullScreen),
             };
 

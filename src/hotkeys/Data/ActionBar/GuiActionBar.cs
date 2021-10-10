@@ -13,10 +13,14 @@ namespace Apocc.Pw.Hotkeys.Data.ActionBar
         {
             Options = new List<SettingsOption>
             {
-                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelActionBarEnable}</b>", "EnableActionBar", SettingsOptionType.CheckBox),
-                new SettingsOption(Main.Settings.GetCultureData().LabelActionBarToggleAbility, "ActionBarToggleAbility", SettingsOptionType.Text, "__apocc__actionBar__toggleAbility"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelActionBarToggleSpells, "ActionBarToggleSpells", SettingsOptionType.Text, "__apocc__actionBar__toggleSpells"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelActionBarToggleQuick, "ActionBarToggleQuick", SettingsOptionType.Text, "__apocc__actionBar__toggleQuick"),
+                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelActionBarEnable}</b>",
+                    nameof(Settings.EnableActionBar), SettingsOptionType.CheckBox),
+                new SettingsOption(Main.Settings.GetCultureData().LabelActionBarToggleAbility,
+                    nameof(Settings.ActionBarToggleAbility), SettingsOptionType.Text, "__apocc__actionBar__toggleAbility"),
+                new SettingsOption(Main.Settings.GetCultureData().LabelActionBarToggleSpells,
+                    nameof(Settings.ActionBarToggleSpells), SettingsOptionType.Text, "__apocc__actionBar__toggleSpells"),
+                new SettingsOption(Main.Settings.GetCultureData().LabelActionBarToggleQuick,
+                    nameof(Settings.ActionBarToggleQuick), SettingsOptionType.Text, "__apocc__actionBar__toggleQuick"),
             };
 
             return Options;

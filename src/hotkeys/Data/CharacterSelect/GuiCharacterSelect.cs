@@ -13,9 +13,12 @@ namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
         {
             Options = new List<SettingsOption>
             {
-                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelCsEnable}</b>", "EnableCharSel", SettingsOptionType.CheckBox),
-                new SettingsOption(Main.Settings.GetCultureData().LabelCsNext, "CsNext", SettingsOptionType.Text, "__apocc__cs__next"),
-                new SettingsOption(Main.Settings.GetCultureData().LabelCsPrev, "CsPrev", SettingsOptionType.Text, "__apocc__cs__prev"),
+                new SettingsOption($"<b>{Main.Settings.GetCultureData().LabelCsEnable}</b>",
+                    nameof(Settings.EnableCharSel), SettingsOptionType.CheckBox),
+                new SettingsOption(Main.Settings.GetCultureData().LabelCsNext,
+                    nameof(Settings.CsNext), SettingsOptionType.Text, "__apocc__cs__next"),
+                new SettingsOption(Main.Settings.GetCultureData().LabelCsPrev,
+                    nameof(Settings.CsPrev), SettingsOptionType.Text, "__apocc__cs__prev"),
             };
 
             return Options;
