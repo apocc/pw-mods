@@ -17,17 +17,13 @@ namespace Apocc.Pw.Hotkeys
 {
     public sealed class Settings : UnityModManager.ModSettings
     {
+        private List<string> _availableCultures = new List<string>();
         private string _culture;
         private SettingsLocaleData _currentCultureData;
         private SettingsLocaleData _defaultCultureData;
-
         public KeyCode ActionBarToggleAbility = KeyCode.None;
         public KeyCode ActionBarToggleQuick = KeyCode.None;
         public KeyCode ActionBarToggleSpells = KeyCode.None;
-
-        [XmlIgnore]
-        public List<string> AvailableCultures = new List<string>();
-
         public KeyCode CsNext = KeyCode.None;
         public KeyCode CsPrev = KeyCode.None;
         public bool EnableActionBar = false;
@@ -91,10 +87,8 @@ namespace Apocc.Pw.Hotkeys
             var settings = Load<Settings>(modEntry);
 
             Log.Log("Loading additional settings data", Globals.LogPrefix); ;
-            settings.AvailableCultures = LoadAvailableCultures(modEntry);
+            settings._availableCultures = LoadAvailableCultures(modEntry);
             settings._defaultCultureData = SettingsLocaleData.Default;
-
-            Log.Log("Settings:" + settings, Globals.LogPrefix);
 
             return settings;
         }
@@ -120,14 +114,17 @@ namespace Apocc.Pw.Hotkeys
         {
             try
             {
+                if (EnableVerboseLogging)
+                    Log.Log("Processing game culture information", Globals.LogPrefix);
+
                 if (_currentCultureData != null) return;
 
-                Log.Log("Processing game culture information", Globals.LogPrefix);
-
                 var ingameCulture = LocaleExtensions.GetCulture(LocalizationManager.CurrentLocale).Name.ToLowerInvariant();
-                Log.Log("Ingame culture: " + ingameCulture, Globals.LogPrefix);
 
-                _culture = AvailableCultures.FirstOrDefault(ac => ac == ingameCulture) ?? Globals.DefaultCulture;
+                if (EnableVerboseLogging)
+                    Log.Log("Ingame culture: " + ingameCulture, Globals.LogPrefix);
+
+                _culture = _availableCultures.FirstOrDefault(ac => ac == ingameCulture) ?? Globals.DefaultCulture;
                 if (_culture == Globals.DefaultCulture)
                 {
                     _currentCultureData = SettingsLocaleData.Default;

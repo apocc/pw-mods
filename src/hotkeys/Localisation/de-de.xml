@@ -11,7 +11,7 @@
   <LabelUsitEnable>Aktiviere Hotkeys für die Schnellleiste</LabelUsitEnable>
   <LabelUsitEnableForAll>Für alle ausgewählten Charaktere</LabelUsitEnableForAll>
   <LabelFormEnable>Aktiviere Formationen</LabelFormEnable>
-  <LabelFormKey00>Formation: auto</LabelFormKey00>
+  <LabelFormKey00>Formation: Auto</LabelFormKey00>
   <LabelFormKey01>Formation: Dreieck</LabelFormKey01>
   <LabelFormKey02>Formation: Stern</LabelFormKey02>
   <LabelFormKey03>Formation: Wellen</LabelFormKey03>
