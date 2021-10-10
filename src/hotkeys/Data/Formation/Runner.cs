@@ -71,20 +71,20 @@ namespace Apocc.Pw.Hotkeys.Data.Formation
 
         internal static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.FormKeyCode00))
+            if (Input.GetKeyUp(Main.Settings.FormKey00))
                 SetNewFormationIndex(0);
-            if (Input.GetKeyUp(Main.Settings.FormKeyCode01))
+            if (Input.GetKeyUp(Main.Settings.FormKey01))
                 SetNewFormationIndex(1);
-            if (Input.GetKeyUp(Main.Settings.FormKeyCode02))
+            if (Input.GetKeyUp(Main.Settings.FormKey02))
                 SetNewFormationIndex(2);
-            if (Input.GetKeyUp(Main.Settings.FormKeyCode03))
+            if (Input.GetKeyUp(Main.Settings.FormKey03))
                 SetNewFormationIndex(3);
-            if (Input.GetKeyUp(Main.Settings.FormKeyCode04))
+            if (Input.GetKeyUp(Main.Settings.FormKey04))
                 SetNewFormationIndex(4);
-            if (Input.GetKeyUp(Main.Settings.FormKeyCode05))
+            if (Input.GetKeyUp(Main.Settings.FormKey05))
                 SetNewFormationIndex(5);
 
-            if (Input.GetKeyUp(Main.Settings.FormKeyCodeCircle))
+            if (Input.GetKeyUp(Main.Settings.FormKeyCircle))
                 SetNewFormationIndex();
         }
     }

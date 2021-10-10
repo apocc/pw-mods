@@ -10,10 +10,10 @@ namespace Apocc.Pw.Hotkeys.Data.AiStealth
     {
         internal static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.TaisKeyCodeStealth))
+            if (Input.GetKeyUp(Main.Settings.TaisKeyStealth))
                 new StealthSwitchButton().OnClick();
 
-            if (Input.GetKeyUp(Main.Settings.TaisKeyCodeAi))
+            if (Input.GetKeyUp(Main.Settings.TaisKeyAi))
                 new AiSwitchButton().OnClick();
         }
     }

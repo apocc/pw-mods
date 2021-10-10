@@ -20,7 +20,8 @@ namespace Apocc.Pw.Hotkeys.Data.Formation
                  new SettingsOption(Main.Settings.GetCultureData().LabelFormKey03, nameof(Settings.FormKey03), SettingsOptionType.Text, "__apocc__form__03"),
                  new SettingsOption(Main.Settings.GetCultureData().LabelFormKey04, nameof(Settings.FormKey04), SettingsOptionType.Text, "__apocc__form__04"),
                  new SettingsOption(Main.Settings.GetCultureData().LabelFormKey05, nameof(Settings.FormKey05), SettingsOptionType.Text, "__apocc__form__05"),
-                 new SettingsOption(Main.Settings.GetCultureData().LabelFormKeyCircle, nameof(Settings.FormKeyCircle), SettingsOptionType.Text, "__apocc__form__circle"),
+                 new SettingsOption(Main.Settings.GetCultureData().LabelFormKeyCircle, nameof(Settings.FormKeyCircle),
+                    SettingsOptionType.Text, "__apocc__form__circle"),
             };
 
             return Options;

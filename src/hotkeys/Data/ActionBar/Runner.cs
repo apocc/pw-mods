@@ -72,15 +72,15 @@ namespace Apocc.Pw.Hotkeys.Data.ActionBar
 
         internal static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.ActionBarKeyCodeToggleAbility))
+            if (Input.GetKeyUp(Main.Settings.ActionBarToggleAbility))
             {
                 ToggleActionBarSubmenu(SubmenuType.Ability);
             }
-            if (Input.GetKeyUp(Main.Settings.ActionBarKeyCodeToggleSpells))
+            if (Input.GetKeyUp(Main.Settings.ActionBarToggleSpells))
             {
                 ToggleActionBarSubmenu(SubmenuType.Spells);
             }
-            if (Input.GetKeyUp(Main.Settings.ActionBarKeyCodeToggleQuick))
+            if (Input.GetKeyUp(Main.Settings.ActionBarToggleQuick))
             {
                 ToggleActionBarSubmenu(SubmenuType.Quick);
             }

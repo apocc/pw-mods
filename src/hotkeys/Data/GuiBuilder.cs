@@ -1,9 +1,11 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys.Data
 {
@@ -22,19 +24,25 @@ namespace Apocc.Pw.Hotkeys.Data
                 case SettingsOptionType.Text:
                     GUI.SetNextControlName(option.Id);
 
-                    var valueText = GUILayout.TextField(settings.GetPropertyValue<string>(option.Property), GUILayout.Width(Globals.TextFieldWidth));
-                    settings.SetPropertyValue(option.Property, valueText);
+                    var valueText = GUILayout.TextField(
+                        settings.GetFieldValue<KeyCode>(option.Property).ToString(),
+                        GUILayout.Width(Globals.TextFieldWidth));
+
+                    if (!Enum.TryParse<KeyCode>(valueText, out var kc) && settings.EnableVerboseLogging)
+                        Log.Error($"Couldn't parse keycode '{valueText}' for '{option.Label}'.", Globals.LogPrefix);
+                    else
+                        settings.SetFieldValue(option.Property, kc);
 
                     GUILayout.Space(Globals.ControlSpace);
 
                     if (GUILayout.Button(settings.GetCultureData().LabelGuiButtonClear, GUILayout.Width(Globals.ButtonWidth)))
-                        settings.SetPropertyValue(option.Property, KeyCode.None.ToString());
+                        settings.SetFieldValue(option.Property, KeyCode.None);
 
                     break;
                 case SettingsOptionType.CheckBox:
-                    var valueCheck = GUILayout.Toggle(settings.GetPropertyValue<bool>(option.Property), "",
+                    var valueCheck = GUILayout.Toggle(settings.GetFieldValue<bool>(option.Property), "",
                         GUILayout.Width(Globals.ButtonWidth + Globals.TextFieldWidth + 20));
-                    settings.SetPropertyValue(option.Property, valueCheck);
+                    settings.SetFieldValue(option.Property, valueCheck);
                     break;
                 default:
                     break;
@@ -61,7 +69,18 @@ namespace Apocc.Pw.Hotkeys.Data
             if (option == null)
                 return false;
 
-            Main.Settings.SetPropertyValue(option.Property, value);
+            switch (value)
+            {
+                case string st:
+                    if (!Enum.TryParse<KeyCode>(st, out var kc))
+                        return false;
+
+                    Main.Settings.SetFieldValue(option.Property, kc);
+
+                    return true; ;
+            }
+
+            Main.Settings.SetFieldValue(option.Property, value);
 
             return true;
         }

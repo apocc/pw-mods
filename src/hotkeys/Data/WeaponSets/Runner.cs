@@ -32,7 +32,7 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
             if (isInventory && Main.Settings.TwsEnableInInventory)
                 updatedUnitId = UpdateInventory(index);
 
-            if (Main.Settings.EnableAllSelectedCharacters && (!isInventory || isInventory && forceForAll))
+            if (Main.Settings.TwsEnableAllSelectedCharacters && (!isInventory || isInventory && forceForAll))
             {
                 foreach (UnitEntityData unit in sm.SelectedUnits)
                 {
@@ -42,7 +42,7 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
                 }
             }
 
-            if (!Main.Settings.EnableAllSelectedCharacters && sm.SelectedUnits.Count == 1)
+            if (!Main.Settings.TwsEnableAllSelectedCharacters && sm.SelectedUnits.Count == 1)
             {
                 UnitEntityData unit = sm.SelectedUnits[0];
 
@@ -66,16 +66,16 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
 
         internal static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.TwsKeyCode00))
+            if (Input.GetKeyUp(Main.Settings.TwsKey00))
                 IncrementSetIndex(0);
-            if (Input.GetKeyUp(Main.Settings.TwsKeyCode01))
+            if (Input.GetKeyUp(Main.Settings.TwsKey01))
                 IncrementSetIndex(1);
-            if (Input.GetKeyUp(Main.Settings.TwsKeyCode02))
+            if (Input.GetKeyUp(Main.Settings.TwsKey02))
                 IncrementSetIndex(2);
-            if (Input.GetKeyUp(Main.Settings.TwsKeyCode03))
+            if (Input.GetKeyUp(Main.Settings.TwsKey03))
                 IncrementSetIndex(3);
 
-            if (Input.GetKeyUp(Main.Settings.TwsKeyCodeToggle))
+            if (Input.GetKeyUp(Main.Settings.TwsToggle))
                 IncrementSetIndex();
         }
     }

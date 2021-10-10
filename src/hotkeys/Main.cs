@@ -93,7 +93,7 @@ namespace Apocc.Pw.Hotkeys
         {
             try
             {
-                Settings = Settings.Load(modEntry);
+                Settings = Settings.LoadSettings(modEntry);
 
                 var h = new Harmony(modEntry.Info.Id);
                 h.PatchAll(Assembly.GetExecutingAssembly());

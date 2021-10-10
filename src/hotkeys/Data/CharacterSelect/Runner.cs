@@ -87,10 +87,10 @@ namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
 
         internal static void Run()
         {
-            if (Input.GetKeyUp(Main.Settings.CsKeyCodeNext))
+            if (Input.GetKeyUp(Main.Settings.CsNext))
                 ChangeCharacter();
 
-            if (Input.GetKeyUp(Main.Settings.CsKeyCodePrev))
+            if (Input.GetKeyUp(Main.Settings.CsPrev))
                 ChangeCharacter(false);
         }
     }

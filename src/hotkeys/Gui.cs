@@ -31,6 +31,7 @@ namespace Apocc.Pw.Hotkeys
                 GuiWeaponSets.Options, GuiAiStealth.Options, GuiUsableItems.Options,
                 GuiCharacterSelect.Options, GuiFormation.Options, GuiActionBar.Options
             };
+
             foreach (List<SettingsOption> optionsList in allOptions)
             {
                 GuiBuilder.BuildControls(optionsList);
