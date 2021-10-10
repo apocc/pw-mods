@@ -1,8 +1,8 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
-using System;
 using System.Collections.Generic;
+using HarmonyLib;
 using Kingmaker;
 using Kingmaker.UI.MVVM._PCView.ActionBar;
 using UnityEngine;
@@ -17,17 +17,7 @@ namespace Apocc.Pw.Hotkeys.Data.ActionBar
 
     internal static class Runner
     {
-        private static List<IDisposable> Disposables = new List<IDisposable>();
-        private static SubmenuType SubmenuVisible = SubmenuType.None;
-
-        private static void ResetSubmenu(ActionBarGroupPCView bar)
-        {
-            if (Main.Settings.EnableVerboseLogging)
-                Log.Log($"ActionBar: Resetting submenu", Globals.LogPrefix);
-
-            SubmenuVisible = SubmenuType.None;
-            bar.SetVisible(false);
-        }
+        internal static readonly Dictionary<string, bool> VisibilityStates = new Dictionary<string, bool>();
 
         private static void ToggleActionBarSubmenu(SubmenuType submenuType)
         {
@@ -71,30 +61,13 @@ namespace Apocc.Pw.Hotkeys.Data.ActionBar
                 return;
             }
 
-            var visible = submenuType != SubmenuVisible;
-            SubmenuVisible = submenuType == SubmenuVisible ? SubmenuType.None : submenuType;
+            if (!VisibilityStates.TryGetValue(bar.name, out var visible))
+                visible = false;
 
             if (Main.Settings.EnableVerboseLogging)
-                Log.Log($"ActionBar: Setting visibility to {visible}", Globals.LogPrefix);
+                Log.Log($"ActionBar: Setting visibility to {!visible}", Globals.LogPrefix);
 
-            bar.SetVisible(visible);
-
-            if (visible)
-            {
-                if (Main.Settings.EnableVerboseLogging)
-                    Log.Log($"ActionBar: Adding ESC disposable", Globals.LogPrefix);
-
-                Disposables.Add(Game.Instance.UI.EscManager.Subscribe(() => ResetSubmenu(bar)));
-            }
-            else
-            {
-                if (Main.Settings.EnableVerboseLogging)
-                    Log.Log($"ActionBar: Removing ESC disposable", Globals.LogPrefix);
-
-                Game.Instance.UI.EscManager.Unsubscribe(() => ResetSubmenu(bar));
-                Disposables.ForEach(d => d?.Dispose());
-                Disposables.Clear();
-            }
+            bar.SetVisible(!visible);
         }
 
         internal static void Run()
@@ -111,6 +84,20 @@ namespace Apocc.Pw.Hotkeys.Data.ActionBar
             {
                 ToggleActionBarSubmenu(SubmenuType.Quick);
             }
+        }
+    }
+
+    [HarmonyPatch(typeof(ActionBarGroupPCView))]
+    public static class ActionBarGroupPCView_
+    {
+        [HarmonyPostfix]
+        [HarmonyPatch(nameof(ActionBarGroupPCView.SetVisible))]
+        public static void SetVisible(ActionBarGroupPCView __instance, bool ___VisibleState)
+        {
+            if (Main.Settings.EnableVerboseLogging)
+                Log.Log($"ActionBarGroupPCView_SetVisible_Postfix_Patch: {__instance.name} visibility is {___VisibleState}", Globals.LogPrefix);
+
+            Runner.VisibilityStates[__instance.name] = ___VisibleState;
         }
     }
 }
