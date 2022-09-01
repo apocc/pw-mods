@@ -52,7 +52,6 @@ namespace Apocc.Pw.Hotkeys.Data
             DescTwsEnableFullScreen = "When enabled, weapon set hotkey functions will be applied when the full screen ui, i.e. inventory, spellbook, etc., is active",
 
             LabelGuiButtonClear = "Clear",
-            UpdateWarning1x2x = "!!! All bindings need to be redone when updating from version 1.* to version 2.* !!!",
 
             GroupAc = "Action Bar",
             GroupTais = "AI and Stealth",
@@ -61,8 +60,6 @@ namespace Apocc.Pw.Hotkeys.Data
             GroupQs = "Quick slots",
             GroupWs = "Weapon sets"
         };
-
-        public string UpdateWarning1x2x { get; set; }
 
         #region group
 

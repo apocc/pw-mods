@@ -44,7 +44,6 @@
   <LabelActionBarToggleAbility>Attribute</LabelActionBarToggleAbility>
   <LabelActionBarToggleQuick>Schnellleiste</LabelActionBarToggleQuick>
   <LabelActionBarToggleSpells>Zauberbuch</LabelActionBarToggleSpells>
-  <UpdateWarning1x2x>!!! Alle Hotkeys müssen neu definiert werden beim Update von Version 1.* auf Version 2.* !!!</UpdateWarning1x2x>
   <GroupAc>Aktionsleiste </GroupAc>
   <GroupTais>KI und Schleichen</GroupTais>
   <GroupCs>Charakterauswahl</GroupCs>

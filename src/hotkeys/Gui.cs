@@ -40,7 +40,6 @@ namespace Apocc.Pw.Hotkeys
 
             GUILayout.BeginVertical();
 
-            GUILayout.Label($"<size=15><b><color=#e6e600>{settings.GetCultureData().UpdateWarning1x2x}</color></b></size>");
             GUILayout.Label($"<size=15><b>{settings.GetCultureData().LabelGenNoValidation}</b></size>");
 
             settings.EnableVerboseLogging = GuiBuilder.BuildToggle(settings.EnableVerboseLogging, cd.LabelGenVerboseLogging, null, true);
