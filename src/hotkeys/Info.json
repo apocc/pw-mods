@@ -2,7 +2,7 @@
   "Id": "ApoccHotkeys",
   "DisplayName": "Additional Hotkeys",
   "Author": "apocc",
-  "Version": "2.0.0",
+  "Version": "2.1.0",
   "ManagerVersion": "0.23.0",
   "AssemblyName": "Apocc.Pw.Hotkeys.dll",
   "EntryMethod": "Apocc.Pw.Hotkeys.Main.Load",
