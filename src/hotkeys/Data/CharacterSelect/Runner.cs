@@ -48,7 +48,7 @@ namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
             }
             else
             {
-                if (Game.Instance.UI.SelectionManager.SelectedUnits.Count > 1)
+                if (Game.Instance.SelectionCharacter.SelectedUnits.Count > 1)
                     _selectedCharacterIndex = 0;
                 else
                     UpdateIndex(next, party);
@@ -66,7 +66,7 @@ namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
 
         private static void UpdateIndex(bool next, List<UnitEntityData> party)
         {
-            UnitEntityData current = UIUtility.GetCurrentCharacter();
+            UnitEntityData current = Game.Instance.SelectionCharacter.CurrentSelectedCharacter;
             for (var i = 0; i < party.Count; i++)
             {
                 if (party[i].UniqueId != current.UniqueId) continue;

@@ -5,7 +5,6 @@ using Kingmaker;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.GameModes;
 using Kingmaker.PubSubSystem;
-using Kingmaker.UI.Common;
 using Kingmaker.UI.MVVM._VM.ServiceWindows.Inventory;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
@@ -19,21 +18,21 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
         private static void IncrementSetIndex(int index = -1)
         {
             GameModeType mode = Game.Instance.CurrentMode;
-            SelectionManagerBase sm = Game.Instance.UI.SelectionManager;
-
+            
             var isInventory = mode == GameModeType.FullScreenUi;
             var forceForAll = Main.Settings.TwsEnableInInventory && Main.Settings.TwsForceChangeForAllWhenInInventory;
 
             if (isInventory && !Main.Settings.TwsEnableInInventory)
                 return;
 
+            var scc = Game.Instance.SelectionCharacter;
             string updatedUnitId = null;
             if (isInventory && Main.Settings.TwsEnableInInventory)
                 updatedUnitId = UpdateInventory(index);
 
             if (Main.Settings.TwsEnableAllSelectedCharacters && (!isInventory || isInventory && forceForAll))
             {
-                foreach (UnitEntityData unit in sm.SelectedUnits)
+                foreach (UnitEntityData unit in scc.SelectedUnits)
                 {
                     if (updatedUnitId == unit.UniqueId) continue;
 
@@ -41,9 +40,9 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
                 }
             }
 
-            if (!Main.Settings.TwsEnableAllSelectedCharacters && sm.SelectedUnits.Count == 1)
+            if (!Main.Settings.TwsEnableAllSelectedCharacters && scc.SelectedUnits.Count == 1)
             {
-                UnitEntityData unit = sm.SelectedUnits[0];
+                UnitEntityData unit = scc.SelectedUnits[0];
 
                 if (updatedUnitId != unit.UniqueId)
                     unit.Body.CurrentHandEquipmentSetIndex = CalcNewIndex(unit, index);
@@ -52,7 +51,7 @@ namespace Apocc.Pw.Hotkeys.Data.WeaponSets
 
         private static string UpdateInventory(int index = -1)
         {
-            UnitEntityData current = UIUtility.GetCurrentCharacter();
+            UnitEntityData current = Game.Instance.SelectionCharacter.CurrentSelectedCharacter;
 
             if (Main.Settings.EnableVerboseLogging)
                 Log.Log($"Raising inventory changed event for {current.CharacterName}", Globals.LogPrefix);

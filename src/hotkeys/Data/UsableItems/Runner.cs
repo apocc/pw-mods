@@ -62,11 +62,11 @@ namespace Apocc.Pw.Hotkeys.Data.UsableItems
             if (Main.Settings.EnableVerboseLogging)
                 Log.Log($"Use slot: {index} for all: {Main.Settings.UsitEnableAllSelectedCharacters}", Globals.LogPrefix);
 
-            SelectionManagerBase sm = Game.Instance.UI.SelectionManager;
+            var scc = Game.Instance.SelectionCharacter;
 
             if (Main.Settings.UsitEnableAllSelectedCharacters)
             {
-                foreach (UnitEntityData unitEntityData in sm.SelectedUnits)
+                foreach (UnitEntityData unitEntityData in scc.SelectedUnits)
                 {
                     TryActivate(index, unitEntityData);
                 }
@@ -74,10 +74,10 @@ namespace Apocc.Pw.Hotkeys.Data.UsableItems
                 return;
             }
 
-            if (sm.SelectedUnits.Count != 1)
+            if (scc.SelectedUnits.Count != 1)
                 return;
 
-            TryActivate(index, sm.SelectedUnits[0]);
+            TryActivate(index, scc.SelectedUnits[0]);
         }
 
         public static void Run()
