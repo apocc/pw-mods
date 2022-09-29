@@ -27,13 +27,13 @@ namespace Apocc.Pw.Hotkeys.Data.ActionBar
             switch (submenuType)
             {
                 case SubmenuType.Ability:
-                    path = "ActionBarPcView/ActionBarBottomView/ActionBarMainContainer/AbilitiesGroupsContainer/Groups/AbilityGroupView";
+                    path = "NestedCanvas1/ActionBarPcView/ActionBarBottomView/ActionBarMainContainer/AbilitiesGroupsContainer/Groups/AbilityGroupView";
                     break;
                 case SubmenuType.Spells:
-                    path = "ActionBarPcView/ActionBarBottomView/ActionBarMainContainer/AbilitiesGroupsContainer/Groups/SpellGroupView";
+                    path = "NestedCanvas1/ActionBarPcView/ActionBarBottomView/ActionBarMainContainer/AbilitiesGroupsContainer/Groups/SpellGroupView";
                     break;
                 case SubmenuType.Quick:
-                    path = "ActionBarPcView/ActionBarBottomView/ActionBarMainContainer/AbilitiesGroupsContainer/Groups/ItemGroupView";
+                    path = "NestedCanvas1/ActionBarPcView/ActionBarBottomView/ActionBarMainContainer/AbilitiesGroupsContainer/Groups/ItemGroupView";
                     break;
             }
 

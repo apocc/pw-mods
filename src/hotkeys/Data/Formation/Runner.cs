@@ -30,7 +30,7 @@ namespace Apocc.Pw.Hotkeys.Data.Formation
 
             Game.Instance.Player.FormationManager.CurrentFormationIndex = nIdx;
 
-            var form = Game.Instance.UI.MainCanvas.transform.Find("FormationPCView/FormationSelectorPCView");
+            var form = Game.Instance.UI.MainCanvas.transform.Find("NestedCanvas1/FormationPCView/FormationSelectorPCView");
             if (form == null)
             {
                 Log.Error($"Formation: Formation selector prefab wasn't found, UI will not update.", Globals.LogPrefix);
