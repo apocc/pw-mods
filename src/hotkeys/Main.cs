@@ -6,6 +6,7 @@ using System.Reflection;
 using Apocc.Pw.Hotkeys.Data;
 using HarmonyLib;
 using Kingmaker;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.GameModes;
 using Kingmaker.PubSubSystem;
 using UnityModManagerNet;
@@ -19,6 +20,28 @@ namespace Apocc.Pw.Hotkeys
 #endif
     public static class Main
     {
+        [HarmonyPatch(typeof(BlueprintsCache))]
+        static class BlueprintsCache_Patches
+        {
+            [HarmonyPriority(Priority.First)]
+            [HarmonyPatch(nameof(BlueprintsCache.Init)), HarmonyPostfix]
+            static void Postfix()
+            {
+                try
+                {
+                    if(ModMenuSettings == null)
+                        ModMenuSettings = new ModMenuSettings();
+
+                    ModMenuSettings.Init();
+                }
+                catch (Exception e)
+                {
+                    Log.Error("Postfix: Error BlueprintsCache.Init", Globals.LogPrefix);
+                    Globals.LogException(e);
+                }
+            }
+        }
+
         [HarmonyPatch(typeof(UnityModManager.UI), "Update")]
         public static class UnityModManager_UI_Update_Patch
         {
@@ -46,9 +69,6 @@ namespace Apocc.Pw.Hotkeys
                     if (Settings.EnableTws && Utilities.TypesForTws.Contains(Reporter.CurrentFullScreenUIType))
                         Data.WeaponSets.Runner.Run();
 
-                    if (mode != GameModeType.FullScreenUi && Settings.EnableTAiS)
-                        Data.AiStealth.Runner.Run();
-
                     if (Settings.EnableUsit && Utilities.TypesForUsit.Contains(Reporter.CurrentFullScreenUIType))
                         Data.UsableItems.Runner.Run();
 
@@ -72,6 +92,7 @@ namespace Apocc.Pw.Hotkeys
             }
         }
 
+        internal static ModMenuSettings ModMenuSettings;
         internal static IDisposable DisposableReporter;
         internal static FullScreenUiTypeReporter Reporter;
 

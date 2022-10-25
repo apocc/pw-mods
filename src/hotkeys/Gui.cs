@@ -4,11 +4,9 @@
 using System.Collections.Generic;
 using Apocc.Pw.Hotkeys.Data;
 using Apocc.Pw.Hotkeys.Data.ActionBar;
-using Apocc.Pw.Hotkeys.Data.AiStealth;
 using Apocc.Pw.Hotkeys.Data.CharacterSelect;
 using Apocc.Pw.Hotkeys.Data.Formation;
 using Apocc.Pw.Hotkeys.Data.UsableItems;
-using Apocc.Pw.Hotkeys.Data.WeaponSets;
 using UnityEngine;
 using UnityModManagerNet;
 
@@ -49,24 +47,6 @@ namespace Apocc.Pw.Hotkeys
             GUILayout.EndVertical();
 
             GUILayout.BeginVertical();
-
-            GUILayout.BeginHorizontal();
-
-            var visibleTws = Grouping(cd.GroupWs);
-
-            GUILayout.EndHorizontal();
-
-            if (visibleTws)
-                GuiWeaponSets.Draw();
-
-            GUILayout.BeginHorizontal();
-
-            var visibleTais = Grouping(cd.GroupTais);
-
-            GUILayout.EndHorizontal();
-
-            if (visibleTais)
-                GuiAiStealth.Draw();
 
             GUILayout.BeginHorizontal();
 

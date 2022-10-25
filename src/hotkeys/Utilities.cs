@@ -6,6 +6,7 @@ using System.Linq;
 using Kingmaker;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.GameModes;
+using Kingmaker.Localization;
 using Kingmaker.UI.Common;
 using Kingmaker.UI.FullScreenUITypes;
 using UnityEngine;
@@ -59,9 +60,13 @@ namespace Apocc.Pw.Hotkeys
             return party;
         }
 
+        internal static LocalizedString GetString(string key) => new LocalizedString() { Key = key };
+
         internal static bool IsFullScreenUiWithCharSelect() =>
                     Game.Instance.CurrentMode == GameModeType.FullScreenUi &&
             TypesCharacterSelectionVisible.Contains(Main.Reporter.CurrentFullScreenUIType);
+
+        internal static string GetKey(string postfix) => $"{Globals.ModMenuSettingsKey}.{postfix}";
 
 #if DEBUG
 

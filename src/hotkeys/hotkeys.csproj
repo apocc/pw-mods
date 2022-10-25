@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Apocc.Pw.Hotkeys</RootNamespace>
     <AssemblyName>Apocc.Pw.Hotkeys</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,6 +52,9 @@
     <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="ModMenu">
+      <HintPath>..\..\libs\ModMenu.dll</HintPath>
     </Reference>
     <Reference Include="Owlcat.Runtime.UI, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -92,8 +96,7 @@
   <ItemGroup>
     <Compile Include="Data\ActionBar\GuiActionBar.cs" />
     <Compile Include="Data\ActionBar\Runner.cs" />
-    <Compile Include="Data\AiStealth\GuiAiStealth.cs" />
-    <Compile Include="Data\AiStealth\Runner.cs" />
+    <Compile Include="Data\AiStealth.cs" />
     <Compile Include="Data\CharacterSelect\GuiCharacterSelect.cs" />
     <Compile Include="Data\CharacterSelect\Runner.cs" />
     <Compile Include="Data\Formation\GuiFormation.cs" />
@@ -108,6 +111,7 @@
     <Compile Include="Data\GuiBuilder.cs" />
     <Compile Include="Data\SettingsLocaleData.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="ModMenuSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Utilities.cs" />
@@ -125,6 +129,12 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <_CopyLocalisation Include="$(TargetDir)Localisation\*.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Localisation\deDE.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\AiStealth\" />
   </ItemGroup>
   <Target Name="CopyToModsFolder" AfterTargets="AfterBuild" Condition="'$(Configuration)' == 'Debug'">
     <Message Text="Start copying mod files" Importance="high" />
