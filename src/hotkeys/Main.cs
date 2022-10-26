@@ -5,11 +5,10 @@ using System;
 using System.Reflection;
 using Apocc.Pw.Hotkeys.Data;
 using HarmonyLib;
-using Kingmaker;
 using Kingmaker.Blueprints.JsonSystem;
-using Kingmaker.GameModes;
 using Kingmaker.PubSubSystem;
 using UnityModManagerNet;
+
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys
@@ -56,28 +55,6 @@ namespace Apocc.Pw.Hotkeys
 
                     Reporter = new FullScreenUiTypeReporter();
                     DisposableReporter = EventBus.Subscribe(Reporter);
-                }
-
-                try
-                {
-                    GameModeType mode = Game.Instance.CurrentMode;
-                    if (mode != GameModeType.Default
-                        && mode != GameModeType.Pause
-                        && mode != GameModeType.FullScreenUi)
-                        return;
-
-                    if (Settings.EnableCharSel &&
-                        Utilities.TypesCharacterSelectionVisible.Contains(Reporter.CurrentFullScreenUIType))
-                        Data.CharacterSelect.Runner.Run();
-
-                    if (Settings.EnableForm &&
-                        Utilities.TypesForForm.Contains(Reporter.CurrentFullScreenUIType))
-                        Data.Formation.Runner.Run();
-                }
-                catch (Exception e)
-                {
-                    Log.Error("Postfix: Couldn't exec Postfix", Globals.LogPrefix);
-                    Globals.LogException(e);
                 }
             }
         }

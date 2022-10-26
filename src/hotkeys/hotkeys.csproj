@@ -96,10 +96,8 @@
   <ItemGroup>
     <Compile Include="Data\ActionBar.cs" />
     <Compile Include="Data\AiStealth.cs" />
-    <Compile Include="Data\CharacterSelect\GuiCharacterSelect.cs" />
-    <Compile Include="Data\CharacterSelect\Runner.cs" />
-    <Compile Include="Data\Formation\GuiFormation.cs" />
-    <Compile Include="Data\Formation\Runner.cs" />
+    <Compile Include="Data\CharacterSelect.cs" />
+    <Compile Include="Data\Formation.cs" />
     <Compile Include="Data\FullScreenUiTypeReporter.cs" />
     <Compile Include="Data\QuickSlot.cs" />
     <Compile Include="Data\WeaponSets.cs" />

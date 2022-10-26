@@ -30,17 +30,17 @@ namespace Apocc.Pw.Hotkeys
 
     internal sealed class ModMenuSettings
     {
-        private static string _keyTitle = Utilities.GetKey("title");
-        private static string _keyBtnVerboseDesc = Utilities.GetKey("btn.verbose.desc");
-        private static string _keyBtnVerboseText = Utilities.GetKey("btn.verbose.text");
+        private static readonly string _keyTitle = Utilities.GetKey("title");
+        private static readonly string _keyBtnVerboseDesc = Utilities.GetKey("btn.verbose.desc");
+        private static readonly string _keyBtnVerboseText = Utilities.GetKey("btn.verbose.text");
 
         private CultureInfo _ci;
         private bool _initialized = false;
         private SettingsBuilder _settings;
         private static readonly ModLockEntry[] _entriesEnGB = new ModLockEntry[]
         {
-            new ModLockEntry("apocchotkeys.settings.btn.verbose.desc",""),
-            new ModLockEntry("apocchotkeys.settings.btn.verbose.text",""),
+            new ModLockEntry(_keyBtnVerboseDesc,"Only for debugging purposes, please deactivate during normal gameplay."),
+            new ModLockEntry(_keyBtnVerboseText,"Enable verbose logging"),
 
             new ModLockEntry(AiStealth.KeyHeader, "Ai and Stealth"),
             new ModLockEntry(AiStealth.KeyBtnEnableDesc, "Enable Ai and Stealth hotkeys"),
@@ -64,7 +64,8 @@ namespace Apocc.Pw.Hotkeys
             new ModLockEntry(ActionBar.KeyKbSpellsDesc, "Toggle spells panel"),
             new ModLockEntry(ActionBar.KeyKbQuickDesc, "Toggle quick slot panel"),
 
-            new ModLockEntry(QuickSlot.KeyHeader, "Quick slots"),
+            new ModLockEntry(QuickSlot.KeyHeader, "Quick Slot"),
+            new ModLockEntry(QuickSlot.KeyBtnEnableDesc, "Enable Quick Slot hotkeys"),
             new ModLockEntry(QuickSlot.KeyKb00Desc, "Hotkey for slot 1"),
             new ModLockEntry(QuickSlot.KeyKb01Desc, "Hotkey for slot 2"),
             new ModLockEntry(QuickSlot.KeyKb02Desc, "Hotkey for slot 3"),
@@ -72,6 +73,21 @@ namespace Apocc.Pw.Hotkeys
             new ModLockEntry(QuickSlot.KeyKb04Desc, "Hotkey for slot 5"),
             new ModLockEntry(QuickSlot.KeyToggleForAllDesc, "For all selected chararacters"),
             new ModLockEntry(QuickSlot.KeyToggleQuickSlotPlacementDesc, "Use quick slot placement"),
+
+            new ModLockEntry(CharacterSelect.KeyHeader, "Character Select"),
+            new ModLockEntry(CharacterSelect.KeyBtnEnableDesc, "Enable Character Select hotkeys"),
+            new ModLockEntry(CharacterSelect.KeyKbNextDesc, "Hotkey to select next character"),
+            new ModLockEntry(CharacterSelect.KeyKbPrevDesc, "Hotkey to select previous character"),
+
+            new ModLockEntry(Formation.KeyHeader, "Formations"),
+            new ModLockEntry(Formation.KeyBtnEnableDesc, "Enable Formations hotkeys"),
+            new ModLockEntry(Formation.KeyKb00Desc, "Hotkey for formation: auto"),
+            new ModLockEntry(Formation.KeyKb01Desc, "Hotkey for formation: triangle"),
+            new ModLockEntry(Formation.KeyKb02Desc, "Hotkey for formation: star"),
+            new ModLockEntry(Formation.KeyKb03Desc, "Hotkey for formation: waves"),
+            new ModLockEntry(Formation.KeyKb04Desc, "Hotkey for formation: circle"),
+            new ModLockEntry(Formation.KeyKb05Desc, "Hotkey for formation: hammer"),
+            new ModLockEntry(Formation.KeyKbCycleDesc, "Hotkey for formation cycle"),
         };
 
         internal void CheckLocale()
@@ -148,6 +164,8 @@ namespace Apocc.Pw.Hotkeys
             WeaponSets.AddModMenuSettings(_settings);
             ActionBar.AddModMenuSettings(_settings);
             QuickSlot.AddModMenuSettings(_settings);
+            CharacterSelect.AddModMenuSettings(_settings);
+            Formation.AddModMenuSettings(_settings);
 
             ModMenu.ModMenu.AddSettings(_settings);
 

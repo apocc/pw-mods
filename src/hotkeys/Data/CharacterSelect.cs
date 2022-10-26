@@ -6,15 +6,50 @@ using System.Linq;
 using Kingmaker;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.UI.Common;
+using ModMenu.Settings;
+
+using static Kingmaker.UI.KeyboardAccess;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
-namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
+namespace Apocc.Pw.Hotkeys.Data
 {
-    internal static class Runner
+    internal static class CharacterSelect
     {
         private static int _selectedCharacterIndex = 0;
 
-        private static void ChangeCharacter(bool next = true)
+        internal static readonly string KeyBtnEnable = Utilities.GetKey("cs.btn.enable");
+        internal static readonly string KeyKbNext = Utilities.GetKey("cs.kb.next");
+        internal static readonly string KeyKbPrev = Utilities.GetKey("cs.kb.prev");
+
+        internal static readonly string KeyBtnEnableDesc = Utilities.GetKey("cs.btn.enable.desc");
+        internal static readonly string KeyHeader = Utilities.GetKey("cs.header");
+        internal static readonly string KeyKbNextDesc = Utilities.GetKey("cs.kb.next.desc");
+        internal static readonly string KeyKbPrevDesc = Utilities.GetKey("cs.kb.prev.desc");
+
+        internal static void AddModMenuSettings(SettingsBuilder sb)
+        {
+            Log.Log("Initializing character select settings", Globals.LogPrefix);
+
+            sb.AddSubHeader(Utilities.GetString(KeyHeader))
+                .AddToggle(
+                    Toggle
+                        .New(KeyBtnEnable, false, Utilities.GetString(KeyBtnEnableDesc)))
+                .AddKeyBinding(
+                    KeyBinding
+                        .New(KeyKbNext, GameModesGroup.World, Utilities.GetString(KeyKbNextDesc)), () => OnPress())
+                .AddKeyBinding(
+                    KeyBinding
+                        .New(KeyKbPrev, GameModesGroup.World, Utilities.GetString(KeyKbPrevDesc)), () => OnPress(false));
+        }
+
+        private static void OnPress(bool next = true)
+        {
+            var enabled = ModMenu.ModMenu.GetSettingValue<bool>(KeyBtnEnable);
+            if (enabled && Utilities.TypesCharacterSelectionVisible.Contains(Main.Reporter.CurrentFullScreenUIType))
+                ChangeCharacter(next);
+        }
+
+        private static void ChangeCharacter(bool next)
         {
 #if DEBUG
             var parties = new Dictionary<string, IEnumerable<UnitEntityData>>
@@ -31,7 +66,7 @@ namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
             };
 
             foreach (var p in parties)
-                UIUtility.SendWarning($"{ p.Key}: { string.Join(",", p.Value.Select(c => c.CharacterName))}");
+                UIUtility.SendWarning($"{p.Key}: {string.Join(",", p.Value.Select(c => c.CharacterName))}");
 #endif
             var isInFullScreenUi = Utilities.IsFullScreenUiWithCharSelect();
             var party = Utilities.GetParty();
@@ -82,15 +117,6 @@ namespace Apocc.Pw.Hotkeys.Data.CharacterSelect
             {
                 Log.Log($"ChangeCharacter: new index: {_selectedCharacterIndex}", Globals.LogPrefix);
             }
-        }
-
-        internal static void Run()
-        {
-            if (Main.Settings.CsNext.Up())
-                ChangeCharacter();
-
-            if (Main.Settings.CsPrev.Up())
-                ChangeCharacter(false);
         }
     }
 }
