@@ -29,7 +29,7 @@ namespace Apocc.Pw.Hotkeys
             {
                 try
                 {
-                    if(ModMenuSettings == null)
+                    if (ModMenuSettings == null)
                         ModMenuSettings = new ModMenuSettings();
 
                     ModMenuSettings.Init();
@@ -76,10 +76,6 @@ namespace Apocc.Pw.Hotkeys
                     if (Settings.EnableForm &&
                         Utilities.TypesForForm.Contains(Reporter.CurrentFullScreenUIType))
                         Data.Formation.Runner.Run();
-
-                    if (Settings.EnableActionBar &&
-                        Utilities.TypesForActionBar.Contains(Reporter.CurrentFullScreenUIType))
-                        Data.ActionBar.Runner.Run();
                 }
                 catch (Exception e)
                 {

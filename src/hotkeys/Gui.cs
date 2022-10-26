@@ -3,7 +3,6 @@
 
 using System.Collections.Generic;
 using Apocc.Pw.Hotkeys.Data;
-using Apocc.Pw.Hotkeys.Data.ActionBar;
 using Apocc.Pw.Hotkeys.Data.CharacterSelect;
 using Apocc.Pw.Hotkeys.Data.Formation;
 using Apocc.Pw.Hotkeys.Data.UsableItems;
@@ -76,15 +75,6 @@ namespace Apocc.Pw.Hotkeys
                 GuiFormation.Draw();
 
             GUILayout.BeginHorizontal();
-
-            var visibleAc = Grouping(cd.GroupAc);
-
-            GUILayout.EndHorizontal();
-
-            if (visibleAc)
-                GuiActionBar.Draw();
-
-            GUILayout.EndVertical();
         }
 
         internal static void OnShowGUI(bool enabled, UnityModManager.ModEntry modEntry)

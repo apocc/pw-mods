@@ -57,6 +57,12 @@ namespace Apocc.Pw.Hotkeys
             new ModLockEntry(WeaponSets.KeyToggleForAllDesc, "For all selected chararacters"),
             new ModLockEntry(WeaponSets.KeyToggleInventoryDesc, "Enable weapon set hotkeys when in inventory"),
             new ModLockEntry(WeaponSets.KeyToggleInventoryForAllDesc, "For all selected chararacters when in inventory"),
+
+            new ModLockEntry(ActionBar.KeyHeader, "Action Bar"),
+            new ModLockEntry(ActionBar.KeyBtnEnableDesc, "Enable Action Bar hotkeys"),
+            new ModLockEntry(ActionBar.KeyKbAbilityDesc, "Toggle ability panel"),
+            new ModLockEntry(ActionBar.KeyKbSpellsDesc, "Toggle spells panel"),
+            new ModLockEntry(ActionBar.KeyKbQuickDesc, "Toggle quick slot panel"),
         };
 
         internal void CheckLocale()

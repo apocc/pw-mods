@@ -41,16 +41,11 @@ namespace Apocc.Pw.Hotkeys.Data
 
         private static void IncrementSetIndex(int index)
         {
-            Log.Log($"IncrementSetIndex: {index}", Globals.LogPrefix);
-
             var mode = Game.Instance.CurrentMode;
             var isInInventory = mode == GameModeType.FullScreenUi;
             var forAll = ModMenu.ModMenu.GetSettingValue<bool>(KeyToggleForAll);
             var enableInInventory = ModMenu.ModMenu.GetSettingValue<bool>(KeyToggleInventory);
             var enableInInventoryForAll = ModMenu.ModMenu.GetSettingValue<bool>(KeyToggleInventoryForAll);
-
-
-            Log.Log($"IncrementSetIndex - stats: {mode} - {isInInventory} - {forAll} - {enableInInventory} - {enableInInventoryForAll}", Globals.LogPrefix);
 
             if (isInInventory && !enableInInventory)
                 return;
@@ -85,9 +80,6 @@ namespace Apocc.Pw.Hotkeys.Data
         private static void OnPress(int index = -1)
         {
             var enabled = ModMenu.ModMenu.GetSettingValue<bool>(KeyBtnEnable);
-
-            Log.Log($"OnPress: {enabled} - {Main.Reporter.CurrentFullScreenUIType}", Globals.LogPrefix);
-
             if (enabled && Utilities.TypesForTws.Contains(Main.Reporter.CurrentFullScreenUIType))
                 IncrementSetIndex(index);
         }
