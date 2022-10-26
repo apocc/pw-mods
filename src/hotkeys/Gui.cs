@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using Apocc.Pw.Hotkeys.Data;
 using Apocc.Pw.Hotkeys.Data.CharacterSelect;
 using Apocc.Pw.Hotkeys.Data.Formation;
-using Apocc.Pw.Hotkeys.Data.UsableItems;
 using UnityEngine;
 using UnityModManagerNet;
 
@@ -46,15 +45,6 @@ namespace Apocc.Pw.Hotkeys
             GUILayout.EndVertical();
 
             GUILayout.BeginVertical();
-
-            GUILayout.BeginHorizontal();
-
-            var visibleQs = Grouping(cd.GroupQs);
-
-            GUILayout.EndHorizontal();
-
-            if (visibleQs)
-                GuiUsableItems.Draw();
 
             GUILayout.BeginHorizontal();
 

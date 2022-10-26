@@ -40,7 +40,7 @@ namespace Apocc.Pw.Hotkeys
             FullScreenUIType.Inventory,
         };
 
-        internal static List<FullScreenUIType> TypesForUsit = new List<FullScreenUIType>
+        internal static List<FullScreenUIType> TypesForQs = new List<FullScreenUIType>
         {
             FullScreenUIType.Unknown,
             FullScreenUIType.Inventory,

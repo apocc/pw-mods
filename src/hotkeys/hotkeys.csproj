@@ -101,8 +101,7 @@
     <Compile Include="Data\Formation\GuiFormation.cs" />
     <Compile Include="Data\Formation\Runner.cs" />
     <Compile Include="Data\FullScreenUiTypeReporter.cs" />
-    <Compile Include="Data\UsableItems\GuiUsableItems.cs" />
-    <Compile Include="Data\UsableItems\Runner.cs" />
+    <Compile Include="Data\QuickSlot.cs" />
     <Compile Include="Data\WeaponSets.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Gui.cs" />
@@ -131,9 +130,7 @@
   <ItemGroup>
     <Content Include="Localisation\deDE.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\AiStealth\" />
-  </ItemGroup>
+  <ItemGroup />
   <Target Name="CopyToModsFolder" AfterTargets="AfterBuild" Condition="'$(Configuration)' == 'Debug'">
     <Message Text="Start copying mod files" Importance="high" />
     <Copy SourceFiles="$(TargetPath);$(TargetDir)Info.json" DestinationFolder="$(WrathPath)\Mods\hotkeysSetAiStealth" />

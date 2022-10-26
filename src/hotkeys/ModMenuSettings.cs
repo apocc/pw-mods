@@ -63,6 +63,15 @@ namespace Apocc.Pw.Hotkeys
             new ModLockEntry(ActionBar.KeyKbAbilityDesc, "Toggle ability panel"),
             new ModLockEntry(ActionBar.KeyKbSpellsDesc, "Toggle spells panel"),
             new ModLockEntry(ActionBar.KeyKbQuickDesc, "Toggle quick slot panel"),
+
+            new ModLockEntry(QuickSlot.KeyHeader, "Quick slots"),
+            new ModLockEntry(QuickSlot.KeyKb00Desc, "Hotkey for slot 1"),
+            new ModLockEntry(QuickSlot.KeyKb01Desc, "Hotkey for slot 2"),
+            new ModLockEntry(QuickSlot.KeyKb02Desc, "Hotkey for slot 3"),
+            new ModLockEntry(QuickSlot.KeyKb03Desc, "Hotkey for slot 4"),
+            new ModLockEntry(QuickSlot.KeyKb04Desc, "Hotkey for slot 5"),
+            new ModLockEntry(QuickSlot.KeyToggleForAllDesc, "For all selected chararacters"),
+            new ModLockEntry(QuickSlot.KeyToggleQuickSlotPlacementDesc, "Use quick slot placement"),
         };
 
         internal void CheckLocale()
@@ -137,6 +146,8 @@ namespace Apocc.Pw.Hotkeys
 
             AiStealth.AddModMenuSettings(_settings);
             WeaponSets.AddModMenuSettings(_settings);
+            ActionBar.AddModMenuSettings(_settings);
+            QuickSlot.AddModMenuSettings(_settings);
 
             ModMenu.ModMenu.AddSettings(_settings);
 
