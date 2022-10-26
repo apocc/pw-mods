@@ -66,9 +66,6 @@ namespace Apocc.Pw.Hotkeys
                         && mode != GameModeType.FullScreenUi)
                         return;
 
-                    if (Settings.EnableTws && Utilities.TypesForTws.Contains(Reporter.CurrentFullScreenUIType))
-                        Data.WeaponSets.Runner.Run();
-
                     if (Settings.EnableUsit && Utilities.TypesForUsit.Contains(Reporter.CurrentFullScreenUIType))
                         Data.UsableItems.Runner.Run();
 

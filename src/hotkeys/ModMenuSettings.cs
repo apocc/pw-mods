@@ -26,7 +26,6 @@ namespace Apocc.Pw.Hotkeys
             Key = key;
             Value = value;
         }
-
     }
 
     internal sealed class ModMenuSettings
@@ -43,11 +42,21 @@ namespace Apocc.Pw.Hotkeys
             new ModLockEntry("apocchotkeys.settings.btn.verbose.desc",""),
             new ModLockEntry("apocchotkeys.settings.btn.verbose.text",""),
 
-            new ModLockEntry(AiStealth.PKeyHeader, "Ai and Stealth"),
-            new ModLockEntry(AiStealth.PKeyBtnEnableDesc, "Enable Ai and Stealth hotkeys"),
-            new ModLockEntry(AiStealth.PKeyKbAiDesc, "AI hotkey"),
-            new ModLockEntry(AiStealth.PKeyKbStealthDesc, "Stealth hotkey"),
-            new ModLockEntry("btn",""),
+            new ModLockEntry(AiStealth.KeyHeader, "Ai and Stealth"),
+            new ModLockEntry(AiStealth.KeyBtnEnableDesc, "Enable Ai and Stealth hotkeys"),
+            new ModLockEntry(AiStealth.KeyKbAiDesc, "AI hotkey"),
+            new ModLockEntry(AiStealth.KeyKbStealthDesc, "Stealth hotkey"),
+
+            new ModLockEntry(WeaponSets.KeyHeader, "Weapon Sets"),
+            new ModLockEntry(WeaponSets.KeyBtnEnableDesc, "Enable Weapon Set hotkeys"),
+            new ModLockEntry(WeaponSets.KeyKb00Desc, "Hotkey for weapon set 1"),
+            new ModLockEntry(WeaponSets.KeyKb01Desc, "Hotkey for weapon set 2"),
+            new ModLockEntry(WeaponSets.KeyKb02Desc, "Hotkey for weapon set 3"),
+            new ModLockEntry(WeaponSets.KeyKb03Desc, "Hotkey for weapon set 4"),
+            new ModLockEntry(WeaponSets.KeyKbCycleDesc, "Hotkey for weapon set cycle"),
+            new ModLockEntry(WeaponSets.KeyToggleForAllDesc, "For all selected chararacters"),
+            new ModLockEntry(WeaponSets.KeyToggleInventoryDesc, "Enable weapon set hotkeys when in inventory"),
+            new ModLockEntry(WeaponSets.KeyToggleInventoryForAllDesc, "For all selected chararacters when in inventory"),
         };
 
         internal void CheckLocale()
@@ -121,6 +130,7 @@ namespace Apocc.Pw.Hotkeys
             _settings.AddButton(Button.New(Utilities.GetString(_keyBtnVerboseDesc), Utilities.GetString(_keyBtnVerboseText), OnVerbose));
 
             AiStealth.AddModMenuSettings(_settings);
+            WeaponSets.AddModMenuSettings(_settings);
 
             ModMenu.ModMenu.AddSettings(_settings);
 

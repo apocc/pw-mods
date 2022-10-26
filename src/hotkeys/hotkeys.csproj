@@ -104,8 +104,7 @@
     <Compile Include="Data\FullScreenUiTypeReporter.cs" />
     <Compile Include="Data\UsableItems\GuiUsableItems.cs" />
     <Compile Include="Data\UsableItems\Runner.cs" />
-    <Compile Include="Data\WeaponSets\GuiWeaponSets.cs" />
-    <Compile Include="Data\WeaponSets\Runner.cs" />
+    <Compile Include="Data\WeaponSets.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="Gui.cs" />
     <Compile Include="Data\GuiBuilder.cs" />
