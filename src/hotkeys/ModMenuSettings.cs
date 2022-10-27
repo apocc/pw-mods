@@ -10,6 +10,7 @@ using ModMenu.Settings;
 using Apocc.Pw.Hotkeys.Data;
 
 using Log = UnityModManagerNet.UnityModManager.Logger;
+using HarmonyLib;
 
 namespace Apocc.Pw.Hotkeys
 {
@@ -20,6 +21,8 @@ namespace Apocc.Pw.Hotkeys
 
         [XmlText]
         public string Value { get; set; }
+
+        public ModLockEntry() { }
 
         public ModLockEntry(string key, string value)
         {
@@ -34,7 +37,7 @@ namespace Apocc.Pw.Hotkeys
         private static readonly string _keyBtnVerboseDesc = Utilities.GetKey("btn.verbose.desc");
         private static readonly string _keyBtnVerboseText = Utilities.GetKey("btn.verbose.text");
 
-        private CultureInfo _ci;
+        private static CultureInfo _ci;
         private bool _initialized = false;
         private SettingsBuilder _settings;
         private static readonly ModLockEntry[] _entriesEnGB = new ModLockEntry[]
@@ -90,7 +93,7 @@ namespace Apocc.Pw.Hotkeys
             new ModLockEntry(Formation.KeyKbCycleDesc, "Hotkey for formation cycle"),
         };
 
-        internal void CheckLocale()
+        public static void CheckLocale()
         {
             Log.Log($"Checking if locale has changed: {_ci} -> {LocalizationManager.CurrentLocale}", Globals.LogPrefix);
 
@@ -115,7 +118,7 @@ namespace Apocc.Pw.Hotkeys
                 }
 
                 var serializer = new XmlSerializer(typeof(ModLockEntry[]));
-                using (var fs = new FileStream("", FileMode.Open, FileAccess.Read, FileShare.Read))
+                using (var fs = new FileStream(Path.Combine("Mods", Globals.ModId, Globals.LocalisationFolder), FileMode.Open, FileAccess.Read, FileShare.Read))
                 {
                     var entries = serializer.Deserialize(fs) as ModLockEntry[];
 
@@ -131,7 +134,7 @@ namespace Apocc.Pw.Hotkeys
             }
         }
 
-        private void UpdateLocalisationPackWith(ModLockEntry[] entries)
+        private static void UpdateLocalisationPackWith(ModLockEntry[] entries)
         {
             Log.Log("Updating locale pack", Globals.LogPrefix);
 
@@ -147,8 +150,6 @@ namespace Apocc.Pw.Hotkeys
 
         internal void Init()
         {
-            CheckLocale();
-
             if (_initialized)
             {
                 Log.Log("ModMenu settings already initialized", Globals.LogPrefix);
@@ -176,6 +177,22 @@ namespace Apocc.Pw.Hotkeys
         internal void OnVerbose()
         {
             Log.Log("Verbose logging toggle");
+        }
+    }
+
+    [HarmonyPatch(typeof(LocalizationManager))]
+    public static class LocalizationManager_OnLocaleChanged_Prefix_Patch
+    {
+        [HarmonyPrefix]
+        [HarmonyPatch("OnLocaleChanged")]
+        public static bool Prefix()
+        {
+            if (Main.Settings.EnableVerboseLogging)
+                Log.Log($"LocalizationManager_OnLocaleChanged_Prefix_Patch: New locale -> {LocalizationManager.CurrentLocale}", Globals.LogPrefix);
+
+            ModMenuSettings.CheckLocale();
+
+            return true;
         }
     }
 }

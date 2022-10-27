@@ -19,7 +19,7 @@ namespace Apocc.Pw.Hotkeys
 
         public static string ModId = "ApoccHotkeys";
         public static string LogPrefix = $"[{ModId}] ";
-        public static string ModMenuSettingsKey = $"{ModId.ToLowerInvariant()}.settings";
+        public static string ModMenuSettingsKey = "apocc.hotkeys.settings";
         public static string ModTitle = "Additional Hotkeys";
         public static string Sepatator = "---------------";
 

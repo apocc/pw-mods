@@ -1,58 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfModLockEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <ModLockEntry key="apocchotkeys.settings.btn.verbose.text">value</ModLockEntry>
-    <ModLockEntry key="apocchotkeys.settings.btn.verbose.desc">value</ModLockEntry>
-                       
-    <ModLockEntry key="apocchotkeys.settings.ais.header">value</ModLockEntry>
-    <ModLockEntry key="apocchotkeys.settings.ais.btn.enable.text">value</ModLockEntry>
-    <ModLockEntry key="apocchotkeys.settings.ais.btn.enable.desc">value</ModLockEntry>
-    <ModLockEntry key="apocchotkeys.settings.ais.kb.ai.desc">value</ModLockEntry>
-                       
-    <ModLockEntry key="apocchotkeys.settings.ais.kb.stealth">value</ModLockEntry>
+    <ModLockEntry key="apocc.hotkeys.settings.btn.verbose.text">value</ModLockEntry>
+    <ModLockEntry key="apocc.hotkeys.settings.btn.verbose.desc">value</ModLockEntry>
+                            
+    <ModLockEntry key="apocc.hotkeys.settings.ais.header">value</ModLockEntry>
+    <ModLockEntry key="apocc.hotkeys.settings.ais.btn.enable.text">value</ModLockEntry>
+    <ModLockEntry key="apocc.hotkeys.settings.ais.btn.enable.desc">value</ModLockEntry>
+    <ModLockEntry key="apocc.hotkeys.settings.ais.kb.ai.desc">value</ModLockEntry>
+                            
+    <ModLockEntry key="apocc.hotkeys.settings.ais.kb.stealth">value</ModLockEntry>
     
-    <ModLockEntry key="LabelCsEnable">value</ModLockEntry>
-    <ModLockEntry key="LabelCsNext">value</ModLockEntry>
-    <ModLockEntry key="LabelCsPrev">value</ModLockEntry>
-    <ModLockEntry key="LabelUsitEnable">value</ModLockEntry>
-    <ModLockEntry key="LabelUsitEnableForAll">value</ModLockEntry>
-    <ModLockEntry key="LabelFormEnable">value</ModLockEntry>
-    <ModLockEntry key="LabelFormKey00">value</ModLockEntry>
-    <ModLockEntry key="LabelFormKey01">value</ModLockEntry>
-    <ModLockEntry key="LabelFormKey02">value</ModLockEntry>
-    <ModLockEntry key="LabelFormKey03">value</ModLockEntry>
-    <ModLockEntry key="LabelFormKey04">value</ModLockEntry>
-    <ModLockEntry key="LabelFormKey05">value</ModLockEntry>
-    <ModLockEntry key="LabelFormKeyCircle">value</ModLockEntry>
-    <ModLockEntry key="LabelUsitKey00">value</ModLockEntry>
-    <ModLockEntry key="LabelUsitKey01">value</ModLockEntry>
-    <ModLockEntry key="LabelUsitKey02">value</ModLockEntry>
-    <ModLockEntry key="LabelUsitKey03">value</ModLockEntry>
-    <ModLockEntry key="LabelUsitKey04">value</ModLockEntry>
-    <ModLockEntry key="LabelUsitUseActonBarPlacement">value</ModLockEntry>
-    <ModLockEntry key="LabelTwsCycle">value</ModLockEntry>
-    <ModLockEntry key="LabelTwsEnable">value</ModLockEntry>
-    <ModLockEntry key="LabelTwsEnableForAll">value</ModLockEntry>
-    <ModLockEntry key="LabelTwsEnableForceChangeInFullScreen">value</ModLockEntry>
-    <ModLockEntry key="LabelTwsEnableFullScreen">value</ModLockEntry>
-    <ModLockEntry key="LabelTwsKey00">value</ModLockEntry>
-    <ModLockEntry key="LabelTwsKey01">value</ModLockEntry>
-    <ModLockEntry key="LabelTwsKey02">value</ModLockEntry>
-    <ModLockEntry key="LabelTwsKey03">value</ModLockEntry>
-    <ModLockEntry key="DescTwsCircle">value</ModLockEntry>
-    <ModLockEntry key="DescUsitUseActonBarPlacement">value</ModLockEntry>
-    <ModLockEntry key="DescUsitMain">value</ModLockEntry>
-    <ModLockEntry key="DescTwsEnableForAll">value</ModLockEntry>
-    <ModLockEntry key="DescTwsEnableForceChangeInFullScreen">value</ModLockEntry>
-    <ModLockEntry key="DescTwsEnableFullScreen">value</ModLockEntry>
-    <ModLockEntry key="LabelGuiButtonClear">value</ModLockEntry>
-    <ModLockEntry key="LabelActionBarEnable">value</ModLockEntry>
-    <ModLockEntry key="LabelActionBarToggleAbility">value</ModLockEntry>
-    <ModLockEntry key="LabelActionBarToggleQuick">value</ModLockEntry>
-    <ModLockEntry key="LabelActionBarToggleSpells">value</ModLockEntry>
-    <ModLockEntry key="GroupAc">value</ModLockEntry>
-    <ModLockEntry key="GroupTais">value</ModLockEntry>
-    <ModLockEntry key="GroupCs">value</ModLockEntry>
-    <ModLockEntry key="GroupForm">value</ModLockEntry>
-    <ModLockEntry key="GroupQs">value</ModLockEntry>
-    <ModLockEntry key="GroupWs">value</ModLockEntry>
 </ArrayOfModLockEntry>
