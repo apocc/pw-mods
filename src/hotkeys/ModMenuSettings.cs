@@ -31,20 +31,30 @@ namespace Apocc.Pw.Hotkeys
         }
     }
 
+    [HarmonyPatch(typeof(LocalizationManager))]
+    public static class LocalizationManager_OnLocaleChanged_Prefix_Patch
+    {
+        [HarmonyPrefix]
+        [HarmonyPatch("OnLocaleChanged")]
+        public static bool Prefix()
+        {
+            Log.Log($"LocalizationManager_OnLocaleChanged_Prefix_Patch: New locale -> {LocalizationManager.CurrentLocale}", Globals.LogPrefix);
+
+            ModMenuSettings.CheckLocale();
+
+            return true;
+        }
+    }
+
     internal sealed class ModMenuSettings
     {
         private static readonly string _keyTitle = Utilities.GetKey("title");
-        private static readonly string _keyBtnVerboseDesc = Utilities.GetKey("btn.verbose.desc");
-        private static readonly string _keyBtnVerboseText = Utilities.GetKey("btn.verbose.text");
 
         private static CultureInfo _ci;
         private bool _initialized = false;
         private SettingsBuilder _settings;
         private static readonly ModLockEntry[] _entriesEnGB = new ModLockEntry[]
         {
-            new ModLockEntry(_keyBtnVerboseDesc,"Only for debugging purposes, please deactivate during normal gameplay."),
-            new ModLockEntry(_keyBtnVerboseText,"Enable verbose logging"),
-
             new ModLockEntry(AiStealth.KeyHeader, "Ai and Stealth"),
             new ModLockEntry(AiStealth.KeyBtnEnableDesc, "Enable Ai and Stealth hotkeys"),
             new ModLockEntry(AiStealth.KeyKbAiDesc, "AI hotkey"),
@@ -52,48 +62,48 @@ namespace Apocc.Pw.Hotkeys
 
             new ModLockEntry(WeaponSets.KeyHeader, "Weapon Sets"),
             new ModLockEntry(WeaponSets.KeyBtnEnableDesc, "Enable Weapon Set hotkeys"),
-            new ModLockEntry(WeaponSets.KeyKb00Desc, "Hotkey for weapon set 1"),
-            new ModLockEntry(WeaponSets.KeyKb01Desc, "Hotkey for weapon set 2"),
-            new ModLockEntry(WeaponSets.KeyKb02Desc, "Hotkey for weapon set 3"),
-            new ModLockEntry(WeaponSets.KeyKb03Desc, "Hotkey for weapon set 4"),
-            new ModLockEntry(WeaponSets.KeyKbCycleDesc, "Hotkey for weapon set cycle"),
+            new ModLockEntry(WeaponSets.KeyKb00Desc, "Weapon set 1"),
+            new ModLockEntry(WeaponSets.KeyKb01Desc, "Weapon set 2"),
+            new ModLockEntry(WeaponSets.KeyKb02Desc, "Weapon set 3"),
+            new ModLockEntry(WeaponSets.KeyKb03Desc, "Weapon set 4"),
+            new ModLockEntry(WeaponSets.KeyKbCycleDesc, "Weapon set cycle"),
             new ModLockEntry(WeaponSets.KeyToggleForAllDesc, "For all selected chararacters"),
             new ModLockEntry(WeaponSets.KeyToggleInventoryDesc, "Enable weapon set hotkeys when in inventory"),
             new ModLockEntry(WeaponSets.KeyToggleInventoryForAllDesc, "For all selected chararacters when in inventory"),
 
             new ModLockEntry(ActionBar.KeyHeader, "Action Bar"),
             new ModLockEntry(ActionBar.KeyBtnEnableDesc, "Enable Action Bar hotkeys"),
-            new ModLockEntry(ActionBar.KeyKbAbilityDesc, "Toggle ability panel"),
-            new ModLockEntry(ActionBar.KeyKbSpellsDesc, "Toggle spells panel"),
-            new ModLockEntry(ActionBar.KeyKbQuickDesc, "Toggle quick slot panel"),
+            new ModLockEntry(ActionBar.KeyKbAbilityDesc, "Abilities"),
+            new ModLockEntry(ActionBar.KeyKbSpellsDesc, "Spells"),
+            new ModLockEntry(ActionBar.KeyKbQuickDesc, "Quick Slots"),
 
             new ModLockEntry(QuickSlot.KeyHeader, "Quick Slot"),
             new ModLockEntry(QuickSlot.KeyBtnEnableDesc, "Enable Quick Slot hotkeys"),
-            new ModLockEntry(QuickSlot.KeyKb00Desc, "Hotkey for slot 1"),
-            new ModLockEntry(QuickSlot.KeyKb01Desc, "Hotkey for slot 2"),
-            new ModLockEntry(QuickSlot.KeyKb02Desc, "Hotkey for slot 3"),
-            new ModLockEntry(QuickSlot.KeyKb03Desc, "Hotkey for slot 4"),
-            new ModLockEntry(QuickSlot.KeyKb04Desc, "Hotkey for slot 5"),
+            new ModLockEntry(QuickSlot.KeyKb00Desc, "Slot 1"),
+            new ModLockEntry(QuickSlot.KeyKb01Desc, "Slot 2"),
+            new ModLockEntry(QuickSlot.KeyKb02Desc, "Slot 3"),
+            new ModLockEntry(QuickSlot.KeyKb03Desc, "Slot 4"),
+            new ModLockEntry(QuickSlot.KeyKb04Desc, "Slot 5"),
             new ModLockEntry(QuickSlot.KeyToggleForAllDesc, "For all selected chararacters"),
             new ModLockEntry(QuickSlot.KeyToggleQuickSlotPlacementDesc, "Use quick slot placement"),
 
             new ModLockEntry(CharacterSelect.KeyHeader, "Character Select"),
             new ModLockEntry(CharacterSelect.KeyBtnEnableDesc, "Enable Character Select hotkeys"),
-            new ModLockEntry(CharacterSelect.KeyKbNextDesc, "Hotkey to select next character"),
-            new ModLockEntry(CharacterSelect.KeyKbPrevDesc, "Hotkey to select previous character"),
+            new ModLockEntry(CharacterSelect.KeyKbNextDesc, "Next character"),
+            new ModLockEntry(CharacterSelect.KeyKbPrevDesc, "Previous character"),
 
             new ModLockEntry(Formation.KeyHeader, "Formations"),
             new ModLockEntry(Formation.KeyBtnEnableDesc, "Enable Formations hotkeys"),
-            new ModLockEntry(Formation.KeyKb00Desc, "Hotkey for formation: auto"),
-            new ModLockEntry(Formation.KeyKb01Desc, "Hotkey for formation: triangle"),
-            new ModLockEntry(Formation.KeyKb02Desc, "Hotkey for formation: star"),
-            new ModLockEntry(Formation.KeyKb03Desc, "Hotkey for formation: waves"),
-            new ModLockEntry(Formation.KeyKb04Desc, "Hotkey for formation: circle"),
-            new ModLockEntry(Formation.KeyKb05Desc, "Hotkey for formation: hammer"),
-            new ModLockEntry(Formation.KeyKbCycleDesc, "Hotkey for formation cycle"),
+            new ModLockEntry(Formation.KeyKb00Desc, "Formation: auto"),
+            new ModLockEntry(Formation.KeyKb01Desc, "Formation: triangle"),
+            new ModLockEntry(Formation.KeyKb02Desc, "Formation: star"),
+            new ModLockEntry(Formation.KeyKb03Desc, "Formation: waves"),
+            new ModLockEntry(Formation.KeyKb04Desc, "Formation: circle"),
+            new ModLockEntry(Formation.KeyKb05Desc, "Formation: hammer"),
+            new ModLockEntry(Formation.KeyKbCycleDesc, "Formation cycle"),
         };
 
-        public static void CheckLocale()
+        internal static void CheckLocale()
         {
             Log.Log($"Checking if locale has changed: {_ci} -> {LocalizationManager.CurrentLocale}", Globals.LogPrefix);
 
@@ -118,11 +128,12 @@ namespace Apocc.Pw.Hotkeys
                 }
 
                 var serializer = new XmlSerializer(typeof(ModLockEntry[]));
-                using (var fs = new FileStream(Path.Combine("Mods", Globals.ModId, Globals.LocalisationFolder), FileMode.Open, FileAccess.Read, FileShare.Read))
+                var filename = $"{LocalizationManager.CurrentLocale}.xml";
+                using (var fs = new FileStream(Path.Combine("Mods", Globals.ModId, Globals.LocalisationFolder, filename), FileMode.Open, FileAccess.Read))
                 {
                     var entries = serializer.Deserialize(fs) as ModLockEntry[];
 
-                    UpdateLocalisationPackWith(entries);
+                    UpdateLocalisationPackWith(entries, true);
                 }
             }
             catch (System.Exception e)
@@ -134,15 +145,15 @@ namespace Apocc.Pw.Hotkeys
             }
         }
 
-        private static void UpdateLocalisationPackWith(ModLockEntry[] entries)
+        private static void UpdateLocalisationPackWith(ModLockEntry[] entries, bool isPrefixOnly = false)
         {
             Log.Log("Updating locale pack", Globals.LogPrefix);
 
             var currentPack = LocalizationManager.CurrentPack;
             foreach (var mle in entries)
             {
-                Log.Log("Putting: " + mle.Key, Globals.LogPrefix);
-                currentPack.PutString(mle.Key.ToLowerInvariant(), mle.Value);
+                var key = isPrefixOnly ? Utilities.GetKey(mle.Key) : mle.Key;
+                currentPack.PutString(key.ToLowerInvariant(), mle.Value);
             }
 
             currentPack.PutString(_keyTitle, Globals.ModTitle);
@@ -159,7 +170,6 @@ namespace Apocc.Pw.Hotkeys
             _settings = SettingsBuilder.New(Globals.ModMenuSettingsKey, Utilities.GetString(_keyTitle));
 
             Log.Log("Initializing ModMenu settings", Globals.LogPrefix);
-            _settings.AddButton(Button.New(Utilities.GetString(_keyBtnVerboseDesc), Utilities.GetString(_keyBtnVerboseText), OnVerbose));
 
             AiStealth.AddModMenuSettings(_settings);
             WeaponSets.AddModMenuSettings(_settings);
@@ -177,22 +187,6 @@ namespace Apocc.Pw.Hotkeys
         internal void OnVerbose()
         {
             Log.Log("Verbose logging toggle");
-        }
-    }
-
-    [HarmonyPatch(typeof(LocalizationManager))]
-    public static class LocalizationManager_OnLocaleChanged_Prefix_Patch
-    {
-        [HarmonyPrefix]
-        [HarmonyPatch("OnLocaleChanged")]
-        public static bool Prefix()
-        {
-            if (Main.Settings.EnableVerboseLogging)
-                Log.Log($"LocalizationManager_OnLocaleChanged_Prefix_Patch: New locale -> {LocalizationManager.CurrentLocale}", Globals.LogPrefix);
-
-            ModMenuSettings.CheckLocale();
-
-            return true;
         }
     }
 }

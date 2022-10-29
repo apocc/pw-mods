@@ -1,52 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfModLockEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <ModLockEntry key="btn.verbose.desc">Aktiviere Erweitertes Logging</ModLockEntry>
 
     <ModLockEntry key="ais.header">KI und Schleichen</ModLockEntry>
     <ModLockEntry key="ais.btn.enable.desc">Aktiviere KI und Schleichen</ModLockEntry>
-    <ModLockEntry key="ais.kb.ai.desc">Tastenkürzel für KI</ModLockEntry>
-    <ModLockEntry key="ais.kb.stealth.desc">Tastenkürzel für Schleichen</ModLockEntry>
+    <ModLockEntry key="ais.kb.ai.desc">KI</ModLockEntry>
+    <ModLockEntry key="ais.kb.stealth.desc">Schleichen</ModLockEntry>
 
     <ModLockEntry key="ws.btn.enable.desc">Aktiviere Waffensets</ModLockEntry>
     <ModLockEntry key="ws.header">Waffensets</ModLockEntry>
-    <ModLockEntry key="ws.kb.00.desc">Tastenkürzel für Waffenset 1</ModLockEntry>
-    <ModLockEntry key="ws.kb.00.desc">Tastenkürzel für Waffenset 2</ModLockEntry>
-    <ModLockEntry key="ws.kb.00.desc">Tastenkürzel für Waffenset 3</ModLockEntry>
-    <ModLockEntry key="ws.kb.00.desc">Tastenkürzel für Waffenset 4</ModLockEntry>
-    <ModLockEntry key="ws.kb.cycle.desc">Tastenkürzel zum Durchblättern der Sets</ModLockEntry>
+    <ModLockEntry key="ws.kb.00.desc">Waffenset 1</ModLockEntry>
+    <ModLockEntry key="ws.kb.01.desc">Waffenset 2</ModLockEntry>
+    <ModLockEntry key="ws.kb.02.desc">Waffenset 3</ModLockEntry>
+    <ModLockEntry key="ws.kb.03.desc">Waffenset 4</ModLockEntry>
+    <ModLockEntry key="ws.kb.cycle.desc">Durchblättern der Sets</ModLockEntry>
     <ModLockEntry key="ws.toggle.for.all.desc">Für alle Charaktere</ModLockEntry>
     <ModLockEntry key="ws.toggle.inventory.desc">Aktiviere im Inventar</ModLockEntry>
     <ModLockEntry key="ws.toggle.inventory.for.all.desc">Für alle Charaktere im Inventar</ModLockEntry>
 
     <ModLockEntry key="ab.btn.enable.desc">Aktiviere Aktionsleiste</ModLockEntry>
     <ModLockEntry key="ab.header">Aktionsleiste</ModLockEntry>
-    <ModLockEntry key="ab.kb.ablility.desc">Tastenkürzel für Attribute</ModLockEntry>
-    <ModLockEntry key="ab.kb.spells.desc">Tastenkürzel für Zauberbuch</ModLockEntry>
-    <ModLockEntry key="ab.kb.quick.desc">Tastenkürzel für Schnellleiste</ModLockEntry>
+    <ModLockEntry key="ab.kb.ablility.desc">Attribute</ModLockEntry>
+    <ModLockEntry key="ab.kb.spells.desc">Zauber</ModLockEntry>
+    <ModLockEntry key="ab.kb.quick.desc">Schnellleiste</ModLockEntry>
 
     <ModLockEntry key="qs.btn.enable.desc">Aktiviere Schnelleiste</ModLockEntry>
     <ModLockEntry key="qs.header">Schnelleiste</ModLockEntry>
-    <ModLockEntry key="qs.kb.00.desc">Tastenkürzel für Slot 1</ModLockEntry>
-    <ModLockEntry key="qs.kb.00.desc">Tastenkürzel für Slot 2</ModLockEntry>
-    <ModLockEntry key="qs.kb.00.desc">Tastenkürzel für Slot 3</ModLockEntry>
-    <ModLockEntry key="qs.kb.00.desc">Tastenkürzel für Slot 4</ModLockEntry>
-    <ModLockEntry key="qs.kb.00.desc">Tastenkürzel für Slot 5</ModLockEntry>
+    <ModLockEntry key="qs.kb.00.desc">Slot 1</ModLockEntry>
+    <ModLockEntry key="qs.kb.01.desc">Slot 2</ModLockEntry>
+    <ModLockEntry key="qs.kb.02.desc">Slot 3</ModLockEntry>
+    <ModLockEntry key="qs.kb.03.desc">Slot 4</ModLockEntry>
+    <ModLockEntry key="qs.kb.04.desc">Slot 5</ModLockEntry>
     <ModLockEntry key="qs.toggle.for.all.desc">Für alle Charaktere</ModLockEntry>
     <ModLockEntry key="qs.toggle.quick.slot.placement.desc">Anordnung in der Schnellleiste verwenden</ModLockEntry>
 
     <ModLockEntry key="cs.btn.enable.desc">Aktiviere Charakterauswahl</ModLockEntry>
     <ModLockEntry key="cs.header">Charakterauswahl</ModLockEntry>
-    <ModLockEntry key="cs.kb.next.desc">Tastenkürzel für nächsten Charakter</ModLockEntry>
-    <ModLockEntry key="cs.kb.prev.desc">Tastenkürzel für vorherigen Charakter</ModLockEntry>
+    <ModLockEntry key="cs.kb.next.desc">Nächster Charakter</ModLockEntry>
+    <ModLockEntry key="cs.kb.prev.desc">Vorheriger Charakter</ModLockEntry>
 
     <ModLockEntry key="fm.btn.enable.desc">Aktiviere Formationen</ModLockEntry>
     <ModLockEntry key="fm.header">Formationen</ModLockEntry>
-    <ModLockEntry key="fm.kb.00.desc">Tastenkürzel für Formation: Auto</ModLockEntry>
-    <ModLockEntry key="fm.kb.01.desc">Tastenkürzel für Formation: Dreieck</ModLockEntry>
-    <ModLockEntry key="fm.kb.02.desc">Tastenkürzel für Formation: Stern</ModLockEntry>
-    <ModLockEntry key="fm.kb.03.desc">Tastenkürzel für Formation: Wellen</ModLockEntry>
-    <ModLockEntry key="fm.kb.04.desc">Tastenkürzel für Formation: Kreis</ModLockEntry>
-    <ModLockEntry key="fm.kb.05.desc">Tastenkürzel für Formation: Hammer</ModLockEntry>
-    <ModLockEntry key="fm.kb.cycle.desc">Tastenkürzel zum Durchblättern der Formationen</ModLockEntry>
+    <ModLockEntry key="fm.kb.00.desc">Formation: Auto</ModLockEntry>
+    <ModLockEntry key="fm.kb.01.desc">Formation: Dreieck</ModLockEntry>
+    <ModLockEntry key="fm.kb.02.desc">Formation: Stern</ModLockEntry>
+    <ModLockEntry key="fm.kb.03.desc">Formation: Wellen</ModLockEntry>
+    <ModLockEntry key="fm.kb.04.desc">Formation: Kreis</ModLockEntry>
+    <ModLockEntry key="fm.kb.05.desc">Formation: Hammer</ModLockEntry>
+    <ModLockEntry key="fm.kb.cycle.desc">Durchblättern der Formationen</ModLockEntry>
 
 </ArrayOfModLockEntry>
