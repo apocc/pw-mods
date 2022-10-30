@@ -86,7 +86,6 @@ namespace Apocc.Pw.Hotkeys
                 var h = new Harmony(modEntry.Info.Id);
                 h.PatchAll(Assembly.GetExecutingAssembly());
 
-                modEntry.OnShowGUI = (UnityModManager.ModEntry me) => Gui.OnShowGUI(enabled, me);
                 modEntry.OnGUI = (UnityModManager.ModEntry me) => Gui.OnGUI(enabled, me);
                 modEntry.OnSaveGUI = OnSave;
                 modEntry.OnToggle = OnToggle;

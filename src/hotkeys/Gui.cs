@@ -14,20 +14,12 @@ namespace Apocc.Pw.Hotkeys
             if (!enabled) return;
 
             Settings settings = Main.Settings;
-            var cd = settings.GetCultureData();
 
             GUILayout.BeginVertical();
 
-            settings.EnableVerboseLogging = GuiBuilder.BuildToggle(settings.EnableVerboseLogging, cd.LabelGenVerboseLogging, null, true);
+            settings.EnableVerboseLogging = GuiBuilder.BuildToggle(settings.EnableVerboseLogging, "Enable verbose logging", null, true);
 
             GUILayout.EndVertical();
-        }
-
-        internal static void OnShowGUI(bool enabled, UnityModManager.ModEntry modEntry)
-        {
-            if (!enabled) return;
-
-            Main.Settings.UpdateCulture(modEntry);
         }
     }
 }

@@ -93,10 +93,5 @@ namespace Apocc.Pw.Hotkeys
         }
 
 #endif
-
-        public static string ToStr(this IEnumerable<string> @this, string separator)
-        {
-            return string.Join(separator, @this);
-        }
     }
 }
