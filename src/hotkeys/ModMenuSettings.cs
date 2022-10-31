@@ -8,9 +8,9 @@ using Kingmaker.Localization;
 using Kingmaker.Localization.Shared;
 using ModMenu.Settings;
 using Apocc.Pw.Hotkeys.Data;
+using HarmonyLib;
 
 using Log = UnityModManagerNet.UnityModManager.Logger;
-using HarmonyLib;
 
 namespace Apocc.Pw.Hotkeys
 {
@@ -39,7 +39,8 @@ namespace Apocc.Pw.Hotkeys
 
         internal static void CheckLocale()
         {
-            Log.Log($"Checking if locale has changed: {_ci} -> {LocalizationManager.CurrentLocale}", Globals.LogPrefix);
+            if (Main.Settings.EnableVerboseLogging)
+                Log.Log($"Checking if locale has changed: {_ci} -> {LocalizationManager.CurrentLocale}", Globals.LogPrefix);
 
             var localeHasChanged = false;
             var currentCulture = LocalizationManager.CurrentLocale.GetCulture();
@@ -53,7 +54,8 @@ namespace Apocc.Pw.Hotkeys
 
             try
             {
-                Log.Log("Trying to update locale data", Globals.LogPrefix);
+                if (Main.Settings.EnableVerboseLogging)
+                    Log.Log("Trying to update locale data", Globals.LogPrefix);
 
                 if (LocalizationManager.CurrentLocale == Locale.enGB)
                 {
@@ -63,7 +65,17 @@ namespace Apocc.Pw.Hotkeys
 
                 var serializer = new XmlSerializer(typeof(ModLockEntry[]));
                 var filename = $"{LocalizationManager.CurrentLocale}.xml";
-                using (var fs = new FileStream(Path.Combine("Mods", Globals.ModId, Globals.LocalisationFolder, filename), FileMode.Open, FileAccess.Read))
+                var filepath = Path.Combine("Mods", Globals.ModId, Globals.LocalisationFolder, filename);
+
+                if (!File.Exists(filepath))
+                {
+                    if (Main.Settings.EnableVerboseLogging)
+                        Log.Error("No localisation file found, falling back to default!", Globals.LogPrefix);
+                    UpdateLocalisationPackWith(SettingsLocaleData.EntriesEnGB);
+                    return;
+                }
+
+                using (var fs = new FileStream(filepath, FileMode.Open, FileAccess.Read))
                 {
                     var entries = serializer.Deserialize(fs) as ModLockEntry[];
 
@@ -81,7 +93,8 @@ namespace Apocc.Pw.Hotkeys
 
         private static void UpdateLocalisationPackWith(ModLockEntry[] entries, bool isPrefixOnly = false)
         {
-            Log.Log("Updating locale pack", Globals.LogPrefix);
+            if (Main.Settings.EnableVerboseLogging)
+                Log.Log("Updating locale pack", Globals.LogPrefix);
 
             var currentPack = LocalizationManager.CurrentPack;
             foreach (var mle in entries)
