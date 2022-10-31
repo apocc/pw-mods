@@ -32,10 +32,10 @@ namespace Apocc.Pw.Hotkeys.Data
                         .New(KeyBtnEnable, false, Utilities.GetString(KeyBtnEnableDesc)))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbAi, GameModesGroup.World, Utilities.GetString(KeyKbAiDesc)), OnAiKeyPress)
+                        .New(KeyKbAi, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbAiDesc)), OnAiKeyPress)
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbStealth, GameModesGroup.World, Utilities.GetString(KeyKbStealthDesc)), OnStealthKeyPress);
+                        .New(KeyKbStealth, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbStealthDesc)), OnStealthKeyPress);
         }
 
         private static void OnAiKeyPress()

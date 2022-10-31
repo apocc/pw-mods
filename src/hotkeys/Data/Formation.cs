@@ -60,10 +60,10 @@ namespace Apocc.Pw.Hotkeys.Data
                         .New(KeyKb05, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb05Desc)), () => OnPress(5))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbCycle, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbCycleDesc)), () => OnPress());
+                        .New(KeyKbCycle, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbCycleDesc)), () => OnPress(-1));
         }
 
-        private static void OnPress(int index = -1)
+        private static void OnPress(int index)
         {
             var enabled = ModMenu.ModMenu.GetSettingValue<bool>(KeyBtnEnable);
             if (enabled && Utilities.TypesForForm.Contains(Main.Reporter.CurrentFullScreenUIType))
@@ -76,7 +76,7 @@ namespace Apocc.Pw.Hotkeys.Data
             if (index == ci)
             {
                 if (Main.Settings.EnableVerboseLogging)
-                    Log.Log($"Formation: Index hasn't changed, no update needed.)", Globals.LogPrefix);
+                    Log.Log($"Formation: Index hasn't changed, no update needed.", Globals.LogPrefix);
 
                 return;
             }

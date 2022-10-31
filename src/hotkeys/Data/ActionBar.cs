@@ -42,13 +42,13 @@ namespace Apocc.Pw.Hotkeys.Data
                         .New(KeyBtnEnable, false, Utilities.GetString(KeyBtnEnableDesc)))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbAbility, GameModesGroup.World, Utilities.GetString(KeyKbAbilityDesc)), () => OnPress(SubmenuType.Ability))
+                        .New(KeyKbAbility, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbAbilityDesc)), () => OnPress(SubmenuType.Ability))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbSpells, GameModesGroup.World, Utilities.GetString(KeyKbSpellsDesc)), () => OnPress(SubmenuType.Spells))
+                        .New(KeyKbSpells, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbSpellsDesc)), () => OnPress(SubmenuType.Spells))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbQuick, GameModesGroup.World, Utilities.GetString(KeyKbQuickDesc)), () => OnPress(SubmenuType.Quick));
+                        .New(KeyKbQuick, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbQuickDesc)), () => OnPress(SubmenuType.Quick));
         }
 
         private static void OnPress(SubmenuType type)

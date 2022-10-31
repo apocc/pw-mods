@@ -36,10 +36,10 @@ namespace Apocc.Pw.Hotkeys.Data
                         .New(KeyBtnEnable, false, Utilities.GetString(KeyBtnEnableDesc)))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbNext, GameModesGroup.World, Utilities.GetString(KeyKbNextDesc)), () => OnPress())
+                        .New(KeyKbNext, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbNextDesc)), () => OnPress())
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbPrev, GameModesGroup.World, Utilities.GetString(KeyKbPrevDesc)), () => OnPress(false));
+                        .New(KeyKbPrev, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbPrevDesc)), () => OnPress(false));
         }
 
         private static void OnPress(bool next = true)
@@ -92,9 +92,7 @@ namespace Apocc.Pw.Hotkeys.Data
             UnitEntityData newChar = party[_selectedCharacterIndex];
 
             if (Main.Settings.EnableVerboseLogging)
-            {
                 Log.Log($"ChangeCharacter: change to character: {newChar.CharacterName}", Globals.LogPrefix);
-            }
 
             Game.Instance.SelectionCharacter.SetSelected(newChar);
         }
@@ -114,9 +112,7 @@ namespace Apocc.Pw.Hotkeys.Data
             _selectedCharacterIndex = newIndex >= party.Count ? 0 : (newIndex < 0 ? party.Count - 1 : newIndex);
 
             if (Main.Settings.EnableVerboseLogging)
-            {
                 Log.Log($"ChangeCharacter: new index: {_selectedCharacterIndex}", Globals.LogPrefix);
-            }
         }
     }
 }

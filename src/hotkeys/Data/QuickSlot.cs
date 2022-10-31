@@ -47,19 +47,19 @@ namespace Apocc.Pw.Hotkeys.Data
                         .New(KeyBtnEnable, false, Utilities.GetString(KeyBtnEnableDesc)))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb00, GameModesGroup.World, Utilities.GetString(KeyKb00Desc)), () => OnPress(0))
+                        .New(KeyKb00, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb00Desc)), () => OnPress(0))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb01, GameModesGroup.World, Utilities.GetString(KeyKb01Desc)), () => OnPress(1))
+                        .New(KeyKb01, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb01Desc)), () => OnPress(1))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb02, GameModesGroup.World, Utilities.GetString(KeyKb02Desc)), () => OnPress(2))
+                        .New(KeyKb02, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb02Desc)), () => OnPress(2))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb03, GameModesGroup.World, Utilities.GetString(KeyKb03Desc)), () => OnPress(3))
+                        .New(KeyKb03, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb03Desc)), () => OnPress(3))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb04, GameModesGroup.World, Utilities.GetString(KeyKb04Desc)), () => OnPress(4))
+                        .New(KeyKb04, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb04Desc)), () => OnPress(4))
                 .AddToggle(
                     Toggle
                         .New(KeyToggleForAll, false, Utilities.GetString(KeyToggleForAllDesc)))
@@ -119,7 +119,7 @@ namespace Apocc.Pw.Hotkeys.Data
 
         private static void UseQuickSlot(int index)
         {
-            var forAll = ModMenu.ModMenu.GetSettingValue<bool>(KeyToggleQuickSlotPlacement);
+            var forAll = ModMenu.ModMenu.GetSettingValue<bool>(KeyToggleForAll);
 
             if (Main.Settings.EnableVerboseLogging)
                 Log.Log($"Use slot: {index} for all: {forAll}", Globals.LogPrefix);
