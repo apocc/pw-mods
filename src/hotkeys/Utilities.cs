@@ -6,6 +6,7 @@ using System.Linq;
 using Kingmaker;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.GameModes;
+using Kingmaker.Localization;
 using Kingmaker.UI.Common;
 using Kingmaker.UI.FullScreenUITypes;
 using UnityEngine;
@@ -39,7 +40,7 @@ namespace Apocc.Pw.Hotkeys
             FullScreenUIType.Inventory,
         };
 
-        internal static List<FullScreenUIType> TypesForUsit = new List<FullScreenUIType>
+        internal static List<FullScreenUIType> TypesForQs = new List<FullScreenUIType>
         {
             FullScreenUIType.Unknown,
             FullScreenUIType.Inventory,
@@ -59,9 +60,16 @@ namespace Apocc.Pw.Hotkeys
             return party;
         }
 
+        internal static readonly string KeyBtnEnable = GetKey("btn.enable");
+        internal static readonly LocalizedString KeyBtnEnableString = GetString(KeyBtnEnable);
+
+        internal static LocalizedString GetString(string key) => new LocalizedString() { Key = key };
+
         internal static bool IsFullScreenUiWithCharSelect() =>
                     Game.Instance.CurrentMode == GameModeType.FullScreenUi &&
             TypesCharacterSelectionVisible.Contains(Main.Reporter.CurrentFullScreenUIType);
+
+        internal static string GetKey(string postfix) => $"{Globals.ModMenuSettingsKey}.{postfix}";
 
 #if DEBUG
 
@@ -88,10 +96,5 @@ namespace Apocc.Pw.Hotkeys
         }
 
 #endif
-
-        public static string ToStr(this IEnumerable<string> @this, string separator)
-        {
-            return string.Join(separator, @this);
-        }
     }
 }

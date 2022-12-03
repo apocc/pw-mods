@@ -1,129 +1,83 @@
 ﻿// Copyright (c) apocc.
 // Licensed under MIT License.
 
+using System.Xml.Serialization;
+
 namespace Apocc.Pw.Hotkeys.Data
 {
-    public sealed class SettingsLocaleData
+    public sealed class ModLocEntry
     {
-        public static SettingsLocaleData Default = new SettingsLocaleData
+        [XmlAttribute("key")]
+        public string Key { get; set; }
+
+        [XmlText]
+        public string Value { get; set; }
+
+        public ModLocEntry() { }
+
+        public ModLocEntry(string key, string value)
         {
-            LabelGenNoValidation = "There is no validation. Make sure other installed mods don't use the same key",
-            LabelGenVerboseLogging = "Enable verbose logging",
-            LabelTaisEnable = "Enable Toggle AI and Stealth",
-            LabelTaisKeyAi = "Key to toggle AI",
-            LabelTaisKeyStealth = "Key to toggle Stealth",
-            LabelCsEnable = "Enable character selection",
-            LabelCsNext = "Key to select next character",
-            LabelCsPrev = "Key to select previous character",
-            LabelFormEnable = "Enable formation hotkeys",
-            LabelFormKey00 = "Formation: auto",
-            LabelFormKey01 = "Formation: triangle",
-            LabelFormKey02 = "Formation: star",
-            LabelFormKey03 = "Formation: waves",
-            LabelFormKey04 = "Formation: circle",
-            LabelFormKey05 = "Formation: hammer",
-            LabelUsitEnable = "Enable Quick Slot item hotkeys",
-            LabelUsitEnableForAll = "For all selected chararacters",
-            LabelUsitKey00 = "Key Slot 1",
-            LabelUsitKey01 = "Key Slot 2",
-            LabelUsitKey02 = "Key Slot 3",
-            LabelUsitKey03 = "Key Slot 4",
-            LabelUsitKey04 = "Key Slot 5",
-            LabelFormKeyCircle = "Circle through formations",
-            LabelUsitUseActonBarPlacement = "Use quick slot placement",
-            LabelTwsCycle = "Key weapon cycle",
-            LabelTwsEnable = "Enable Toggle Weapon Sets",
-            LabelTwsEnableForAll = "For all selected chararacters",
-            LabelTwsEnableForceChangeInFullScreen = "Force weapon set change for all selected characters when in full screen ui",
-            LabelTwsEnableFullScreen = "Enable in full screen ui for selected character",
-            LabelTwsKey00 = "Key for weapon set 1",
-            LabelTwsKey01 = "Key for weapon set 2",
-            LabelTwsKey02 = "Key for weapon set 3",
-            LabelTwsKey03 = "Key for weapon set 4",
-            LabelActionBarEnable = "Enable action bar hotkeys",
-            LabelActionBarToggleAbility = "Toggle ability panel",
-            LabelActionBarToggleQuick = "Toggle quick slot panel",
-            LabelActionBarToggleSpells = "Toggle spells panel",
-            DescTwsCircle = "Circle through all weapon sets",
-            DescUsitUseActonBarPlacement = "Items displayed in the Quick Slot bar are always left aligned regardless of their position on the inventory panel. With this option enabled the placement of the Quick Slot bar is used, otherwise that of the inventory.",
-            DescTwsEnableForAll = "When enabled, weapon set hotkey functions will be applied to all selected characters",
-            DescTwsEnableForceChangeInFullScreen = "When enabled, weapon set hotkey functions will be applied to all selected characters when the full screen ui is active. <b>(The selected character in the full screen ui does not represent the selection 'on the field')</b>",
-            DescUsitMain = "<color=#e6e600>Known issue: Selected items a character <b>CANNOT</b> use, i.e. spells, etc., are activatable via hotkey but the items ability is not executed and the item is not consumed</color>",
-            DescTwsEnableFullScreen = "When enabled, weapon set hotkey functions will be applied when the full screen ui, i.e. inventory, spellbook, etc., is active",
+            Key = key;
+            Value = value;
+        }
+    }
 
-            LabelGuiButtonClear = "Clear",
+    internal static class SettingsLocaleData
+    {
+        internal static readonly ModLocEntry[] EntriesEnGB = new ModLocEntry[]
+        {
+            new ModLocEntry(Utilities.KeyBtnEnable, "Enable"),
 
-            GroupAc = "Action Bar",
-            GroupTais = "AI and Stealth",
-            GroupCs = "Character selection",
-            GroupForm = "Formations",
-            GroupQs = "Quick slots",
-            GroupWs = "Weapon sets"
+            new ModLocEntry(AiStealth.KeyHeader, "Ai and Stealth"),
+            new ModLocEntry(AiStealth.KeyBtnEnableTitle, "Enable Ai and Stealth hotkeys"),
+            new ModLocEntry(AiStealth.KeyKbAiTitle, "AI hotkey"),
+            new ModLocEntry(AiStealth.KeyKbStealthTitle, "Stealth hotkey"),
+
+            new ModLocEntry(WeaponSets.KeyHeader, "Weapon Sets"),
+            new ModLocEntry(WeaponSets.KeyBtnEnableTitle, "Enable Weapon Set hotkeys"),
+            new ModLocEntry(WeaponSets.KeyKb00Title, "Weapon set 1"),
+            new ModLocEntry(WeaponSets.KeyKb01Title, "Weapon set 2"),
+            new ModLocEntry(WeaponSets.KeyKb02Title, "Weapon set 3"),
+            new ModLocEntry(WeaponSets.KeyKb03Title, "Weapon set 4"),
+            new ModLocEntry(WeaponSets.KeyKbCycleTitle, "Weapon set cycle"),
+            new ModLocEntry(WeaponSets.KeyToggleForAllTitle, "For all selected chararacters"),
+            new ModLocEntry(WeaponSets.KeyToggleInventoryDesc, "If enabled the weapon set functions will be applied when on the inventory screen."),
+            new ModLocEntry(WeaponSets.KeyToggleInventoryTitle, "Enable weapon set hotkeys when in inventory"),
+            new ModLocEntry(WeaponSets.KeyToggleInventoryForAllDesc, "If enabled the weapon set functions will be applied to all selected characters 'on the field' when on the inventory screen."),
+            new ModLocEntry(WeaponSets.KeyToggleInventoryForAllTitle, "For all selected chararacters when in inventory"),
+
+            new ModLocEntry(ActionBar.KeyHeader, "Action Bar"),
+            new ModLocEntry(ActionBar.KeyBtnEnableTitle, "Enable Action Bar hotkeys"),
+            new ModLocEntry(ActionBar.KeyKbAbilityTitle, "Abilities"),
+            new ModLocEntry(ActionBar.KeyKbSpellsTitle, "Spells"),
+            new ModLocEntry(ActionBar.KeyKbQuickTitle, "Quick Slots"),
+
+            new ModLocEntry(QuickSlot.KeyHeader, "Quick Slot"),
+            new ModLocEntry(QuickSlot.KeyBtnEnableTitle, "Enable Quick Slot hotkeys"),
+            new ModLocEntry(QuickSlot.KeyKb00Title, "Slot 1"),
+            new ModLocEntry(QuickSlot.KeyKb01Title, "Slot 2"),
+            new ModLocEntry(QuickSlot.KeyKb02Title, "Slot 3"),
+            new ModLocEntry(QuickSlot.KeyKb03Title, "Slot 4"),
+            new ModLocEntry(QuickSlot.KeyKb04Title, "Slot 5"),
+            new ModLocEntry(QuickSlot.KeyToggleForAllTitle, "For all selected chararacters"),
+            new ModLocEntry(QuickSlot.KeyToggleQuickSlotPlacementDesc, 
+                "Items displayed on the Quick Slot bar are alwasy left aligned regardless of their position in the inventory panel. With this option enabled the placement of the Quick Slot Bar is used otherwise that of the inventory panel."),
+            new ModLocEntry(QuickSlot.KeyToggleQuickSlotPlacementTitle, "Use quick slot placement"),
+
+            new ModLocEntry(CharacterSelect.KeyHeader, "Character Select"),
+            new ModLocEntry(CharacterSelect.KeyBtnEnableTitle, "Enable Character Select hotkeys"),
+            new ModLocEntry(CharacterSelect.KeyKbNextTitle, "Next character"),
+            new ModLocEntry(CharacterSelect.KeyKbPrevTitle, "Previous character"),
+
+            new ModLocEntry(Formation.KeyHeader, "Formations"),
+            new ModLocEntry(Formation.KeyBtnEnableTitle, "Enable Formations hotkeys"),
+            new ModLocEntry(Formation.KeyKb00Title, "Formation: auto"),
+            new ModLocEntry(Formation.KeyKb01Title, "Formation: triangle"),
+            new ModLocEntry(Formation.KeyKb02Title, "Formation: star"),
+            new ModLocEntry(Formation.KeyKb03Title, "Formation: waves"),
+            new ModLocEntry(Formation.KeyKb04Title, "Formation: circle"),
+            new ModLocEntry(Formation.KeyKb05Title, "Formation: hammer"),
+            new ModLocEntry(Formation.KeyKbCycleTitle, "Formation cycle"),
         };
-
-        #region group
-
-        public string GroupAc { get; set; }
-        public string GroupCs { get; set; }
-        public string GroupForm { get; set; }
-        public string GroupQs { get; set; }
-        public string GroupTais { get; set; }
-        public string GroupWs { get; set; }
-
-        #endregion group
-
-        #region label
-
-        public string LabelActionBarEnable { get; set; }
-        public string LabelActionBarToggleAbility { get; set; }
-        public string LabelActionBarToggleQuick { get; set; }
-        public string LabelActionBarToggleSpells { get; set; }
-        public string LabelCsEnable { get; set; }
-        public string LabelCsNext { get; set; }
-        public string LabelCsPrev { get; set; }
-        public string LabelFormEnable { get; set; }
-        public string LabelFormKey00 { get; set; }
-        public string LabelFormKey01 { get; set; }
-        public string LabelFormKey02 { get; set; }
-        public string LabelFormKey03 { get; set; }
-        public string LabelFormKey04 { get; set; }
-        public string LabelFormKey05 { get; set; }
-        public string LabelFormKeyCircle { get; set; }
-        public string LabelGenNoValidation { get; set; }
-        public string LabelGenVerboseLogging { get; set; }
-        public string LabelGuiButtonClear { get; set; }
-        public string LabelTaisEnable { get; set; }
-        public string LabelTaisKeyAi { get; set; }
-        public string LabelTaisKeyStealth { get; set; }
-        public string LabelTwsCycle { get; set; }
-        public string LabelTwsEnable { get; set; }
-        public string LabelTwsEnableForAll { get; set; }
-        public string LabelTwsEnableForceChangeInFullScreen { get; set; }
-        public string LabelTwsEnableFullScreen { get; set; }
-        public string LabelTwsKey00 { get; set; }
-        public string LabelTwsKey01 { get; set; }
-        public string LabelTwsKey02 { get; set; }
-        public string LabelTwsKey03 { get; set; }
-        public string LabelUsitEnable { get; set; }
-        public string LabelUsitEnableForAll { get; set; }
-        public string LabelUsitKey00 { get; set; }
-        public string LabelUsitKey01 { get; set; }
-        public string LabelUsitKey02 { get; set; }
-        public string LabelUsitKey03 { get; set; }
-        public string LabelUsitKey04 { get; set; }
-        public string LabelUsitUseActonBarPlacement { get; set; }
-
-        #endregion label
-
-        #region desc
-
-        public string DescTwsCircle { get; set; }
-        public string DescTwsEnableForAll { get; set; }
-        public string DescTwsEnableForceChangeInFullScreen { get; set; }
-        public string DescTwsEnableFullScreen { get; set; }
-        public string DescUsitMain { get; set; }
-        public string DescUsitUseActonBarPlacement { get; set; }
-
-        #endregion desc
     }
 }

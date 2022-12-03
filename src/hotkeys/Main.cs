@@ -5,10 +5,10 @@ using System;
 using System.Reflection;
 using Apocc.Pw.Hotkeys.Data;
 using HarmonyLib;
-using Kingmaker;
-using Kingmaker.GameModes;
+using Kingmaker.Blueprints.JsonSystem;
 using Kingmaker.PubSubSystem;
 using UnityModManagerNet;
+
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
 namespace Apocc.Pw.Hotkeys
@@ -19,6 +19,28 @@ namespace Apocc.Pw.Hotkeys
 #endif
     public static class Main
     {
+        [HarmonyPatch(typeof(BlueprintsCache))]
+        static class BlueprintsCache_Patches
+        {
+            [HarmonyPriority(Priority.First)]
+            [HarmonyPatch(nameof(BlueprintsCache.Init)), HarmonyPostfix]
+            static void Postfix()
+            {
+                try
+                {
+                    if (ModMenuSettings == null)
+                        ModMenuSettings = new ModMenuSettings();
+
+                    ModMenuSettings.Init();
+                }
+                catch (Exception e)
+                {
+                    Log.Error("Postfix: Error BlueprintsCache.Init", Globals.LogPrefix);
+                    Globals.LogException(e);
+                }
+            }
+        }
+
         [HarmonyPatch(typeof(UnityModManager.UI), "Update")]
         public static class UnityModManager_UI_Update_Patch
         {
@@ -34,44 +56,10 @@ namespace Apocc.Pw.Hotkeys
                     Reporter = new FullScreenUiTypeReporter();
                     DisposableReporter = EventBus.Subscribe(Reporter);
                 }
-
-                try
-                {
-                    GameModeType mode = Game.Instance.CurrentMode;
-                    if (mode != GameModeType.Default
-                        && mode != GameModeType.Pause
-                        && mode != GameModeType.FullScreenUi)
-                        return;
-
-                    if (Settings.EnableTws && Utilities.TypesForTws.Contains(Reporter.CurrentFullScreenUIType))
-                        Data.WeaponSets.Runner.Run();
-
-                    if (mode != GameModeType.FullScreenUi && Settings.EnableTAiS)
-                        Data.AiStealth.Runner.Run();
-
-                    if (Settings.EnableUsit && Utilities.TypesForUsit.Contains(Reporter.CurrentFullScreenUIType))
-                        Data.UsableItems.Runner.Run();
-
-                    if (Settings.EnableCharSel &&
-                        Utilities.TypesCharacterSelectionVisible.Contains(Reporter.CurrentFullScreenUIType))
-                        Data.CharacterSelect.Runner.Run();
-
-                    if (Settings.EnableForm &&
-                        Utilities.TypesForForm.Contains(Reporter.CurrentFullScreenUIType))
-                        Data.Formation.Runner.Run();
-
-                    if (Settings.EnableActionBar &&
-                        Utilities.TypesForActionBar.Contains(Reporter.CurrentFullScreenUIType))
-                        Data.ActionBar.Runner.Run();
-                }
-                catch (Exception e)
-                {
-                    Log.Error("Postfix: Couldn't exec Postfix", Globals.LogPrefix);
-                    Globals.LogException(e);
-                }
             }
         }
 
+        internal static ModMenuSettings ModMenuSettings;
         internal static IDisposable DisposableReporter;
         internal static FullScreenUiTypeReporter Reporter;
 
@@ -98,7 +86,6 @@ namespace Apocc.Pw.Hotkeys
                 var h = new Harmony(modEntry.Info.Id);
                 h.PatchAll(Assembly.GetExecutingAssembly());
 
-                modEntry.OnShowGUI = (UnityModManager.ModEntry me) => Gui.OnShowGUI(enabled, me);
                 modEntry.OnGUI = (UnityModManager.ModEntry me) => Gui.OnGUI(enabled, me);
                 modEntry.OnSaveGUI = OnSave;
                 modEntry.OnToggle = OnToggle;

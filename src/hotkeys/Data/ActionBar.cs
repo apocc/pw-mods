@@ -5,18 +5,58 @@ using System.Collections.Generic;
 using HarmonyLib;
 using Kingmaker;
 using Kingmaker.UI.MVVM._PCView.ActionBar;
+using ModMenu.Settings;
+
+using static Kingmaker.UI.KeyboardAccess;
 using Log = UnityModManagerNet.UnityModManager.Logger;
 
-namespace Apocc.Pw.Hotkeys.Data.ActionBar
+namespace Apocc.Pw.Hotkeys.Data
 {
     internal enum SubmenuType
     {
         None, Ability, Spells, Quick
     }
 
-    internal static class Runner
+    internal static class ActionBar
     {
         internal static readonly Dictionary<string, bool> VisibilityStates = new Dictionary<string, bool>();
+
+        internal static readonly string KeyBtnEnable = Utilities.GetKey("ab.btn.enable");
+        internal static readonly string KeyKbAbility = Utilities.GetKey("ab.kb.ablility");
+        internal static readonly string KeyKbSpells = Utilities.GetKey("ab.kb.spells");
+        internal static readonly string KeyKbQuick = Utilities.GetKey("ab.kb.quick");
+
+        internal static readonly string KeyBtnEnableTitle = Utilities.GetKey("ab.btn.enable.title");
+        internal static readonly string KeyHeader = Utilities.GetKey("ab.header");
+        internal static readonly string KeyKbAbilityTitle = Utilities.GetKey("ab.kb.ablility.title");
+        internal static readonly string KeyKbSpellsTitle = Utilities.GetKey("ab.kb.spells.title");
+        internal static readonly string KeyKbQuickTitle = Utilities.GetKey("ab.kb.quick.title");
+
+        internal static void AddModMenuSettings(SettingsBuilder sb)
+        {
+            Log.Log("Initializing action bar settings", Globals.LogPrefix);
+
+            sb.AddSubHeader(Utilities.GetString(KeyHeader))
+                .AddToggle(
+                    Toggle
+                        .New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableTitle)))
+                .AddKeyBinding(
+                    KeyBinding
+                        .New(KeyKbAbility, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbAbilityTitle)), () => OnPress(SubmenuType.Ability))
+                .AddKeyBinding(
+                    KeyBinding
+                        .New(KeyKbSpells, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbSpellsTitle)), () => OnPress(SubmenuType.Spells))
+                .AddKeyBinding(
+                    KeyBinding
+                        .New(KeyKbQuick, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbQuickTitle)), () => OnPress(SubmenuType.Quick));
+        }
+
+        private static void OnPress(SubmenuType type)
+        {
+            var enabled = ModMenu.ModMenu.GetSettingValue<bool>(KeyBtnEnable);
+            if (enabled && Utilities.TypesForActionBar.Contains(Main.Reporter.CurrentFullScreenUIType))
+                ToggleActionBarSubmenu(type);
+        }
 
         private static void ToggleActionBarSubmenu(SubmenuType submenuType)
         {
@@ -68,22 +108,6 @@ namespace Apocc.Pw.Hotkeys.Data.ActionBar
 
             bar.SetVisible(!visible);
         }
-
-        internal static void Run()
-        {
-            if (Main.Settings.ActionBarToggleAbility.Up())
-            {
-                ToggleActionBarSubmenu(SubmenuType.Ability);
-            }
-            if (Main.Settings.ActionBarToggleSpells.Up())
-            {
-                ToggleActionBarSubmenu(SubmenuType.Spells);
-            }
-            if (Main.Settings.ActionBarToggleQuick.Up())
-            {
-                ToggleActionBarSubmenu(SubmenuType.Quick);
-            }
-        }
     }
 
     [HarmonyPatch(typeof(ActionBarGroupPCView))]
@@ -96,7 +120,7 @@ namespace Apocc.Pw.Hotkeys.Data.ActionBar
             if (Main.Settings.EnableVerboseLogging)
                 Log.Log($"ActionBarGroupPCView_SetVisible_Postfix_Patch: {__instance.name} visibility is {___VisibleState}", Globals.LogPrefix);
 
-            Runner.VisibilityStates[__instance.name] = ___VisibleState;
+            ActionBar.VisibilityStates[__instance.name] = ___VisibleState;
         }
     }
 }
