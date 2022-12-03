@@ -2,10 +2,11 @@
   "Id": "ApoccHotkeys",
   "DisplayName": "Additional Hotkeys",
   "Author": "apocc",
-  "Version": "2.2.0",
+  "Version": "3.0.0",
   "ManagerVersion": "0.23.0",
   "AssemblyName": "Apocc.Pw.Hotkeys.dll",
   "EntryMethod": "Apocc.Pw.Hotkeys.Main.Load",
+  "Requirements": [ "ModMenu-1.3.0" ],
   "HomePage": "https://www.nexusmods.com/pathfinderwrathoftherighteous/mods/68",
   "Repository": "https://raw.githubusercontent.com/apocc/pw-mods/master/repo.json"
 }
