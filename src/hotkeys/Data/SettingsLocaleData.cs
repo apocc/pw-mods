@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace Apocc.Pw.Hotkeys.Data
 {
-    public sealed class ModLockEntry
+    public sealed class ModLocEntry
     {
         [XmlAttribute("key")]
         public string Key { get; set; }
@@ -13,9 +13,9 @@ namespace Apocc.Pw.Hotkeys.Data
         [XmlText]
         public string Value { get; set; }
 
-        public ModLockEntry() { }
+        public ModLocEntry() { }
 
-        public ModLockEntry(string key, string value)
+        public ModLocEntry(string key, string value)
         {
             Key = key;
             Value = value;
@@ -24,54 +24,56 @@ namespace Apocc.Pw.Hotkeys.Data
 
     internal static class SettingsLocaleData
     {
-        internal static readonly ModLockEntry[] EntriesEnGB = new ModLockEntry[]
+        internal static readonly ModLocEntry[] EntriesEnGB = new ModLocEntry[]
         {
-            new ModLockEntry(AiStealth.KeyHeader, "Ai and Stealth"),
-            new ModLockEntry(AiStealth.KeyBtnEnableDesc, "Enable Ai and Stealth hotkeys"),
-            new ModLockEntry(AiStealth.KeyKbAiDesc, "AI hotkey"),
-            new ModLockEntry(AiStealth.KeyKbStealthDesc, "Stealth hotkey"),
+            new ModLocEntry(Utilities.KeyBtnEnable, "Enable"),
 
-            new ModLockEntry(WeaponSets.KeyHeader, "Weapon Sets"),
-            new ModLockEntry(WeaponSets.KeyBtnEnableDesc, "Enable Weapon Set hotkeys"),
-            new ModLockEntry(WeaponSets.KeyKb00Desc, "Weapon set 1"),
-            new ModLockEntry(WeaponSets.KeyKb01Desc, "Weapon set 2"),
-            new ModLockEntry(WeaponSets.KeyKb02Desc, "Weapon set 3"),
-            new ModLockEntry(WeaponSets.KeyKb03Desc, "Weapon set 4"),
-            new ModLockEntry(WeaponSets.KeyKbCycleDesc, "Weapon set cycle"),
-            new ModLockEntry(WeaponSets.KeyToggleForAllDesc, "For all selected chararacters"),
-            new ModLockEntry(WeaponSets.KeyToggleInventoryDesc, "Enable weapon set hotkeys when in inventory"),
-            new ModLockEntry(WeaponSets.KeyToggleInventoryForAllDesc, "For all selected chararacters when in inventory"),
+            new ModLocEntry(AiStealth.KeyHeader, "Ai and Stealth"),
+            new ModLocEntry(AiStealth.KeyBtnEnableDesc, "Enable Ai and Stealth hotkeys"),
+            new ModLocEntry(AiStealth.KeyKbAiDesc, "AI hotkey"),
+            new ModLocEntry(AiStealth.KeyKbStealthDesc, "Stealth hotkey"),
 
-            new ModLockEntry(ActionBar.KeyHeader, "Action Bar"),
-            new ModLockEntry(ActionBar.KeyBtnEnableDesc, "Enable Action Bar hotkeys"),
-            new ModLockEntry(ActionBar.KeyKbAbilityDesc, "Abilities"),
-            new ModLockEntry(ActionBar.KeyKbSpellsDesc, "Spells"),
-            new ModLockEntry(ActionBar.KeyKbQuickDesc, "Quick Slots"),
+            new ModLocEntry(WeaponSets.KeyHeader, "Weapon Sets"),
+            new ModLocEntry(WeaponSets.KeyBtnEnableDesc, "Enable Weapon Set hotkeys"),
+            new ModLocEntry(WeaponSets.KeyKb00Desc, "Weapon set 1"),
+            new ModLocEntry(WeaponSets.KeyKb01Desc, "Weapon set 2"),
+            new ModLocEntry(WeaponSets.KeyKb02Desc, "Weapon set 3"),
+            new ModLocEntry(WeaponSets.KeyKb03Desc, "Weapon set 4"),
+            new ModLocEntry(WeaponSets.KeyKbCycleDesc, "Weapon set cycle"),
+            new ModLocEntry(WeaponSets.KeyToggleForAllDesc, "For all selected chararacters"),
+            new ModLocEntry(WeaponSets.KeyToggleInventoryDesc, "Enable weapon set hotkeys when in inventory"),
+            new ModLocEntry(WeaponSets.KeyToggleInventoryForAllDesc, "For all selected chararacters when in inventory"),
 
-            new ModLockEntry(QuickSlot.KeyHeader, "Quick Slot"),
-            new ModLockEntry(QuickSlot.KeyBtnEnableDesc, "Enable Quick Slot hotkeys"),
-            new ModLockEntry(QuickSlot.KeyKb00Desc, "Slot 1"),
-            new ModLockEntry(QuickSlot.KeyKb01Desc, "Slot 2"),
-            new ModLockEntry(QuickSlot.KeyKb02Desc, "Slot 3"),
-            new ModLockEntry(QuickSlot.KeyKb03Desc, "Slot 4"),
-            new ModLockEntry(QuickSlot.KeyKb04Desc, "Slot 5"),
-            new ModLockEntry(QuickSlot.KeyToggleForAllDesc, "For all selected chararacters"),
-            new ModLockEntry(QuickSlot.KeyToggleQuickSlotPlacementDesc, "Use quick slot placement"),
+            new ModLocEntry(ActionBar.KeyHeader, "Action Bar"),
+            new ModLocEntry(ActionBar.KeyBtnEnableDesc, "Enable Action Bar hotkeys"),
+            new ModLocEntry(ActionBar.KeyKbAbilityDesc, "Abilities"),
+            new ModLocEntry(ActionBar.KeyKbSpellsDesc, "Spells"),
+            new ModLocEntry(ActionBar.KeyKbQuickDesc, "Quick Slots"),
 
-            new ModLockEntry(CharacterSelect.KeyHeader, "Character Select"),
-            new ModLockEntry(CharacterSelect.KeyBtnEnableDesc, "Enable Character Select hotkeys"),
-            new ModLockEntry(CharacterSelect.KeyKbNextDesc, "Next character"),
-            new ModLockEntry(CharacterSelect.KeyKbPrevDesc, "Previous character"),
+            new ModLocEntry(QuickSlot.KeyHeader, "Quick Slot"),
+            new ModLocEntry(QuickSlot.KeyBtnEnableDesc, "Enable Quick Slot hotkeys"),
+            new ModLocEntry(QuickSlot.KeyKb00Desc, "Slot 1"),
+            new ModLocEntry(QuickSlot.KeyKb01Desc, "Slot 2"),
+            new ModLocEntry(QuickSlot.KeyKb02Desc, "Slot 3"),
+            new ModLocEntry(QuickSlot.KeyKb03Desc, "Slot 4"),
+            new ModLocEntry(QuickSlot.KeyKb04Desc, "Slot 5"),
+            new ModLocEntry(QuickSlot.KeyToggleForAllDesc, "For all selected chararacters"),
+            new ModLocEntry(QuickSlot.KeyToggleQuickSlotPlacementDesc, "Use quick slot placement"),
 
-            new ModLockEntry(Formation.KeyHeader, "Formations"),
-            new ModLockEntry(Formation.KeyBtnEnableDesc, "Enable Formations hotkeys"),
-            new ModLockEntry(Formation.KeyKb00Desc, "Formation: auto"),
-            new ModLockEntry(Formation.KeyKb01Desc, "Formation: triangle"),
-            new ModLockEntry(Formation.KeyKb02Desc, "Formation: star"),
-            new ModLockEntry(Formation.KeyKb03Desc, "Formation: waves"),
-            new ModLockEntry(Formation.KeyKb04Desc, "Formation: circle"),
-            new ModLockEntry(Formation.KeyKb05Desc, "Formation: hammer"),
-            new ModLockEntry(Formation.KeyKbCycleDesc, "Formation cycle"),
+            new ModLocEntry(CharacterSelect.KeyHeader, "Character Select"),
+            new ModLocEntry(CharacterSelect.KeyBtnEnableDesc, "Enable Character Select hotkeys"),
+            new ModLocEntry(CharacterSelect.KeyKbNextDesc, "Next character"),
+            new ModLocEntry(CharacterSelect.KeyKbPrevDesc, "Previous character"),
+
+            new ModLocEntry(Formation.KeyHeader, "Formations"),
+            new ModLocEntry(Formation.KeyBtnEnableDesc, "Enable Formations hotkeys"),
+            new ModLocEntry(Formation.KeyKb00Desc, "Formation: auto"),
+            new ModLocEntry(Formation.KeyKb01Desc, "Formation: triangle"),
+            new ModLocEntry(Formation.KeyKb02Desc, "Formation: star"),
+            new ModLocEntry(Formation.KeyKb03Desc, "Formation: waves"),
+            new ModLocEntry(Formation.KeyKb04Desc, "Formation: circle"),
+            new ModLocEntry(Formation.KeyKb05Desc, "Formation: hammer"),
+            new ModLocEntry(Formation.KeyKbCycleDesc, "Formation cycle"),
         };
     }
 }

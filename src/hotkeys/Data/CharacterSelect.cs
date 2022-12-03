@@ -33,7 +33,7 @@ namespace Apocc.Pw.Hotkeys.Data
             sb.AddSubHeader(Utilities.GetString(KeyHeader))
                 .AddToggle(
                     Toggle
-                        .New(KeyBtnEnable, false, Utilities.GetString(KeyBtnEnableDesc)))
+                        .New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableDesc)))
                 .AddKeyBinding(
                     KeyBinding
                         .New(KeyKbNext, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbNextDesc)), () => OnPress())

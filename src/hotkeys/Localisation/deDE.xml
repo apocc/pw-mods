@@ -1,51 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ArrayOfModLockEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<ArrayOfModLocEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-    <ModLockEntry key="ais.header">KI und Schleichen</ModLockEntry>
-    <ModLockEntry key="ais.btn.enable.desc">Aktiviere KI und Schleichen</ModLockEntry>
-    <ModLockEntry key="ais.kb.ai.desc">KI</ModLockEntry>
-    <ModLockEntry key="ais.kb.stealth.desc">Schleichen</ModLockEntry>
+    <ModLocEntry key="btn.enable">Aktiviere</ModLocEntry>
+    <ModLocEntry key="ais.header">KI und Schleichen</ModLocEntry>
+    <ModLocEntry key="ais.btn.enable.desc">Aktiviere KI und Schleichen</ModLocEntry>
+    <ModLocEntry key="ais.kb.ai.desc">KI</ModLocEntry>
+    <ModLocEntry key="ais.kb.stealth.desc">Schleichen</ModLocEntry>
 
-    <ModLockEntry key="ws.btn.enable.desc">Aktiviere Waffensets</ModLockEntry>
-    <ModLockEntry key="ws.header">Waffensets</ModLockEntry>
-    <ModLockEntry key="ws.kb.00.desc">Waffenset 1</ModLockEntry>
-    <ModLockEntry key="ws.kb.01.desc">Waffenset 2</ModLockEntry>
-    <ModLockEntry key="ws.kb.02.desc">Waffenset 3</ModLockEntry>
-    <ModLockEntry key="ws.kb.03.desc">Waffenset 4</ModLockEntry>
-    <ModLockEntry key="ws.kb.cycle.desc">Durchblättern der Sets</ModLockEntry>
-    <ModLockEntry key="ws.toggle.for.all.desc">Für alle Charaktere</ModLockEntry>
-    <ModLockEntry key="ws.toggle.inventory.desc">Aktiviere im Inventar</ModLockEntry>
-    <ModLockEntry key="ws.toggle.inventory.for.all.desc">Für alle Charaktere im Inventar</ModLockEntry>
+    <ModLocEntry key="ws.btn.enable.desc">Aktiviere Waffensets</ModLocEntry>
+    <ModLocEntry key="ws.header">Waffensets</ModLocEntry>
+    <ModLocEntry key="ws.kb.00.desc">Waffenset 1</ModLocEntry>
+    <ModLocEntry key="ws.kb.01.desc">Waffenset 2</ModLocEntry>
+    <ModLocEntry key="ws.kb.02.desc">Waffenset 3</ModLocEntry>
+    <ModLocEntry key="ws.kb.03.desc">Waffenset 4</ModLocEntry>
+    <ModLocEntry key="ws.kb.cycle.desc">Durchblättern der Sets</ModLocEntry>
+    <ModLocEntry key="ws.toggle.for.all.desc">Für alle Charaktere</ModLocEntry>
+    <ModLocEntry key="ws.toggle.inventory.desc">Aktiviere im Inventar</ModLocEntry>
+    <ModLocEntry key="ws.toggle.inventory.for.all.desc">Für alle Charaktere im Inventar</ModLocEntry>
 
-    <ModLockEntry key="ab.btn.enable.desc">Aktiviere Aktionsleiste</ModLockEntry>
-    <ModLockEntry key="ab.header">Aktionsleiste</ModLockEntry>
-    <ModLockEntry key="ab.kb.ablility.desc">Attribute</ModLockEntry>
-    <ModLockEntry key="ab.kb.spells.desc">Zauber</ModLockEntry>
-    <ModLockEntry key="ab.kb.quick.desc">Schnellleiste</ModLockEntry>
+    <ModLocEntry key="ab.btn.enable.desc">Aktiviere Aktionsleiste</ModLocEntry>
+    <ModLocEntry key="ab.header">Aktionsleiste</ModLocEntry>
+    <ModLocEntry key="ab.kb.ablility.desc">Attribute</ModLocEntry>
+    <ModLocEntry key="ab.kb.spells.desc">Zauber</ModLocEntry>
+    <ModLocEntry key="ab.kb.quick.desc">Schnellleiste</ModLocEntry>
 
-    <ModLockEntry key="qs.btn.enable.desc">Aktiviere Schnelleiste</ModLockEntry>
-    <ModLockEntry key="qs.header">Schnelleiste</ModLockEntry>
-    <ModLockEntry key="qs.kb.00.desc">Slot 1</ModLockEntry>
-    <ModLockEntry key="qs.kb.01.desc">Slot 2</ModLockEntry>
-    <ModLockEntry key="qs.kb.02.desc">Slot 3</ModLockEntry>
-    <ModLockEntry key="qs.kb.03.desc">Slot 4</ModLockEntry>
-    <ModLockEntry key="qs.kb.04.desc">Slot 5</ModLockEntry>
-    <ModLockEntry key="qs.toggle.for.all.desc">Für alle Charaktere</ModLockEntry>
-    <ModLockEntry key="qs.toggle.quick.slot.placement.desc">Anordnung in der Schnellleiste verwenden</ModLockEntry>
+    <ModLocEntry key="qs.btn.enable.desc">Aktiviere Schnelleiste</ModLocEntry>
+    <ModLocEntry key="qs.header">Schnelleiste</ModLocEntry>
+    <ModLocEntry key="qs.kb.00.desc">Slot 1</ModLocEntry>
+    <ModLocEntry key="qs.kb.01.desc">Slot 2</ModLocEntry>
+    <ModLocEntry key="qs.kb.02.desc">Slot 3</ModLocEntry>
+    <ModLocEntry key="qs.kb.03.desc">Slot 4</ModLocEntry>
+    <ModLocEntry key="qs.kb.04.desc">Slot 5</ModLocEntry>
+    <ModLocEntry key="qs.toggle.for.all.desc">Für alle Charaktere</ModLocEntry>
+    <ModLocEntry key="qs.toggle.quick.slot.placement.desc">Anordnung in der Schnellleiste verwenden</ModLocEntry>
 
-    <ModLockEntry key="cs.btn.enable.desc">Aktiviere Charakterauswahl</ModLockEntry>
-    <ModLockEntry key="cs.header">Charakterauswahl</ModLockEntry>
-    <ModLockEntry key="cs.kb.next.desc">Nächster Charakter</ModLockEntry>
-    <ModLockEntry key="cs.kb.prev.desc">Vorheriger Charakter</ModLockEntry>
+    <ModLocEntry key="cs.btn.enable.desc">Aktiviere Charakterauswahl</ModLocEntry>
+    <ModLocEntry key="cs.header">Charakterauswahl</ModLocEntry>
+    <ModLocEntry key="cs.kb.next.desc">Nächster Charakter</ModLocEntry>
+    <ModLocEntry key="cs.kb.prev.desc">Vorheriger Charakter</ModLocEntry>
 
-    <ModLockEntry key="fm.btn.enable.desc">Aktiviere Formationen</ModLockEntry>
-    <ModLockEntry key="fm.header">Formationen</ModLockEntry>
-    <ModLockEntry key="fm.kb.00.desc">Formation: Auto</ModLockEntry>
-    <ModLockEntry key="fm.kb.01.desc">Formation: Dreieck</ModLockEntry>
-    <ModLockEntry key="fm.kb.02.desc">Formation: Stern</ModLockEntry>
-    <ModLockEntry key="fm.kb.03.desc">Formation: Wellen</ModLockEntry>
-    <ModLockEntry key="fm.kb.04.desc">Formation: Kreis</ModLockEntry>
-    <ModLockEntry key="fm.kb.05.desc">Formation: Hammer</ModLockEntry>
-    <ModLockEntry key="fm.kb.cycle.desc">Durchblättern der Formationen</ModLockEntry>
+    <ModLocEntry key="fm.btn.enable.desc">Aktiviere Formationen</ModLocEntry>
+    <ModLocEntry key="fm.header">Formationen</ModLocEntry>
+    <ModLocEntry key="fm.kb.00.desc">Formation: Auto</ModLocEntry>
+    <ModLocEntry key="fm.kb.01.desc">Formation: Dreieck</ModLocEntry>
+    <ModLocEntry key="fm.kb.02.desc">Formation: Stern</ModLocEntry>
+    <ModLocEntry key="fm.kb.03.desc">Formation: Wellen</ModLocEntry>
+    <ModLocEntry key="fm.kb.04.desc">Formation: Kreis</ModLocEntry>
+    <ModLocEntry key="fm.kb.05.desc">Formation: Hammer</ModLocEntry>
+    <ModLocEntry key="fm.kb.cycle.desc">Durchblättern der Formationen</ModLocEntry>
 
-</ArrayOfModLockEntry>
+</ArrayOfModLocEntry>

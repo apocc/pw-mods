@@ -63,7 +63,7 @@ namespace Apocc.Pw.Hotkeys
                     return;
                 }
 
-                var serializer = new XmlSerializer(typeof(ModLockEntry[]));
+                var serializer = new XmlSerializer(typeof(ModLocEntry[]));
                 var filename = $"{LocalizationManager.CurrentLocale}.xml";
                 var filepath = Path.Combine("Mods", Globals.ModId, Globals.LocalisationFolder, filename);
 
@@ -77,7 +77,7 @@ namespace Apocc.Pw.Hotkeys
 
                 using (var fs = new FileStream(filepath, FileMode.Open, FileAccess.Read))
                 {
-                    var entries = serializer.Deserialize(fs) as ModLockEntry[];
+                    var entries = serializer.Deserialize(fs) as ModLocEntry[];
 
                     UpdateLocalisationPackWith(entries, true);
                 }
@@ -91,7 +91,7 @@ namespace Apocc.Pw.Hotkeys
             }
         }
 
-        private static void UpdateLocalisationPackWith(ModLockEntry[] entries, bool isPrefixOnly = false)
+        private static void UpdateLocalisationPackWith(ModLocEntry[] entries, bool isPrefixOnly = false)
         {
             if (Main.Settings.EnableVerboseLogging)
                 Log.Log("Updating locale pack", Globals.LogPrefix);
@@ -103,7 +103,7 @@ namespace Apocc.Pw.Hotkeys
                 currentPack.PutString(key.ToLowerInvariant(), mle.Value);
             }
 
-            currentPack.PutString(_keyTitle, Globals.ModTitle);
+            currentPack.PutString(_keyTitle, $"{Globals.ModTitle} ({Globals.Version})");
         }
 
         internal void Init()

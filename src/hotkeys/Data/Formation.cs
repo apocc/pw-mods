@@ -38,8 +38,7 @@ namespace Apocc.Pw.Hotkeys.Data
 
             sb.AddSubHeader(Utilities.GetString(KeyHeader))
                 .AddToggle(
-                    Toggle
-                        .New(KeyBtnEnable, false, Utilities.GetString(KeyBtnEnableDesc)))
+                    Toggle.New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableDesc)))
                 .AddKeyBinding(
                     KeyBinding
                         .New(KeyKb00, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb00Desc)), () => OnPress(0))

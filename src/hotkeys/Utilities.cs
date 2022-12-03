@@ -60,6 +60,9 @@ namespace Apocc.Pw.Hotkeys
             return party;
         }
 
+        internal static readonly string KeyBtnEnable = GetKey("btn.enable");
+        internal static readonly LocalizedString KeyBtnEnableString = GetString(KeyBtnEnable);
+
         internal static LocalizedString GetString(string key) => new LocalizedString() { Key = key };
 
         internal static bool IsFullScreenUiWithCharSelect() =>
