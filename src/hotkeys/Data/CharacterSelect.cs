@@ -21,10 +21,10 @@ namespace Apocc.Pw.Hotkeys.Data
         internal static readonly string KeyKbNext = Utilities.GetKey("cs.kb.next");
         internal static readonly string KeyKbPrev = Utilities.GetKey("cs.kb.prev");
 
-        internal static readonly string KeyBtnEnableDesc = Utilities.GetKey("cs.btn.enable.desc");
+        internal static readonly string KeyBtnEnableTitle = Utilities.GetKey("cs.btn.enable.title");
         internal static readonly string KeyHeader = Utilities.GetKey("cs.header");
-        internal static readonly string KeyKbNextDesc = Utilities.GetKey("cs.kb.next.desc");
-        internal static readonly string KeyKbPrevDesc = Utilities.GetKey("cs.kb.prev.desc");
+        internal static readonly string KeyKbNextTitle = Utilities.GetKey("cs.kb.next.title");
+        internal static readonly string KeyKbPrevTitle = Utilities.GetKey("cs.kb.prev.title");
 
         internal static void AddModMenuSettings(SettingsBuilder sb)
         {
@@ -33,13 +33,13 @@ namespace Apocc.Pw.Hotkeys.Data
             sb.AddSubHeader(Utilities.GetString(KeyHeader))
                 .AddToggle(
                     Toggle
-                        .New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableDesc)))
+                        .New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableTitle)))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbNext, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbNextDesc)), () => OnPress())
+                        .New(KeyKbNext, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbNextTitle)), () => OnPress())
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbPrev, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbPrevDesc)), () => OnPress(false));
+                        .New(KeyKbPrev, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbPrevTitle)), () => OnPress(false));
         }
 
         private static void OnPress(bool next = true)

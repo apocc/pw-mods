@@ -3,50 +3,53 @@
 
     <ModLocEntry key="btn.enable">Aktiviere</ModLocEntry>
     <ModLocEntry key="ais.header">KI und Schleichen</ModLocEntry>
-    <ModLocEntry key="ais.btn.enable.desc">Aktiviere KI und Schleichen</ModLocEntry>
-    <ModLocEntry key="ais.kb.ai.desc">KI</ModLocEntry>
-    <ModLocEntry key="ais.kb.stealth.desc">Schleichen</ModLocEntry>
+    <ModLocEntry key="ais.btn.enable.title">Aktiviere KI und Schleichen</ModLocEntry>
+    <ModLocEntry key="ais.kb.ai.title">KI</ModLocEntry>
+    <ModLocEntry key="ais.kb.stealth.title">Schleichen</ModLocEntry>
 
-    <ModLocEntry key="ws.btn.enable.desc">Aktiviere Waffensets</ModLocEntry>
+    <ModLocEntry key="ws.btn.enable.title">Aktiviere Waffensets</ModLocEntry>
     <ModLocEntry key="ws.header">Waffensets</ModLocEntry>
-    <ModLocEntry key="ws.kb.00.desc">Waffenset 1</ModLocEntry>
-    <ModLocEntry key="ws.kb.01.desc">Waffenset 2</ModLocEntry>
-    <ModLocEntry key="ws.kb.02.desc">Waffenset 3</ModLocEntry>
-    <ModLocEntry key="ws.kb.03.desc">Waffenset 4</ModLocEntry>
-    <ModLocEntry key="ws.kb.cycle.desc">Durchblättern der Sets</ModLocEntry>
-    <ModLocEntry key="ws.toggle.for.all.desc">Für alle Charaktere</ModLocEntry>
-    <ModLocEntry key="ws.toggle.inventory.desc">Aktiviere im Inventar</ModLocEntry>
-    <ModLocEntry key="ws.toggle.inventory.for.all.desc">Für alle Charaktere im Inventar</ModLocEntry>
+    <ModLocEntry key="ws.kb.00.title">Waffenset 1</ModLocEntry>
+    <ModLocEntry key="ws.kb.01.title">Waffenset 2</ModLocEntry>
+    <ModLocEntry key="ws.kb.02.title">Waffenset 3</ModLocEntry>
+    <ModLocEntry key="ws.kb.03.title">Waffenset 4</ModLocEntry>
+    <ModLocEntry key="ws.kb.cycle.title">Durchblättern der Sets</ModLocEntry>
+    <ModLocEntry key="ws.toggle.for.all.title">Für alle Charaktere</ModLocEntry>
+    <ModLocEntry key="ws.toggle.inventory.desc">Falls aktiviert, werden die Waffensetwechsel auf den im Inventar ausgewählten Charakter ausgeführt.</ModLocEntry>
+    <ModLocEntry key="ws.toggle.inventory.title">Aktiviere im Inventar</ModLocEntry>
+    <ModLocEntry key="ws.toggle.inventory.for.all.desc">Falls aktiviert, werden die Waffensetwechsel auf alle ausgewählten Charaktere ausgeführt, wenn man sich im Inventar befindet.</ModLocEntry>
+    <ModLocEntry key="ws.toggle.inventory.for.all.title">Für alle Charaktere im Inventar</ModLocEntry>
 
-    <ModLocEntry key="ab.btn.enable.desc">Aktiviere Aktionsleiste</ModLocEntry>
+    <ModLocEntry key="ab.btn.enable.title">Aktiviere Aktionsleiste</ModLocEntry>
     <ModLocEntry key="ab.header">Aktionsleiste</ModLocEntry>
-    <ModLocEntry key="ab.kb.ablility.desc">Attribute</ModLocEntry>
-    <ModLocEntry key="ab.kb.spells.desc">Zauber</ModLocEntry>
-    <ModLocEntry key="ab.kb.quick.desc">Schnellleiste</ModLocEntry>
+    <ModLocEntry key="ab.kb.ablility.title">Attribute</ModLocEntry>
+    <ModLocEntry key="ab.kb.spells.title">Zauber</ModLocEntry>
+    <ModLocEntry key="ab.kb.quick.title">Schnellleiste</ModLocEntry>
 
-    <ModLocEntry key="qs.btn.enable.desc">Aktiviere Schnelleiste</ModLocEntry>
+    <ModLocEntry key="qs.btn.enable.title">Aktiviere Schnelleiste</ModLocEntry>
     <ModLocEntry key="qs.header">Schnelleiste</ModLocEntry>
-    <ModLocEntry key="qs.kb.00.desc">Slot 1</ModLocEntry>
-    <ModLocEntry key="qs.kb.01.desc">Slot 2</ModLocEntry>
-    <ModLocEntry key="qs.kb.02.desc">Slot 3</ModLocEntry>
-    <ModLocEntry key="qs.kb.03.desc">Slot 4</ModLocEntry>
-    <ModLocEntry key="qs.kb.04.desc">Slot 5</ModLocEntry>
-    <ModLocEntry key="qs.toggle.for.all.desc">Für alle Charaktere</ModLocEntry>
-    <ModLocEntry key="qs.toggle.quick.slot.placement.desc">Anordnung in der Schnellleiste verwenden</ModLocEntry>
+    <ModLocEntry key="qs.kb.00.title">Slot 1</ModLocEntry>
+    <ModLocEntry key="qs.kb.01.title">Slot 2</ModLocEntry>
+    <ModLocEntry key="qs.kb.02.title">Slot 3</ModLocEntry>
+    <ModLocEntry key="qs.kb.03.title">Slot 4</ModLocEntry>
+    <ModLocEntry key="qs.kb.04.title">Slot 5</ModLocEntry>
+    <ModLocEntry key="qs.toggle.for.all.title">Für alle Charaktere</ModLocEntry>
+    <ModLocEntry key="qs.toggle.quick.slot.placement.desc">Elemente in der Schnellleiste werden immer linksbündig eingerückt. Falls aktiviert wird die Anordnung in der Schnellleiste verwendent, sonst die des Inventars.</ModLocEntry>
+    <ModLocEntry key="qs.toggle.quick.slot.placement.title">Anordnung in der Schnellleiste verwenden</ModLocEntry>
 
-    <ModLocEntry key="cs.btn.enable.desc">Aktiviere Charakterauswahl</ModLocEntry>
+    <ModLocEntry key="cs.btn.enable.title">Aktiviere Charakterauswahl</ModLocEntry>
     <ModLocEntry key="cs.header">Charakterauswahl</ModLocEntry>
-    <ModLocEntry key="cs.kb.next.desc">Nächster Charakter</ModLocEntry>
-    <ModLocEntry key="cs.kb.prev.desc">Vorheriger Charakter</ModLocEntry>
+    <ModLocEntry key="cs.kb.next.title">Nächster Charakter</ModLocEntry>
+    <ModLocEntry key="cs.kb.prev.title">Vorheriger Charakter</ModLocEntry>
 
-    <ModLocEntry key="fm.btn.enable.desc">Aktiviere Formationen</ModLocEntry>
+    <ModLocEntry key="fm.btn.enable.title">Aktiviere Formationen</ModLocEntry>
     <ModLocEntry key="fm.header">Formationen</ModLocEntry>
-    <ModLocEntry key="fm.kb.00.desc">Formation: Auto</ModLocEntry>
-    <ModLocEntry key="fm.kb.01.desc">Formation: Dreieck</ModLocEntry>
-    <ModLocEntry key="fm.kb.02.desc">Formation: Stern</ModLocEntry>
-    <ModLocEntry key="fm.kb.03.desc">Formation: Wellen</ModLocEntry>
-    <ModLocEntry key="fm.kb.04.desc">Formation: Kreis</ModLocEntry>
-    <ModLocEntry key="fm.kb.05.desc">Formation: Hammer</ModLocEntry>
-    <ModLocEntry key="fm.kb.cycle.desc">Durchblättern der Formationen</ModLocEntry>
+    <ModLocEntry key="fm.kb.00.title">Formation: Auto</ModLocEntry>
+    <ModLocEntry key="fm.kb.01.title">Formation: Dreieck</ModLocEntry>
+    <ModLocEntry key="fm.kb.02.title">Formation: Stern</ModLocEntry>
+    <ModLocEntry key="fm.kb.03.title">Formation: Wellen</ModLocEntry>
+    <ModLocEntry key="fm.kb.04.title">Formation: Kreis</ModLocEntry>
+    <ModLocEntry key="fm.kb.05.title">Formation: Hammer</ModLocEntry>
+    <ModLocEntry key="fm.kb.cycle.title">Durchblättern der Formationen</ModLocEntry>
 
 </ArrayOfModLocEntry>

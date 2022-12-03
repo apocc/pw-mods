@@ -17,10 +17,10 @@ namespace Apocc.Pw.Hotkeys.Data
         internal static readonly string KeyKbAi = Utilities.GetKey("ais.kb.ai");
         internal static readonly string KeyKbStealth = Utilities.GetKey("ais.kb.stealth");
 
-        internal static readonly string KeyBtnEnableDesc = Utilities.GetKey("ais.btn.enable.desc");
+        internal static readonly string KeyBtnEnableTitle = Utilities.GetKey("ais.btn.enable.title");
         internal static readonly string KeyHeader = Utilities.GetKey("ais.header");
-        internal static readonly string KeyKbAiDesc = Utilities.GetKey("ais.kb.ai.desc");
-        internal static readonly string KeyKbStealthDesc = Utilities.GetKey("ais.kb.stealth.desc");
+        internal static readonly string KeyKbAiTitle = Utilities.GetKey("ais.kb.ai.title");
+        internal static readonly string KeyKbStealthTitle = Utilities.GetKey("ais.kb.stealth.title");
 
         internal static void AddModMenuSettings(SettingsBuilder sb)
         {
@@ -29,13 +29,13 @@ namespace Apocc.Pw.Hotkeys.Data
             sb.AddSubHeader(Utilities.GetString(KeyHeader))
                 .AddToggle(
                     Toggle
-                        .New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableDesc)))
+                        .New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableTitle)))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbAi, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbAiDesc)), OnAiKeyPress)
+                        .New(KeyKbAi, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbAiTitle)), OnAiKeyPress)
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbStealth, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbStealthDesc)), OnStealthKeyPress);
+                        .New(KeyKbStealth, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbStealthTitle)), OnStealthKeyPress);
         }
 
         private static void OnAiKeyPress()

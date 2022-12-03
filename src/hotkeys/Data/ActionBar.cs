@@ -26,11 +26,11 @@ namespace Apocc.Pw.Hotkeys.Data
         internal static readonly string KeyKbSpells = Utilities.GetKey("ab.kb.spells");
         internal static readonly string KeyKbQuick = Utilities.GetKey("ab.kb.quick");
 
-        internal static readonly string KeyBtnEnableDesc = Utilities.GetKey("ab.btn.enable.desc");
+        internal static readonly string KeyBtnEnableTitle = Utilities.GetKey("ab.btn.enable.title");
         internal static readonly string KeyHeader = Utilities.GetKey("ab.header");
-        internal static readonly string KeyKbAbilityDesc = Utilities.GetKey("ab.kb.ablility.desc");
-        internal static readonly string KeyKbSpellsDesc = Utilities.GetKey("ab.kb.spells.desc");
-        internal static readonly string KeyKbQuickDesc = Utilities.GetKey("ab.kb.quick.desc");
+        internal static readonly string KeyKbAbilityTitle = Utilities.GetKey("ab.kb.ablility.title");
+        internal static readonly string KeyKbSpellsTitle = Utilities.GetKey("ab.kb.spells.title");
+        internal static readonly string KeyKbQuickTitle = Utilities.GetKey("ab.kb.quick.title");
 
         internal static void AddModMenuSettings(SettingsBuilder sb)
         {
@@ -39,16 +39,16 @@ namespace Apocc.Pw.Hotkeys.Data
             sb.AddSubHeader(Utilities.GetString(KeyHeader))
                 .AddToggle(
                     Toggle
-                        .New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableDesc)))
+                        .New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableTitle)))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbAbility, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbAbilityDesc)), () => OnPress(SubmenuType.Ability))
+                        .New(KeyKbAbility, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbAbilityTitle)), () => OnPress(SubmenuType.Ability))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbSpells, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbSpellsDesc)), () => OnPress(SubmenuType.Spells))
+                        .New(KeyKbSpells, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbSpellsTitle)), () => OnPress(SubmenuType.Spells))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbQuick, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbQuickDesc)), () => OnPress(SubmenuType.Quick));
+                        .New(KeyKbQuick, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbQuickTitle)), () => OnPress(SubmenuType.Quick));
         }
 
         private static void OnPress(SubmenuType type)

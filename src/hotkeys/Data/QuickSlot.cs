@@ -27,15 +27,16 @@ namespace Apocc.Pw.Hotkeys.Data
         internal static readonly string KeyToggleForAll = Utilities.GetKey("qs.toggle.for.all");
         internal static readonly string KeyToggleQuickSlotPlacement = Utilities.GetKey("qs.toggle.quick.slot.placement");
 
-        internal static readonly string KeyBtnEnableDesc = Utilities.GetKey("qs.btn.enable.desc");
+        internal static readonly string KeyBtnEnableTitle = Utilities.GetKey("qs.btn.enable.title");
         internal static readonly string KeyHeader = Utilities.GetKey("qs.header");
-        internal static readonly string KeyKb00Desc = Utilities.GetKey("qs.kb.00.desc");
-        internal static readonly string KeyKb01Desc = Utilities.GetKey("qs.kb.01.desc");
-        internal static readonly string KeyKb02Desc = Utilities.GetKey("qs.kb.02.desc");
-        internal static readonly string KeyKb03Desc = Utilities.GetKey("qs.kb.03.desc");
-        internal static readonly string KeyKb04Desc = Utilities.GetKey("qs.kb.04.desc");
-        internal static readonly string KeyToggleForAllDesc = Utilities.GetKey("qs.toggle.for.all.desc");
+        internal static readonly string KeyKb00Title = Utilities.GetKey("qs.kb.00.title");
+        internal static readonly string KeyKb01Title = Utilities.GetKey("qs.kb.01.title");
+        internal static readonly string KeyKb02Title = Utilities.GetKey("qs.kb.02.title");
+        internal static readonly string KeyKb03Title = Utilities.GetKey("qs.kb.03.title");
+        internal static readonly string KeyKb04Title = Utilities.GetKey("qs.kb.04.title");
+        internal static readonly string KeyToggleForAllTitle = Utilities.GetKey("qs.toggle.for.all.title");
         internal static readonly string KeyToggleQuickSlotPlacementDesc = Utilities.GetKey("qs.toggle.quick.slot.placement.desc");
+        internal static readonly string KeyToggleQuickSlotPlacementTitle = Utilities.GetKey("qs.toggle.quick.slot.placement.title");
 
         internal static void AddModMenuSettings(SettingsBuilder sb)
         {
@@ -43,28 +44,29 @@ namespace Apocc.Pw.Hotkeys.Data
 
             sb.AddSubHeader(Utilities.GetString(KeyHeader))
                 .AddToggle(
-                    Toggle.New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableDesc)))
+                    Toggle.New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableTitle)))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb00, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb00Desc)), () => OnPress(0))
+                        .New(KeyKb00, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb00Title)), () => OnPress(0))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb01, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb01Desc)), () => OnPress(1))
+                        .New(KeyKb01, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb01Title)), () => OnPress(1))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb02, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb02Desc)), () => OnPress(2))
+                        .New(KeyKb02, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb02Title)), () => OnPress(2))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb03, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb03Desc)), () => OnPress(3))
+                        .New(KeyKb03, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb03Title)), () => OnPress(3))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb04, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb04Desc)), () => OnPress(4))
+                        .New(KeyKb04, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb04Title)), () => OnPress(4))
                 .AddToggle(
                     Toggle
-                        .New(KeyToggleForAll, false, Utilities.GetString(KeyToggleForAllDesc)))
+                        .New(KeyToggleForAll, false, Utilities.GetString(KeyToggleForAllTitle)))
                 .AddToggle(
                     Toggle
-                        .New(KeyToggleQuickSlotPlacement, false, Utilities.GetString(KeyToggleQuickSlotPlacementDesc)));
+                        .New(KeyToggleQuickSlotPlacement, false, Utilities.GetString(KeyToggleQuickSlotPlacementTitle))
+                            .WithLongDescription(Utilities.GetString(KeyToggleQuickSlotPlacementDesc)));
         }
 
         private static void OnPress(int slotIndex)

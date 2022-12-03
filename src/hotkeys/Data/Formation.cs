@@ -22,15 +22,15 @@ namespace Apocc.Pw.Hotkeys.Data
         internal static readonly string KeyKb05 = Utilities.GetKey("fm.kb.05");
         internal static readonly string KeyKbCycle = Utilities.GetKey("fm.kb.cycle");
 
-        internal static readonly string KeyBtnEnableDesc = Utilities.GetKey("fm.btn.enable.desc");
+        internal static readonly string KeyBtnEnableTitle = Utilities.GetKey("fm.btn.enable.title");
         internal static readonly string KeyHeader = Utilities.GetKey("fm.header");
-        internal static readonly string KeyKb00Desc = Utilities.GetKey("fm.kb.00.desc");
-        internal static readonly string KeyKb01Desc = Utilities.GetKey("fm.kb.01.desc");
-        internal static readonly string KeyKb02Desc = Utilities.GetKey("fm.kb.02.desc");
-        internal static readonly string KeyKb03Desc = Utilities.GetKey("fm.kb.03.desc");
-        internal static readonly string KeyKb04Desc = Utilities.GetKey("fm.kb.04.desc");
-        internal static readonly string KeyKb05Desc = Utilities.GetKey("fm.kb.05.desc");
-        internal static readonly string KeyKbCycleDesc = Utilities.GetKey("fm.kb.cycle.desc");
+        internal static readonly string KeyKb00Title = Utilities.GetKey("fm.kb.00.title");
+        internal static readonly string KeyKb01Title = Utilities.GetKey("fm.kb.01.title");
+        internal static readonly string KeyKb02Title = Utilities.GetKey("fm.kb.02.title");
+        internal static readonly string KeyKb03Title = Utilities.GetKey("fm.kb.03.title");
+        internal static readonly string KeyKb04Title = Utilities.GetKey("fm.kb.04.title");
+        internal static readonly string KeyKb05Title = Utilities.GetKey("fm.kb.05.title");
+        internal static readonly string KeyKbCycleTitle = Utilities.GetKey("fm.kb.cycle.title");
 
         internal static void AddModMenuSettings(SettingsBuilder sb)
         {
@@ -38,28 +38,28 @@ namespace Apocc.Pw.Hotkeys.Data
 
             sb.AddSubHeader(Utilities.GetString(KeyHeader))
                 .AddToggle(
-                    Toggle.New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableDesc)))
+                    Toggle.New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableTitle)))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb00, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb00Desc)), () => OnPress(0))
+                        .New(KeyKb00, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb00Title)), () => OnPress(0))
                  .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb01, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb01Desc)), () => OnPress(1))
+                        .New(KeyKb01, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb01Title)), () => OnPress(1))
                  .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb02, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb02Desc)), () => OnPress(2))
+                        .New(KeyKb02, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb02Title)), () => OnPress(2))
                  .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb03, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb03Desc)), () => OnPress(3))
+                        .New(KeyKb03, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb03Title)), () => OnPress(3))
                  .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb04, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb04Desc)), () => OnPress(4))
+                        .New(KeyKb04, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb04Title)), () => OnPress(4))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb05, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb05Desc)), () => OnPress(5))
+                        .New(KeyKb05, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb05Title)), () => OnPress(5))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbCycle, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbCycleDesc)), () => OnPress(-1));
+                        .New(KeyKbCycle, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbCycleTitle)), () => OnPress(-1));
         }
 
         private static void OnPress(int index)

@@ -25,16 +25,18 @@ namespace Apocc.Pw.Hotkeys.Data
         internal static readonly string KeyToggleInventory = Utilities.GetKey("ws.toggle.inventory");
         internal static readonly string KeyToggleInventoryForAll = Utilities.GetKey("ws.toggle.inventory.for.all");
 
-        internal static readonly string KeyBtnEnableDesc = Utilities.GetKey("ws.btn.enable.desc");
+        internal static readonly string KeyBtnEnableTitle = Utilities.GetKey("ws.btn.enable.title");
         internal static readonly string KeyHeader = Utilities.GetKey("ws.header");
-        internal static readonly string KeyKb00Desc = Utilities.GetKey("ws.kb.00.desc");
-        internal static readonly string KeyKb01Desc = Utilities.GetKey("ws.kb.01.desc");
-        internal static readonly string KeyKb02Desc = Utilities.GetKey("ws.kb.02.desc");
-        internal static readonly string KeyKb03Desc = Utilities.GetKey("ws.kb.03.desc");
-        internal static readonly string KeyKbCycleDesc = Utilities.GetKey("ws.kb.cycle.desc");
-        internal static readonly string KeyToggleForAllDesc = Utilities.GetKey("ws.toggle.for.all.desc");
+        internal static readonly string KeyKb00Title = Utilities.GetKey("ws.kb.00.title");
+        internal static readonly string KeyKb01Title = Utilities.GetKey("ws.kb.01.title");
+        internal static readonly string KeyKb02Title = Utilities.GetKey("ws.kb.02.title");
+        internal static readonly string KeyKb03Title = Utilities.GetKey("ws.kb.03.title");
+        internal static readonly string KeyKbCycleTitle = Utilities.GetKey("ws.kb.cycle.title");
+        internal static readonly string KeyToggleForAllTitle = Utilities.GetKey("ws.toggle.for.all.title");
         internal static readonly string KeyToggleInventoryDesc = Utilities.GetKey("ws.toggle.inventory.desc");
+        internal static readonly string KeyToggleInventoryTitle = Utilities.GetKey("ws.toggle.inventory.title");
         internal static readonly string KeyToggleInventoryForAllDesc = Utilities.GetKey("ws.toggle.inventory.for.all.desc");
+        internal static readonly string KeyToggleInventoryForAllTitle = Utilities.GetKey("ws.toggle.inventory.for.all.title");
 
         private static int CalcNewIndex(UnitEntityData unit, int index)
            => index == -1 ? (unit.Body.CurrentHandEquipmentSetIndex + 1) % 4 : index;
@@ -103,31 +105,33 @@ namespace Apocc.Pw.Hotkeys.Data
 
             sb.AddSubHeader(Utilities.GetString(KeyHeader))
                 .AddToggle(
-                    Toggle.New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableDesc)))
+                    Toggle.New(KeyBtnEnable, false, Utilities.KeyBtnEnableString).WithLongDescription(Utilities.GetString(KeyBtnEnableTitle)))
                 .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb00, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb00Desc)), () => OnPress(0))
+                        .New(KeyKb00, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb00Title)), () => OnPress(0))
                  .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb01, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb01Desc)), () => OnPress(1))
+                        .New(KeyKb01, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb01Title)), () => OnPress(1))
                  .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb02, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb02Desc)), () => OnPress(2))
+                        .New(KeyKb02, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb02Title)), () => OnPress(2))
                  .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKb03, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb03Desc)), () => OnPress(3))
+                        .New(KeyKb03, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKb03Title)), () => OnPress(3))
                  .AddKeyBinding(
                     KeyBinding
-                        .New(KeyKbCycle, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbCycleDesc)), () => OnPress())
+                        .New(KeyKbCycle, GameModesGroup.AllExceptBugReport, Utilities.GetString(KeyKbCycleTitle)), () => OnPress())
                  .AddToggle(
                     Toggle
-                        .New(KeyToggleForAll, false, Utilities.GetString(KeyToggleForAllDesc)))
+                        .New(KeyToggleForAll, false, Utilities.GetString(KeyToggleForAllTitle)))
                  .AddToggle(
                     Toggle
-                        .New(KeyToggleInventory, false, Utilities.GetString(KeyToggleInventoryDesc)))
+                        .New(KeyToggleInventory, false, Utilities.GetString(KeyToggleInventoryTitle))
+                            .WithLongDescription(Utilities.GetString(KeyToggleInventoryDesc)))
                  .AddToggle(
                     Toggle
-                        .New(KeyToggleInventoryForAll, false, Utilities.GetString(KeyToggleInventoryForAllDesc)));
+                        .New(KeyToggleInventoryForAll, false, Utilities.GetString(KeyToggleInventoryForAllTitle))
+                            .WithLongDescription(Utilities.GetString(KeyToggleInventoryForAllDesc)));
         }
     }
 }
