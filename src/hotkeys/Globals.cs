@@ -16,7 +16,7 @@ namespace Apocc.Pw.Hotkeys
         public const int TextFieldWidth = 125;
         public const int ControlSpace = 20;
         public const int GroupSpace = 5;
-        public const string Version = "3.0.0-beta";
+        public const string Version = "3.0.0";
 
         public static string ModId = "ApoccHotkeys";
         public static string LogPrefix = $"[{ModId}] ";
