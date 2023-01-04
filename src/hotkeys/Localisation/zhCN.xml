@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfModLocEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <ModLocEntry key="btn.enable">启用</ModLocEntry>
+    <ModLocEntry key="ais.header">AI和隐匿</ModLocEntry>
+    <ModLocEntry key="ais.btn.enable.title">启用AI和隐匿热键</ModLocEntry>
+    <ModLocEntry key="ais.kb.ai.title">AI热键</ModLocEntry>
+    <ModLocEntry key="ais.kb.stealth.title">隐匿热键</ModLocEntry>
+
+    <ModLocEntry key="ws.btn.enable.title">启用武器栏热键</ModLocEntry>
+    <ModLocEntry key="ws.header">武器栏</ModLocEntry>
+    <ModLocEntry key="ws.kb.00.title">武器 1</ModLocEntry>
+    <ModLocEntry key="ws.kb.01.title">武器 2</ModLocEntry>
+    <ModLocEntry key="ws.kb.02.title">武器 3</ModLocEntry>
+    <ModLocEntry key="ws.kb.03.title">武器 4</ModLocEntry>
+    <ModLocEntry key="ws.kb.cycle.title">切换武器</ModLocEntry>
+    <ModLocEntry key="ws.toggle.for.all.title">对所有选定的角色</ModLocEntry>
+    <ModLocEntry key="ws.toggle.inventory.desc">如果启用，武器栏的功能将在库存界面上应用。</ModLocEntry>
+    <ModLocEntry key="ws.toggle.inventory.title">启用库存界面的武器栏热键</ModLocEntry>
+    <ModLocEntry key="ws.toggle.inventory.for.all.desc">如果启用，在库存界面时,武器栏功能将应用于打开界面前所有选定的角色。</ModLocEntry>
+    <ModLocEntry key="ws.toggle.inventory.for.all.title">在库存界面时，对所有选定的角色</ModLocEntry>
+
+    <ModLocEntry key="ab.btn.enable.title">启用动作条热键</ModLocEntry>
+    <ModLocEntry key="ab.header">动作条</ModLocEntry>
+    <ModLocEntry key="ab.kb.ablility.title">展开属性栏</ModLocEntry>
+    <ModLocEntry key="ab.kb.spells.title">展开法术栏</ModLocEntry>
+    <ModLocEntry key="ab.kb.quick.title">展开快捷物品栏</ModLocEntry>
+
+    <ModLocEntry key="qs.btn.enable.title">启用快捷物品栏热键</ModLocEntry>
+    <ModLocEntry key="qs.header">快捷物品栏</ModLocEntry>
+    <ModLocEntry key="qs.kb.00.title">物品 1</ModLocEntry>
+    <ModLocEntry key="qs.kb.01.title">物品 2</ModLocEntry>
+    <ModLocEntry key="qs.kb.02.title">物品 3</ModLocEntry>
+    <ModLocEntry key="qs.kb.03.title">物品 4</ModLocEntry>
+    <ModLocEntry key="qs.kb.04.title">物品 5</ModLocEntry>
+    <ModLocEntry key="qs.toggle.for.all.title">对所有选定的角色</ModLocEntry>
+    <ModLocEntry key="qs.toggle.quick.slot.placement.desc">显示在快捷物品栏上的物品总是左对齐，无论它们在库存界面中的位置如何。启用这个选项后，快捷物品栏的位置将与库存界面的位置相同。</ModLocEntry>
+    <ModLocEntry key="qs.toggle.quick.slot.placement.title">使用快捷物品栏的位置</ModLocEntry>
+
+    <ModLocEntry key="cs.btn.enable.title">启用角色选择热键</ModLocEntry>
+    <ModLocEntry key="cs.header">角色选择</ModLocEntry>
+    <ModLocEntry key="cs.kb.next.title">上一角色</ModLocEntry>
+    <ModLocEntry key="cs.kb.prev.title">下一角色</ModLocEntry>
+
+    <ModLocEntry key="fm.btn.enable.title">启用队形热键</ModLocEntry>
+    <ModLocEntry key="fm.header">队形</ModLocEntry>
+    <ModLocEntry key="fm.kb.00.title">自动队形</ModLocEntry>
+    <ModLocEntry key="fm.kb.01.title">三角队形</ModLocEntry>
+    <ModLocEntry key="fm.kb.02.title">星型队形</ModLocEntry>
+    <ModLocEntry key="fm.kb.03.title">波浪队形</ModLocEntry>
+    <ModLocEntry key="fm.kb.04.title">圆环队形</ModLocEntry>
+    <ModLocEntry key="fm.kb.05.title">重锤队形</ModLocEntry>
+    <ModLocEntry key="fm.kb.cycle.title">切换队形</ModLocEntry>
+
+</ArrayOfModLocEntry>
