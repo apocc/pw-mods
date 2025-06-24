@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Apocc.Pw.Hotkeys</RootNamespace>
     <AssemblyName>Apocc.Pw.Hotkeys</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -129,13 +129,13 @@
   <Target Name="CopyToModsFolder" AfterTargets="AfterBuild" Condition="'$(Configuration)' == 'Debug'">
     <Message Text="Start copying mod files" Importance="high" />
     <Copy SourceFiles="$(TargetPath);$(TargetDir)Info.json" DestinationFolder="$(WrathPath)\Mods\ApoccHotkeys" />
-    <Copy SourceFiles="@(_CopyLocalisation)" DestinationFolder="$(WrathPath)\Mods\ApoccHotkeys\Localisation" />
+    <Copy SourceFiles="@(_CopyLocalisation)" DestinationFolder="$(WrathPath)\Mods\ApoccHotkeys\Localisation\" />
     <Message Text="Finish copying mod files" Importance="high" />
   </Target>
   <Target Name="PublishData" AfterTargets="AfterBuild" Condition="'$(Configuration)' == 'Publish'">
     <Message Text="Publishing files" Importance="high" />
     <Copy SourceFiles="$(TargetPath);$(TargetDir)Info.json" DestinationFolder="$(TargetDir)publish\ApoccHotkeys" />
-    <Copy SourceFiles="@(_CopyLocalisation)" DestinationFolder="$(TargetDir)publish\ApoccHotkeys\Localisation" />
+    <Copy SourceFiles="@(_CopyLocalisation)" DestinationFolder="$(TargetDir)publish\ApoccHotkeys\Localisation\" />
     <MakeDir Directories="$(SolutionDir)publish" />
     <ZipDirectory Overwrite="true" SourceDirectory="$(TargetDir)publish" DestinationFile="$(SolutionDir)publish\$(ProjectName).zip" />
   </Target>
